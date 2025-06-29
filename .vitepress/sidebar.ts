@@ -1,6 +1,20 @@
 import type { DefaultTheme } from "vitepress";
 
 export const sidebar: DefaultTheme.SidebarMulti = {
+	"/tempest": [
+		{
+			text: "Introduction",
+			link: "/tempest/",
+		},
+		{
+			text: "Developer Mode",
+			link: "/tempest/udk",
+		},
+		{
+			text: "Credits",
+			link: "/tempest/credits",
+		},
+	],
 	"/udk": [
 		{
 			text: "Introduction",
@@ -16,6 +30,7 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			collapsed: false,
 			items: [
 				{
+<<<<<<< HEAD
 					text: "Prerequisites", link: "/udk/prerequisites"
 				},
 				{
@@ -23,6 +38,12 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 				}
 			]
 		}
+=======
+					text: "Prerequisites",
+				},
+			],
+		},
+>>>>>>> ad9d098df1ff2ac412a04d2942e4282fae8f807c
 	],
 	"/api-reference": [
 		{
@@ -30,29 +51,29 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			collapsed: false,
 			items: [
 				{
-					text: "TgGame"
+					text: "TgGame",
 				},
 				{
-					text: "TgPawn"
+					text: "TgPawn",
 				},
 				{
-					text: "TgPlayerController"
+					text: "TgPlayerController",
 				},
 				{
-					text: "TgRepInfo_Player"
-				}
-			]
+					text: "TgRepInfo_Player",
+				},
+			],
 		},
 		{
 			text: "TgClient.upk",
 			collapsed: false,
 			items: [
 				{
-					text: "TgGameViewportClient"
-				}
-			]
-		}
-	]
+					text: "TgGameViewportClient",
+				},
+			],
+		},
+	],
 };
 
 export default sidebar;
