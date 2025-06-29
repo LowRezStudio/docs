@@ -31,7 +31,7 @@ features:
     icon:
       src: /tempest/logo.png
     details: A guide for Tempest Launcher, the utility meant to make this all easier.
-    link: /tempest
+    link: /tempest/introduction
     linkText: Learn more
   - title: Community Discord Server
     icon:
