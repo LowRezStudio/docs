@@ -10,7 +10,7 @@ export default defineConfig({
 	themeConfig: {
 		logo: "/logo.png",
 		nav: [
-			{ text: "Tempest", link: "/tempest" },
+			{ text: "Tempest", link: "/tempest/introduction" },
 			{ text: "UDK", link: "/udk/getting-started" },
 			{ text: "Marshal", link: "/marshal" },
 			{ text: "API Reference", link: "/api-reference" },

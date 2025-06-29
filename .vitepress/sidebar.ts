@@ -4,7 +4,7 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 	"/tempest": [
 		{
 			text: "Introduction",
-			link: "/tempest/",
+			link: "/tempest/introduction",
 		},
 		{
 			text: "Developer Mode",
