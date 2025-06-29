@@ -140,6 +140,11 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 	],
 	"/api-reference": [
 		{
+			text: "Test page",
+			link: "/api-reference/",
+			collapsed: false,
+		},
+		{
 			text: "TgGame.upk",
 			collapsed: false,
 			items: [
