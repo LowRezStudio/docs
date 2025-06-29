@@ -7,6 +7,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/introduction",
 		},
 		{
+			text: "Commands",
+			link: "/tempest/commands"
+		},
+		{
 			text: "Developer Mode",
 			link: "/tempest/udk",
 		},
