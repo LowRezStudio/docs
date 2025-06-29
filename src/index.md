@@ -25,7 +25,7 @@ features:
   - title: Marshal
     icon: 🔢
     details: Learn about Hi-Rez's proprietary binary serialization format & networking layer.
-    link: /marshal
+    link: /marshal/introduction
     linkText: Learn more
   - title: Tempest Launcher
     icon:

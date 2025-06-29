@@ -54,6 +54,26 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			items: [],
 		},
 	],
+	"/marshal": [
+		{
+			text: "Introduction",
+			link: "/marshal/introduction",
+		},
+		{
+			text: "something",
+			collapsed: false,
+			items: [
+				{
+					text: "Getting Started",
+					link: "/marshal/getting-started",
+				},
+				{
+					text: "Resources",
+					link: "/marshal/resources",
+				},
+			],
+		},
+	],
 	"/api-reference": [
 		{
 			text: "TgGame.upk",

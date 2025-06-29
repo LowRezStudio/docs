@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import sidebar from "./sidebar";
+import footnote from "markdown-it-footnote";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,7 +13,7 @@ export default defineConfig({
 		nav: [
 			{ text: "Tempest", link: "/tempest/introduction" },
 			{ text: "UDK", link: "/udk/getting-started" },
-			{ text: "Marshal", link: "/marshal" },
+			{ text: "Marshal", link: "/marshal/introduction" },
 			{ text: "API Reference", link: "/api-reference" },
 		],
 		sidebar,
@@ -25,6 +26,11 @@ export default defineConfig({
 		},
 		search: {
 			provider: "local",
+		},
+	},
+	markdown: {
+		config: (md) => {
+			md.use(footnote);
 		},
 	},
 });
