@@ -8,7 +8,7 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 		},
 		{
 			text: "Commands",
-			link: "/tempest/commands"
+			link: "/tempest/commands",
 		},
 		{
 			text: "Developer Mode",
@@ -109,7 +109,7 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 				},
 				{
 					text: "lang.dat",
-					link: "/marshal/files/lang-file",
+					link: "/marshal/files/lang",
 				},
 			],
 		},
