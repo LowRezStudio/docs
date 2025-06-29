@@ -3,11 +3,23 @@ import type { DefaultTheme } from "vitepress";
 export const sidebar: DefaultTheme.SidebarMulti = {
 	"/udk": [
 		{
+			text: "Introduction",
+			collapsed: false,
+			items: [
+				{
+					text: "Getting Started", link: "/udk/getting-started"
+				}
+			]
+		},
+		{
 			text: "Setup",
 			collapsed: false,
 			items: [
 				{
-					text: "Prerequisites"
+					text: "Prerequisites", link: "/udk/prerequisites"
+				},
+				{
+					text: "Installation", link: "/udk/installation"
 				}
 			]
 		}

@@ -11,7 +11,7 @@ export default defineConfig({
 
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
-			{ text: "UDK", link: "/udk" },
+			{ text: "UDK", link: "/udk/getting-started" },
 			{ text: "UnrealScript", link: "/unrealscript" },
 			{ text: "Marshal", link: "/marshal" },
 			{ text: "API Reference", link: "/api-reference" }
