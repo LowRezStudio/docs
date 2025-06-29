@@ -10,13 +10,8 @@ export default defineConfig({
 	themeConfig: {
 		logo: "/logo.png",
 		nav: [
-<<<<<<< HEAD
-			{ text: "UDK", link: "/udk/getting-started" },
-			{ text: "UnrealScript", link: "/unrealscript" },
-=======
 			{ text: "Tempest", link: "/tempest" },
-			{ text: "UDK", link: "/udk" },
->>>>>>> ad9d098df1ff2ac412a04d2942e4282fae8f807c
+			{ text: "UDK", link: "/udk/getting-started" },
 			{ text: "Marshal", link: "/marshal" },
 			{ text: "API Reference", link: "/api-reference" },
 		],

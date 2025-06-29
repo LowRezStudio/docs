@@ -30,7 +30,6 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			collapsed: false,
 			items: [
 				{
-<<<<<<< HEAD
 					text: "Prerequisites", link: "/udk/prerequisites"
 				},
 				{
@@ -38,12 +37,6 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 				}
 			]
 		}
-=======
-					text: "Prerequisites",
-				},
-			],
-		},
->>>>>>> ad9d098df1ff2ac412a04d2942e4282fae8f807c
 	],
 	"/api-reference": [
 		{
