@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /udk
+      link: /udk/getting-started
     - theme: alt
       text: API Reference
       link: /api-reference
@@ -20,7 +20,7 @@ features:
     icon:
       src: /udk-logo.png
     details: The Paladins' game engine. Learn how to set it up and use the editor to the fullest.
-    link: /udk
+    link: /udk/getting-started
     linkText: Learn more
   - title: Marshal
     icon: 🔢

@@ -21,22 +21,34 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			collapsed: false,
 			items: [
 				{
-					text: "Getting Started", link: "/udk/getting-started"
-				}
-			]
+					text: "Getting Started",
+					link: "/udk/getting-started",
+				},
+				{
+					text: "Resources",
+					link: "/udk/resources",
+				},
+			],
 		},
 		{
 			text: "Setup",
 			collapsed: false,
 			items: [
 				{
-					text: "Prerequisites", link: "/udk/prerequisites"
+					text: "Prerequisites",
+					link: "/udk/prerequisites",
 				},
 				{
-					text: "Installation", link: "/udk/installation"
-				}
-			]
-		}
+					text: "Installation",
+					link: "/udk/installation",
+				},
+			],
+		},
+		{
+			text: "UnrealScript",
+			collapsed: false,
+			items: [],
+		},
 	],
 	"/api-reference": [
 		{
