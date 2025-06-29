@@ -4,22 +4,18 @@ Activate the console by pressing F2 when in game with the `Enable Console` optio
 
 ## *Useful* commands
 
-::: warning
-Please note that some of these vary per patch.
-:::
-
 - `disconnect` - Return to login screen
-- `changetaskforce 1` - Assigns you to team 1
+- `changetaskforce <TEAM>` - Assigns you to the given team (usually 1 or 2)
 - `god` - Toggles godmode
 - `cooldown` - Removes cooldowns
 - `fillenergy` - Gives ultimate
 - `switchclass <CHAMPION>` - Changes champion
-- `spawnbot` - Spawns bots
+- `spawnbot <CHAMPION> <TEAM> <AMOUNT>` - Spawns bots
 - `ghost` - Allows you to move through walls
-- `walk` - Returns you to normal state
-- `EDBN` - Allows you to equip weapons/abilities/cards/talents
-- `TEDBN` - Allows you to equip weapons/abilities/cards/talents on targeted bots
-- `Pushscene` - UIHome (when used at the login screen, allows you to see the game menus
+- `walk` - Returns you to normal state, opposite of `ghost`
+- `EDBN <DEVICE> <SLOT>` - Equip Device By Name, lets you equip a device[^1]
+- `TEDBN <DEVICE> <SLOT>` - Target Equip Device By Name, lets you equip a device[^1] on another player
+- `Pushscene` - UIHome (when used at the login screen, allows you to see the game menus)
 - `Popscene` - For UI soft locks
 - `Set3p` - Third person
 - `Set1p` - First person
@@ -33,6 +29,8 @@ This list is incomplete and varies between patches.
 :::
 
 **Command:** `switchlevel <MAPNAME>?game=<GAMEMODE>`
+
+These map names correspond to the given `.upk` files in `ChaosGame/CookedPCConsole`.
 
 ### Serpent Beach
 - `TMM_P_Beach_v02`
@@ -95,7 +93,7 @@ This list is FAR from complete and varies between patches as well.
 ### Battlegrounds:
 - `TgGame.TgGame_Royale`
 
-## EDBN Slots
+## Inventory Slots
 
 | Slot | Device |
 | :--- | :--- |
@@ -125,3 +123,7 @@ This list is FAR from complete and varies between patches as well.
 | 24 | Combo |
 | 25 | None |
 | 26 | Talent |
+
+## Definitions
+
+[^1]: A device can be a weapon, ability, card or talent
