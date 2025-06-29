@@ -22,15 +22,16 @@ features:
     details: The Paladins' game engine. Learn how to set it up and use the editor to the fullest.
     link: /udk
     linkText: Learn more
-  - title: UnrealScript
-    icon: 📜
-    details: A guide for UDK's scripting language and a list of useful resources.
-    link: /unrealscript
-    linkText: Learn more
   - title: Marshal
     icon: 🔢
     details: Learn about Hi-Rez's proprietary binary serialization format & networking layer.
     link: /marshal
+    linkText: Learn more
+  - title: Tempest Launcher
+    icon:
+      src: /tempest/logo.png
+    details: A guide for Tempest Launcher, the utility meant to make this all easier.
+    link: /tempest
     linkText: Learn more
   - title: Community Discord Server
     icon:
@@ -40,4 +41,4 @@ features:
     linkText: Join now
 ---
 
-<small>*Most of the information on this website is also applicable to most other Hi-Rez UE3 games like Realm Royale.</small>
+<small>\*Most of the information on this website is also applicable to most other Hi-Rez UE3 games like Realm Royale.</small>

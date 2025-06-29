@@ -1,16 +1,30 @@
 import type { DefaultTheme } from "vitepress";
 
 export const sidebar: DefaultTheme.SidebarMulti = {
+	"/tempest": [
+		{
+			text: "Introduction",
+			link: "/tempest/",
+		},
+		{
+			text: "Developer Mode",
+			link: "/tempest/udk",
+		},
+		{
+			text: "Credits",
+			link: "/tempest/credits",
+		},
+	],
 	"/udk": [
 		{
 			text: "Setup",
 			collapsed: false,
 			items: [
 				{
-					text: "Prerequisites"
-				}
-			]
-		}
+					text: "Prerequisites",
+				},
+			],
+		},
 	],
 	"/api-reference": [
 		{
@@ -18,29 +32,29 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			collapsed: false,
 			items: [
 				{
-					text: "TgGame"
+					text: "TgGame",
 				},
 				{
-					text: "TgPawn"
+					text: "TgPawn",
 				},
 				{
-					text: "TgPlayerController"
+					text: "TgPlayerController",
 				},
 				{
-					text: "TgRepInfo_Player"
-				}
-			]
+					text: "TgRepInfo_Player",
+				},
+			],
 		},
 		{
 			text: "TgClient.upk",
 			collapsed: false,
 			items: [
 				{
-					text: "TgGameViewportClient"
-				}
-			]
-		}
-	]
+					text: "TgGameViewportClient",
+				},
+			],
+		},
+	],
 };
 
 export default sidebar;

@@ -10,10 +10,10 @@ export default defineConfig({
 	themeConfig: {
 		logo: "/logo.png",
 		nav: [
+			{ text: "Tempest", link: "/tempest" },
 			{ text: "UDK", link: "/udk" },
-			{ text: "UnrealScript", link: "/unrealscript" },
 			{ text: "Marshal", link: "/marshal" },
-			{ text: "API Reference", link: "/api-reference" }
+			{ text: "API Reference", link: "/api-reference" },
 		],
 		sidebar,
 		socialLinks: [
@@ -21,10 +21,10 @@ export default defineConfig({
 			{ icon: "github", link: "https://github.com/LowRezStudio" },
 		],
 		footer: {
-			message: "Made by Tom, Kyiro, Cinnamon, Kana and whoever else!"
+			message: "Made by Tom, Kyiro, Cinnamon, Kana and whoever else!",
 		},
 		search: {
-			provider: "local"
-		}
-	}
+			provider: "local",
+		},
+	},
 });
