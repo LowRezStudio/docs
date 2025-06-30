@@ -15,6 +15,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/udk",
 		},
 		{
+			text: "FAQ",
+			link: "/tempest/faq",
+		},
+		{
 			text: "Credits",
 			link: "/tempest/credits",
 		},
