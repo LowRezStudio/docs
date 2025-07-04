@@ -1,12 +1,13 @@
-import { defineConfig } from "vitepress";
+import { defineConfig, HeadConfig } from "vitepress";
 import sidebar from "./sidebar";
 import footnote from "markdown-it-footnote";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
 	srcDir: "src",
+	lang: "en-US",
 	title: "Paladins Mods",
-	description: "Documentation on Paladins mod making",
+	description: `Documentation on Paladins mod making.`,
 	// https://vitepress.dev/reference/default-theme-config
 	themeConfig: {
 		logo: "/logo.png",
@@ -33,4 +34,12 @@ export default defineConfig({
 			md.use(footnote);
 		},
 	},
+	transformHead: () => {
+	    const head: HeadConfig[] = []
+
+	    head.push(['meta', { property: 'theme-color', content: "#33b6b1" }])
+	    head.push(['meta', { property: 'og:image', content: "/logo.png" }])
+
+	    return head
+  	}
 });
