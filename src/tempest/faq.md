@@ -2,6 +2,9 @@
 
 Here are some of the most frequently asked questions.
 
+## What is Tempest?
+The [Tempest Launcher](/tempest/introduction) is a community-driven project created in order to preserve Paladins and ensure that the game remains playable both in singleplayer and multiplayer on community-hosted modded servers, even if official support ends.
+
 ## How do I get in game once I launched?
 Make sure `Enable Console` is checked in the launcher settings, at the login screen type anything into the user and pass and click login. Once it says `Logging in`, press `F1` on your keyboard.
 
