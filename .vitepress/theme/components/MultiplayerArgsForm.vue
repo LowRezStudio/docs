@@ -1,0 +1,161 @@
+<script setup lang="ts">
+import { ref, computed } from "vue";
+import { VPButton } from "vitepress/theme";
+
+const maxPlayers = ref(10);
+const password = ref("");
+const allowSpectators = ref(false);
+const modVersion = ref("TempestMpDEV17");
+const mapSelect = ref("BMM_P_v01");
+const selectedChampions = ref<string[]>([]);
+const copyButtonText = ref("Copy");
+
+const champions = [
+	"Androxus",
+	"Ash",
+	"Barik",
+	"Bomb King",
+	"Buck",
+	"Cassie",
+	"Drogoz",
+	"Evie",
+	"Fernando",
+	"Grohk",
+	"Grover",
+	"Inara",
+	"Jenos",
+	"Kinessa",
+	"Lex",
+	"Lian",
+	"Maeve",
+	"Makoa",
+	"Mal'Damba",
+	"Pip",
+	"Ruckus",
+	"Seris",
+	"Sha Lin",
+	"Skye",
+	"Strix",
+	"Torvald",
+	"Tyra",
+	"Viktor",
+	"Willo",
+	"Ying",
+	"Zhin",
+	"Churchill",
+	"Lazarus",
+];
+
+const maps = [
+	{ name: "Brightmarsh", value: "BMM_P_v01" },
+	{ name: "Fish Market", value: "FMM_P_Dock_v02" },
+	{ name: "Timber Mill", value: "FMM_Mill_P_v04" },
+	{ name: "Frozen Guard", value: "IMM_P_Igloo_v02" },
+	{ name: "Frog Isle", value: "TMM_P_Isle_v02" },
+	{ name: "Ice Mines", value: "IMM_Mines_P_v04" },
+	{ name: "Jaguar Falls", value: "TMM_Falls_P_v04" },
+	{ name: "Stone Keep", value: "KMM_P_v01" },
+];
+
+const resultCommand = computed(() => {
+	if (selectedChampions.value.length === 0) return "";
+
+	const gamemode = modVersion.value === "TempestMpDEV17" ? "SiegeDEV" : "Siege";
+	let cmd = `server ${mapSelect.value}?game=${modVersion.value}.${gamemode}?maxplayers=${maxPlayers.value}`;
+
+	if (password.value) cmd += `?serverpassword=${password.value.trim()}`;
+	cmd += `?allowedChampions=${selectedChampions.value.join(",")}`;
+	if (allowSpectators.value) cmd += `?allowSpectators`;
+
+	return cmd + " -log";
+});
+
+function selectAll() {
+	selectedChampions.value = [...champions];
+}
+
+function clearAll() {
+	selectedChampions.value = [];
+}
+
+function copyToClipboard() {
+	navigator.clipboard.writeText(resultCommand.value);
+	copyButtonText.value = "Copied!";
+	setTimeout(() => (copyButtonText.value = "Copy"), 1000);
+}
+</script>
+
+<template>
+	<div class="form">
+		<div class="grid">
+			<div class="section">
+				<h3>Basic Settings</h3>
+				<label
+					>Max Players:
+					<input type="number" v-model.number="maxPlayers" min="1" max="50"
+				/></label>
+				<label
+					>Password:
+					<input type="text" v-model="password" placeholder="Optional"
+				/></label>
+				<label
+					><input type="checkbox" v-model="allowSpectators" /> Allow
+					spectators</label
+				>
+			</div>
+
+			<div class="section">
+				<h3>Server Configuration</h3>
+				<label
+					>Mod Version:
+					<select v-model="modVersion">
+						<option value="TempestMpDEV17">TempestMpDEV17</option>
+						<option value="TempestMp">TempestMp</option>
+					</select>
+				</label>
+				<label
+					>Map:
+					<select v-model="mapSelect">
+						<option v-for="map in maps" :key="map.value" :value="map.value">
+							{{ map.name }}
+						</option>
+					</select>
+				</label>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="header">
+				<h3>Champions</h3>
+				<div>
+					<VPButton theme="alt" @click="selectAll" text="Select All" />
+					<VPButton theme="alt" @click="clearAll" text="Clear All" />
+				</div>
+			</div>
+			<div class="champions">
+				<label v-for="champ in champions" :key="champ">
+					<input type="checkbox" :value="champ" v-model="selectedChampions" />
+					{{ champ }}
+				</label>
+			</div>
+			<div v-if="selectedChampions.length > 10" class="warning">
+				⚠️ Selecting more than 10 champions may cause issues with loading audio
+				and other assets.
+			</div>
+		</div>
+
+		<div class="section" v-if="resultCommand">
+			<div class="header">
+				<h3>Generated Command</h3>
+				<VPButton
+					theme="brand"
+					@click="copyToClipboard"
+					:text="copyButtonText"
+				/>
+			</div>
+			<div class="command">
+				<pre>{{ resultCommand }}</pre>
+			</div>
+		</div>
+	</div>
+</template>

@@ -15,6 +15,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/udk",
 		},
 		{
+			text: "Multiplayer Arguments",
+			link: "/tempest/multiplayer-args",
+		},
+		{
 			text: "FAQ",
 			link: "/tempest/faq",
 		},

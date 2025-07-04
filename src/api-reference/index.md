@@ -3,6 +3,7 @@
 ## Variables
 
 ### m_DebugCameraController
+
 **Type:** `TgDemoRecSpectator_Debug`
 
 ```csharp
@@ -10,6 +11,7 @@ var TgDemoRecSpectator_Debug m_DebugCameraController;
 ```
 
 ### m_DebugPlayerStarts
+
 **Type:** `array<PlayerStart>`
 
 ```csharp
@@ -19,7 +21,9 @@ var array<PlayerStart> m_DebugPlayerStarts;
 ## Functions
 
 ### CheatLog
+
 **Parameters:**
+
 - `cheatText`: string
 - `bOn`: bool
 
@@ -30,7 +34,9 @@ function CheatLog(string cheatText, bool bOn)
 ```
 
 ### KillAllPawnsHelper
+
 **Parameters:**
+
 - `PawnClass`: class&lt;Pawn&gt;
 
 **Modifiers:** function
@@ -40,7 +46,9 @@ function KillAllPawnsHelper(class<Pawn> PawnClass)
 ```
 
 ### RemoveDeviceFromPawnAt
+
 **Parameters:**
+
 - `TgP`: TgPawn
 - `nEquipPointId`: int
 
@@ -51,12 +59,14 @@ function RemoveDeviceFromPawnAt(TgPawn TgP, int nEquipPointId)
 ```
 
 ### EquipDeviceOnPawn
+
 **Parameters:**
+
 - `TgP`: TgPawn
 - `nDeviceId`: int
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** function
 
@@ -75,14 +85,16 @@ exec function separator()
 ```
 
 ### sc
+
 **Parameters:**
+
 - `godName`: string
 - `skinName`: optional string
-    - default: ""
+  - default: ""
 - `weaponSkinName`: optional string
-    - default: ""
+  - default: ""
 - `headName`: optional string
-    - default: ""
+  - default: ""
 
 **Modifiers:** exec, function
 
@@ -91,7 +103,9 @@ exec function sc(string godName, optional string skinName, optional string weapo
 ```
 
 ### echo
+
 **Parameters:**
+
 - `inputString`: string
 
 **Modifiers:** exec, function
@@ -109,7 +123,9 @@ exec function Loc()
 ```
 
 ### ServerExec
+
 **Parameters:**
+
 - `FSCommand`: string
 
 **Modifiers:** exec, function
@@ -119,16 +135,18 @@ exec function ServerExec(string FSCommand)
 ```
 
 ### SpawnTestBot
+
 **Parameters:**
+
 - `sName`: string
 - `sDeviceName`: optional string
-    - default: ""
+  - default: ""
 - `nFireMode`: optional int
-    - default: 0
+  - default: 0
 - `nTaskForce`: optional int
-    - default: 2
+  - default: 2
 - `nCount`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -137,12 +155,14 @@ exec function SpawnTestBot(string sName, optional string sDeviceName, optional i
 ```
 
 ### SpawnEmoteTestBot
+
 **Parameters:**
+
 - `sName`: string
 - `nTaskForce`: optional int
-    - default: 2
+  - default: 2
 - `nCount`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -151,16 +171,18 @@ exec function SpawnEmoteTestBot(string sName, optional int nTaskForce = 2, optio
 ```
 
 ### stb
+
 **Parameters:**
+
 - `sName`: string
 - `sDeviceName`: optional string
-    - default: ""
+  - default: ""
 - `nFireMode`: optional int
-    - default: 0
+  - default: 0
 - `nTaskForce`: optional int
-    - default: 2
+  - default: 2
 - `nCount`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -168,13 +190,15 @@ exec function SpawnEmoteTestBot(string sName, optional int nTaskForce = 2, optio
 exec function stb(string sName, optional string sDeviceName, optional int nFireMode = 0, optional int nTaskForce = 2, optional int nCount = 1)
 ```
 
-### _SpawnBot
+### \_SpawnBot
+
 **Parameters:**
+
 - `sName`: string
 - `nTaskForce`: optional int
-    - default: 2
+  - default: 2
 - `nCount`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -183,18 +207,20 @@ exec function _SpawnBot(string sName, optional int nTaskForce = 2, optional int 
 ```
 
 ### SpawnBot
+
 **Parameters:**
+
 - `sName`: string
 - `nTaskForce`: optional int
-    - default: 2
+  - default: 2
 - `nCount`: optional int
-    - default: 1
+  - default: 1
 - `BotDifficulty`: optional int
-    - default: 1
+  - default: 1
 - `BehaviorTreeName`: optional string
-    - default: ""
+  - default: ""
 - `nHeadId`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -203,9 +229,11 @@ exec function SpawnBot(string sName, optional int nTaskForce = 2, optional int n
 ```
 
 ### TestSkinGallery
+
 **Parameters:**
+
 - `nGallery`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -230,7 +258,9 @@ exec function ML()
 ```
 
 ### SimNWCondition
+
 **Parameters:**
+
 - `nPktLoss`: int
 - `nPktLag`: int
 
@@ -297,7 +327,9 @@ exec function GiveRecommendedItems()
 ```
 
 ### SetGroundspeed
+
 **Parameters:**
+
 - `val`: float
 
 **Modifiers:** exec, function
@@ -307,7 +339,9 @@ exec function SetGroundspeed(float val)
 ```
 
 ### SetStealth
+
 **Parameters:**
+
 - `bOn`: bool
 
 **Modifiers:** exec, function
@@ -340,15 +374,17 @@ exec function DebugProjectileLagCompensationServer()
 exec function DebugProjectileLagCompensationClient()
 ```
 
-### _SpawnTemplatePlayer
+### \_SpawnTemplatePlayer
+
 **Parameters:**
+
 - `nProfileId`: int
 - `nSkinId`: optional int
-    - default: 0
+  - default: 0
 - `nWeaponSkinId`: optional int
-    - default: 0
+  - default: 0
 - `nHeadSkinId`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -365,7 +401,9 @@ exec function KillAllMinions()
 ```
 
 ### KillAllPawnsByClass
+
 **Parameters:**
+
 - `PawnClassName`: string
 
 **Modifiers:** exec, function
@@ -375,9 +413,11 @@ exec function KillAllPawnsByClass(string PawnClassName)
 ```
 
 ### ToggleDeviceLog
+
 **Parameters:**
+
 - `eqp`: optional TgObject.TG_EQUIP_POINT
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function, simulated
 
@@ -394,9 +434,11 @@ simulated exec function ToggleCustomPhysics()
 ```
 
 ### ToggleAIDebug
+
 **Parameters:**
+
 - `bAttachAIDebugger`: optional bool
-    - default: false
+  - default: false
 
 **Modifiers:** exec, function
 
@@ -405,9 +447,11 @@ exec function ToggleAIDebug(optional bool bAttachAIDebugger = false)
 ```
 
 ### TestObstacleAvoidance
+
 **Parameters:**
+
 - `TestType`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -424,9 +468,11 @@ exec function RequestRelease()
 ```
 
 ### botsgod
+
 **Parameters:**
+
 - `bOn`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -435,9 +481,11 @@ exec function botsgod(optional bool bOn = true)
 ```
 
 ### FreezeAI
+
 **Parameters:**
+
 - `bOn`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -446,7 +494,9 @@ exec function FreezeAI(optional bool bOn = true)
 ```
 
 ### botslevel
+
 **Parameters:**
+
 - `nLevel`: int
 
 **Modifiers:** exec, function
@@ -456,9 +506,11 @@ exec function botslevel(int nLevel)
 ```
 
 ### SpectatorCamera
+
 **Parameters:**
+
 - `bOn`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function, simulated
 
@@ -467,11 +519,13 @@ simulated exec function SpectatorCamera(optional bool bOn = true)
 ```
 
 ### ApplyProp
+
 **Parameters:**
+
 - `nPropId`: int
 - `nValue`: float
 - `nCategory`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -504,7 +558,9 @@ exec function ToggleAimAssist()
 ```
 
 ### SetAimAssistTargetWeightVars
+
 **Parameters:**
+
 - `CurrentTargetBonus`: float
 - `NotCurrentTargetPenalty`: float
 - `MinAccuracyBonus`: float
@@ -528,7 +584,9 @@ exec function ResetAimAssistValues()
 ```
 
 ### SetAimAssistValues
+
 **Parameters:**
+
 - `MagnetScaleX`: float
 - `MagnetScaleY`: float
 - `FrictionScaleX`: float
@@ -543,7 +601,9 @@ exec function SetAimAssistValues(float MagnetScaleX, float MagnetScaleY, float F
 ```
 
 ### SetAimVectorAssistValues
+
 **Parameters:**
+
 - `BoundsScaleX`: float
 - `BoundsScaleY`: float
 - `MaxAngleX`: float
@@ -556,7 +616,9 @@ exec function SetAimVectorAssistValues(float BoundsScaleX, float BoundsScaleY, f
 ```
 
 ### AddAimAssistKeyframe
+
 **Parameters:**
+
 - `keyframeType`: string
 - `KeyframeName`: string
 - `Distance`: float
@@ -568,7 +630,9 @@ exec function AddAimAssistKeyframe(string keyframeType, string KeyframeName, flo
 ```
 
 ### ResetAimAssistKeyframes
+
 **Parameters:**
+
 - `keyframeType`: string
 
 **Modifiers:** exec, function
@@ -586,7 +650,9 @@ exec function RefillAmmo()
 ```
 
 ### SetMaxAmmo
+
 **Parameters:**
+
 - `MaxAmmo`: int
 
 **Modifiers:** exec, function
@@ -596,7 +662,9 @@ exec function SetMaxAmmo(int MaxAmmo)
 ```
 
 ### ChangeTaskForce
+
 **Parameters:**
+
 - `nTaskForce`: byte
 
 **Modifiers:** exec, function
@@ -606,7 +674,9 @@ exec function ChangeTaskForce(byte nTaskForce)
 ```
 
 ### ct
+
 **Parameters:**
+
 - `nTaskForce`: byte
 
 **Modifiers:** exec, function
@@ -624,11 +694,13 @@ exec function ToggleTaskForce()
 ```
 
 ### TargetEquipDevice
+
 **Parameters:**
+
 - `nDeviceId`: int
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -637,11 +709,13 @@ exec function TargetEquipDevice(int nDeviceId, int nEquipPointId, optional int F
 ```
 
 ### TED
+
 **Parameters:**
+
 - `nDeviceId`: int
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -650,11 +724,13 @@ exec function TED(int nDeviceId, int nEquipPointId, optional int FireMode = 0)
 ```
 
 ### TargetEquipDeviceByName
+
 **Parameters:**
+
 - `sDeviceName`: string
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -663,11 +739,13 @@ exec function TargetEquipDeviceByName(string sDeviceName, int nEquipPointId, opt
 ```
 
 ### TEDBN
+
 **Parameters:**
+
 - `sDeviceName`: string
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -676,11 +754,13 @@ exec function TEDBN(string sDeviceName, int nEquipPointId, optional int FireMode
 ```
 
 ### EquipDeviceByName
+
 **Parameters:**
+
 - `sDeviceName`: string
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -689,11 +769,13 @@ exec function EquipDeviceByName(string sDeviceName, int nEquipPointId, optional 
 ```
 
 ### EDBN
+
 **Parameters:**
+
 - `sDeviceName`: string
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 1
+  - default: 1
 
 **Modifiers:** exec, function
 
@@ -702,11 +784,13 @@ exec function EDBN(string sDeviceName, int nEquipPointId, optional int FireMode 
 ```
 
 ### EquipDevice
+
 **Parameters:**
+
 - `nDeviceId`: int
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -715,11 +799,13 @@ exec function EquipDevice(int nDeviceId, int nEquipPointId, optional int FireMod
 ```
 
 ### ED
+
 **Parameters:**
+
 - `nDeviceId`: int
 - `nEquipPointId`: int
 - `FireMode`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -728,7 +814,9 @@ exec function ED(int nDeviceId, int nEquipPointId, optional int FireMode = 0)
 ```
 
 ### UnequipDevice
+
 **Parameters:**
+
 - `nDeviceId`: int
 
 **Modifiers:** exec, function
@@ -738,7 +826,9 @@ exec function UnequipDevice(int nDeviceId)
 ```
 
 ### UD
+
 **Parameters:**
+
 - `nDeviceId`: int
 
 **Modifiers:** exec, function
@@ -748,7 +838,9 @@ exec function UD(int nDeviceId)
 ```
 
 ### RemoveDevice
+
 **Parameters:**
+
 - `nDeviceId`: int
 
 **Modifiers:** exec, function
@@ -758,7 +850,9 @@ exec function RemoveDevice(int nDeviceId)
 ```
 
 ### UnequipDeviceAt
+
 **Parameters:**
+
 - `nEquipPointId`: int
 
 **Modifiers:** exec, function
@@ -768,7 +862,9 @@ exec function UnequipDeviceAt(int nEquipPointId)
 ```
 
 ### RemoveDeviceAt
+
 **Parameters:**
+
 - `nDeviceId`: int
 
 **Modifiers:** exec, function
@@ -794,7 +890,9 @@ exec function RemoveAllItems()
 ```
 
 ### AddGold
+
 **Parameters:**
+
 - `nCurrency`: int
 
 **Modifiers:** exec, function
@@ -804,7 +902,9 @@ exec function AddGold(int nCurrency)
 ```
 
 ### Obama
+
 **Parameters:**
+
 - `nCurrency`: int
 
 **Modifiers:** exec, function
@@ -814,7 +914,9 @@ exec function Obama(int nCurrency)
 ```
 
 ### SetMeLevel
+
 **Parameters:**
+
 - `nLevel`: int
 
 **Modifiers:** exec, function
@@ -824,7 +926,9 @@ exec function SetMeLevel(int nLevel)
 ```
 
 ### SL
+
 **Parameters:**
+
 - `nLevel`: int
 
 **Modifiers:** exec, function
@@ -834,7 +938,9 @@ exec function SL(int nLevel)
 ```
 
 ### QuickEndGame
+
 **Parameters:**
+
 - `bWin`: bool
 
 **Modifiers:** exec, function
@@ -844,9 +950,11 @@ exec function QuickEndGame(bool bWin)
 ```
 
 ### QEG
+
 **Parameters:**
+
 - `bWin`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -855,7 +963,9 @@ exec function QEG(optional bool bWin = true)
 ```
 
 ### SetEnergy
+
 **Parameters:**
+
 - `Value`: float
 
 **Modifiers:** exec, function
@@ -873,7 +983,9 @@ exec function TestShowInventory()
 ```
 
 ### TestStunEffect
+
 **Parameters:**
+
 - `fDuration`: float
 
 **Modifiers:** exec, function
@@ -883,7 +995,9 @@ exec function TestStunEffect(float fDuration)
 ```
 
 ### TestStun
+
 **Parameters:**
+
 - `Type`: Controller.EStunType
 
 **Modifiers:** exec, function
@@ -893,7 +1007,9 @@ exec function TestStun(Controller.EStunType Type)
 ```
 
 ### ShowPlayerCircles
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -911,7 +1027,9 @@ exec function ToggleSpectatorCamera()
 ```
 
 ### InvisMe
+
 **Parameters:**
+
 - `bInvis`: bool
 
 **Modifiers:** exec, function
@@ -945,9 +1063,11 @@ exec function ToggleCapturePointOvertime()
 ```
 
 ### PickPoint
+
 **Parameters:**
+
 - `Index`: optional int
-    - default: -1
+  - default: -1
 
 **Modifiers:** exec, function
 
@@ -956,7 +1076,9 @@ exec function PickPoint(optional int Index = -1)
 ```
 
 ### SetSiegeSpeed
+
 **Parameters:**
+
 - `fSpeed`: float
 
 **Modifiers:** exec, function
@@ -966,7 +1088,9 @@ exec function SetSiegeSpeed(float fSpeed)
 ```
 
 ### SetRespawnIncrease
+
 **Parameters:**
+
 - `fIncrease`: float
 
 **Modifiers:** exec, function
@@ -976,7 +1100,9 @@ exec function SetRespawnIncrease(float fIncrease)
 ```
 
 ### SetDefenseRespawn
+
 **Parameters:**
+
 - `fDuration`: float
 
 **Modifiers:** exec, function
@@ -986,7 +1112,9 @@ exec function SetDefenseRespawn(float fDuration)
 ```
 
 ### SetAttackRespawn
+
 **Parameters:**
+
 - `fDuration`: float
 
 **Modifiers:** exec, function
@@ -996,7 +1124,9 @@ exec function SetAttackRespawn(float fDuration)
 ```
 
 ### SetRespawnCap
+
 **Parameters:**
+
 - `fDuration`: float
 
 **Modifiers:** exec, function
@@ -1006,7 +1136,9 @@ exec function SetRespawnCap(float fDuration)
 ```
 
 ### SetCardCooldownIncrease
+
 **Parameters:**
+
 - `fIncrease`: float
 
 **Modifiers:** exec, function
@@ -1024,7 +1156,9 @@ exec function ForceRespawnAll()
 ```
 
 ### SetHealth
+
 **Parameters:**
+
 - `Health`: int
 
 **Modifiers:** exec, function
@@ -1034,7 +1168,9 @@ exec function SetHealth(int Health)
 ```
 
 ### SetMana
+
 **Parameters:**
+
 - `mana`: int
 
 **Modifiers:** exec, function
@@ -1044,9 +1180,11 @@ exec function SetMana(int mana)
 ```
 
 ### DamageHealth
+
 **Parameters:**
+
 - `DamageAmount`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -1055,9 +1193,11 @@ exec function DamageHealth(optional int DamageAmount)
 ```
 
 ### Heal
+
 **Parameters:**
+
 - `HealAmount`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -1066,9 +1206,11 @@ exec function Heal(optional int HealAmount)
 ```
 
 ### DamageTarget
+
 **Parameters:**
+
 - `DamageAmount`: optional int
-    - default: -1
+  - default: -1
 
 **Modifiers:** exec, function
 
@@ -1077,9 +1219,11 @@ exec function DamageTarget(optional int DamageAmount = -1)
 ```
 
 ### HealTarget
+
 **Parameters:**
+
 - `HealAmount`: optional int
-    - default: -1
+  - default: -1
 
 **Modifiers:** exec, function
 
@@ -1088,9 +1232,11 @@ exec function HealTarget(optional int HealAmount = -1)
 ```
 
 ### ShieldTarget
+
 **Parameters:**
+
 - `Amount`: optional int
-    - default: 1000
+  - default: 1000
 
 **Modifiers:** exec, function
 
@@ -1115,7 +1261,9 @@ exec function SkipSetup()
 ```
 
 ### ShowProjectileDebug
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1125,7 +1273,9 @@ exec function ShowProjectileDebug(bool bEnabled)
 ```
 
 ### DisableProximity
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1135,7 +1285,9 @@ exec function DisableProximity(bool bEnabled)
 ```
 
 ### GiveCard
+
 **Parameters:**
+
 - `nDeviceId`: int
 
 **Modifiers:** exec, function
@@ -1169,11 +1321,13 @@ exec function DisableScoring()
 ```
 
 ### SetScore
+
 **Parameters:**
+
 - `tf1Score`: optional int
-    - default: 0
+  - default: 0
 - `tf2Score`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -1206,9 +1360,11 @@ exec function QuickSiege()
 ```
 
 ### ReinforceDoors
+
 **Parameters:**
+
 - `healthAmt`: optional int
-    - default: 20000000
+  - default: 20000000
 
 **Modifiers:** exec, function
 
@@ -1217,9 +1373,11 @@ exec function ReinforceDoors(optional int healthAmt = 20000000)
 ```
 
 ### ReinforceSiege
+
 **Parameters:**
+
 - `healthAmt`: optional int
-    - default: 20000000
+  - default: 20000000
 
 **Modifiers:** exec, function
 
@@ -1228,7 +1386,9 @@ exec function ReinforceSiege(optional int healthAmt = 20000000)
 ```
 
 ### SetGameEnvironmentRule
+
 **Parameters:**
+
 - `Rule`: TgObject.EGameEnvironmentRule
 
 **Modifiers:** exec, function
@@ -1238,7 +1398,9 @@ exec function SetGameEnvironmentRule(TgObject.EGameEnvironmentRule Rule)
 ```
 
 ### SetGameRespawnRule
+
 **Parameters:**
+
 - `Rule`: TgObject.EGameRespawnRule
 
 **Modifiers:** exec, function
@@ -1248,7 +1410,9 @@ exec function SetGameRespawnRule(TgObject.EGameRespawnRule Rule)
 ```
 
 ### SetGameMode
+
 **Parameters:**
+
 - `Mode`: TgObject.EGameMode
 
 **Modifiers:** exec, function
@@ -1258,7 +1422,9 @@ exec function SetGameMode(TgObject.EGameMode Mode)
 ```
 
 ### SetAirFriction
+
 **Parameters:**
+
 - `frictionAmt`: float
 
 **Modifiers:** exec, function
@@ -1268,7 +1434,9 @@ exec function SetAirFriction(float frictionAmt)
 ```
 
 ### SetFallingFriction
+
 **Parameters:**
+
 - `frictionAmt`: float
 
 **Modifiers:** exec, function
@@ -1278,7 +1446,9 @@ exec function SetFallingFriction(float frictionAmt)
 ```
 
 ### SetFlyingFriction
+
 **Parameters:**
+
 - `frictionAmt`: float
 
 **Modifiers:** exec, function
@@ -1288,9 +1458,11 @@ exec function SetFlyingFriction(float frictionAmt)
 ```
 
 ### TestSpawnPoints
+
 **Parameters:**
+
 - `PauseTime`: optional float
-    - default: 3.0000000
+  - default: 3.0000000
 
 **Modifiers:** exec, function
 
@@ -1299,7 +1471,9 @@ exec function TestSpawnPoints(optional float PauseTime = 3.0000000)
 ```
 
 ### SetInstantFireMeshTrace
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1317,7 +1491,9 @@ exec function ToggleWeaponLagPrediction()
 ```
 
 ### SetMaximumLagPrediction
+
 **Parameters:**
+
 - `NewMaximum`: float
 
 **Modifiers:** exec, function
@@ -1351,7 +1527,9 @@ exec function DumpLastClientAims()
 ```
 
 ### SetDamageMultiplier
+
 **Parameters:**
+
 - `NewMult`: float
 
 **Modifiers:** exec, function
@@ -1361,7 +1539,9 @@ exec function SetDamageMultiplier(float NewMult)
 ```
 
 ### SetGroundSpeedMultiplier
+
 **Parameters:**
+
 - `NewMult`: float
 
 **Modifiers:** exec, function
@@ -1371,7 +1551,9 @@ exec function SetGroundSpeedMultiplier(float NewMult)
 ```
 
 ### SetAutoHealingMultiplier
+
 **Parameters:**
+
 - `NewMult`: float
 
 **Modifiers:** exec, function
@@ -1389,7 +1571,9 @@ exec function ToggleSiegeEngineRequiresAllies()
 ```
 
 ### SetVaultImmuneHealth
+
 **Parameters:**
+
 - `fHealth`: float
 
 **Modifiers:** exec, function
@@ -1399,11 +1583,13 @@ exec function SetVaultImmuneHealth(float fHealth)
 ```
 
 ### SetVisibilityRanges
+
 **Parameters:**
+
 - `fNormal`: optional float
-    - default: -1.0000000
+  - default: -1.0000000
 - `fInVolume`: optional float
-    - default: -1.0000000
+  - default: -1.0000000
 
 **Modifiers:** exec, function
 
@@ -1436,9 +1622,11 @@ exec function LevelAim()
 ```
 
 ### Set1p
+
 **Parameters:**
+
 - `bForce1P`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -1447,9 +1635,11 @@ exec function Set1p(optional bool bForce1P = true)
 ```
 
 ### Set3p
+
 **Parameters:**
+
 - `bForce3P`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -1466,7 +1656,9 @@ exec function Toggle3p()
 ```
 
 ### GainXP
+
 **Parameters:**
+
 - `xpAmount`: int
 
 **Modifiers:** exec, function
@@ -1476,7 +1668,9 @@ exec function GainXP(int xpAmount)
 ```
 
 ### GainCredits
+
 **Parameters:**
+
 - `creditsAmount`: int
 
 **Modifiers:** exec, function
@@ -1486,7 +1680,9 @@ exec function GainCredits(int creditsAmount)
 ```
 
 ### GainTickets
+
 **Parameters:**
+
 - `ticketsAmount`: int
 
 **Modifiers:** exec, function
@@ -1496,9 +1692,11 @@ exec function GainTickets(int ticketsAmount)
 ```
 
 ### EndRound
+
 **Parameters:**
+
 - `nTaskForce`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -1523,10 +1721,12 @@ exec function CloseSpawnGates()
 ```
 
 ### SetCAPOvertime
+
 **Parameters:**
+
 - `overtimeDuration`: float
 - `overtimeWarning`: optional float
-    - default: -1.0000000
+  - default: -1.0000000
 
 **Modifiers:** exec, function
 
@@ -1543,7 +1743,9 @@ exec function PayloadForever()
 ```
 
 ### SetAIAccuracy
+
 **Parameters:**
+
 - `DegreeMissed`: float
 - `MissLikelihood`: float
 
@@ -1554,7 +1756,9 @@ exec function SetAIAccuracy(float DegreeMissed, float MissLikelihood)
 ```
 
 ### EnableThreat
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1564,7 +1768,9 @@ exec function EnableThreat(bool bEnabled)
 ```
 
 ### EnableOcclusion
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1582,10 +1788,12 @@ exec function DisplayThreatParams()
 ```
 
 ### ShowThreats
+
 **Parameters:**
+
 - `bEnabled`: bool
 - `ChannelName`: optional string
-    - default: ""
+  - default: ""
 
 **Modifiers:** exec, function
 
@@ -1594,9 +1802,11 @@ exec function ShowThreats(bool bEnabled, optional string ChannelName)
 ```
 
 ### AllNoah
+
 **Parameters:**
+
 - `ChannelName`: optional string
-    - default: ""
+  - default: ""
 
 **Modifiers:** exec, function
 
@@ -1605,9 +1815,11 @@ exec function AllNoah(optional string ChannelName)
 ```
 
 ### AllowHeadShots
+
 **Parameters:**
+
 - `bEnable`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -1616,11 +1828,13 @@ exec function AllowHeadShots(optional bool bEnable = true)
 ```
 
 ### LiveRespawn
+
 **Parameters:**
+
 - `bResetHealth`: optional bool
-    - default: true
+  - default: true
 - `bResetDevices`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -1629,7 +1843,9 @@ exec function LiveRespawn(optional bool bResetHealth = true, optional bool bRese
 ```
 
 ### SetBodyMesh
+
 **Parameters:**
+
 - `nBodyMeshID`: int
 
 **Modifiers:** exec, function
@@ -1639,7 +1855,9 @@ exec function SetBodyMesh(int nBodyMeshID)
 ```
 
 ### SBM
+
 **Parameters:**
+
 - `nBodyMeshID`: int
 
 **Modifiers:** exec, function
@@ -1665,7 +1883,9 @@ exec function SBMBN()
 ```
 
 ### SetHeadMesh
+
 **Parameters:**
+
 - `nHeadMeshID`: int
 
 **Modifiers:** exec, function
@@ -1675,7 +1895,9 @@ exec function SetHeadMesh(int nHeadMeshID)
 ```
 
 ### SHM
+
 **Parameters:**
+
 - `nHeadMeshID`: int
 
 **Modifiers:** exec, function
@@ -1725,7 +1947,9 @@ exec function decapitate()
 ```
 
 ### EnableHeadMesh
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1743,10 +1967,12 @@ exec function ToggleHeadMesh()
 ```
 
 ### TargetSetMeshes
+
 **Parameters:**
+
 - `nBodyMeshID`: int
 - `nHeadMeshID`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -1755,10 +1981,12 @@ exec function TargetSetMeshes(int nBodyMeshID, optional int nHeadMeshID = 0)
 ```
 
 ### TSM
+
 **Parameters:**
+
 - `nBodyMeshID`: int
 - `nHeadMeshID`: optional int
-    - default: 0
+  - default: 0
 
 **Modifiers:** exec, function
 
@@ -1767,7 +1995,9 @@ exec function TSM(int nBodyMeshID, optional int nHeadMeshID = 0)
 ```
 
 ### TargetSetBodyMesh
+
 **Parameters:**
+
 - `nBodyMeshID`: int
 
 **Modifiers:** exec, function
@@ -1777,7 +2007,9 @@ exec function TargetSetBodyMesh(int nBodyMeshID)
 ```
 
 ### TSBM
+
 **Parameters:**
+
 - `nBodyMeshID`: int
 
 **Modifiers:** exec, function
@@ -1787,7 +2019,9 @@ exec function TSBM(int nBodyMeshID)
 ```
 
 ### TargetSetHeadMesh
+
 **Parameters:**
+
 - `nHeadMeshID`: int
 
 **Modifiers:** exec, function
@@ -1797,7 +2031,9 @@ exec function TargetSetHeadMesh(int nHeadMeshID)
 ```
 
 ### TSHM
+
 **Parameters:**
+
 - `nHeadMeshID`: int
 
 **Modifiers:** exec, function
@@ -1807,9 +2043,11 @@ exec function TSHM(int nHeadMeshID)
 ```
 
 ### AllowMount
+
 **Parameters:**
+
 - `bEnabled`: optional bool
-    - default: true
+  - default: true
 
 **Modifiers:** exec, function
 
@@ -1842,7 +2080,9 @@ exec function ResetPotG()
 ```
 
 ### LockPotG
+
 **Parameters:**
+
 - `bLocked`: bool
 
 **Modifiers:** exec, function
@@ -1852,7 +2092,9 @@ exec function LockPotG(bool bLocked)
 ```
 
 ### EnableAI
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1878,7 +2120,9 @@ exec function ToggleAIDifficultyAdjust()
 ```
 
 ### EnableGhostMounting
+
 **Parameters:**
+
 - `bEnabled`: bool
 
 **Modifiers:** exec, function
@@ -1904,7 +2148,9 @@ exec function ResumeFog()
 ```
 
 ### SetFogDistance
+
 **Parameters:**
+
 - `Distance`: int
 
 **Modifiers:** exec, function
@@ -1922,7 +2168,9 @@ exec function PlayIntroAnim()
 ```
 
 ### SetMountSkin
+
 **Parameters:**
+
 - `nSkinId`: int
 
 **Modifiers:** exec, function
