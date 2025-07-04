@@ -1,6 +1,7 @@
 ---
 description: Step-by-step instructions for installing UDK and setting up a recommended text editor for Unreal Script development.
 ---
+
 # Installation
 
 ## Steps

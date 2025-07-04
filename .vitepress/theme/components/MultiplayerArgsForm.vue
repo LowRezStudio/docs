@@ -71,7 +71,7 @@ const resultCommand = computed(() => {
 });
 
 function selectAll() {
-	selectedChampions.value = champions.map(champ => champ.id);
+	selectedChampions.value = champions.map((champ) => champ.id);
 }
 
 function clearAll() {
@@ -134,7 +134,11 @@ function copyToClipboard() {
 			</div>
 			<div class="champions">
 				<label v-for="champ in champions" :key="champ.id">
-					<input type="checkbox" :value="champ.id" v-model="selectedChampions" />
+					<input
+						type="checkbox"
+						:value="champ.id"
+						v-model="selectedChampions"
+					/>
 					{{ champ.name }}
 				</label>
 			</div>

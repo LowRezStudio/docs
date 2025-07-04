@@ -1,6 +1,7 @@
 ---
 description: A list of frequently asked questions about Tempest Launcher, including troubleshooting tips and guides for multiplayer.
 ---
+
 # FAQ / Common Issues
 
 Here are some of the most frequently asked questions.

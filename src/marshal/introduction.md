@@ -1,6 +1,7 @@
 ---
 description: An introduction to Marshal, a proprietary binary serialization format used in Hi-Rez UE3 games for internal and network communication.
 ---
+
 # Introduction
 
 Every UE3 Hi-Rez games uses a proprietary binary serialization format called Marshal.<br/>
