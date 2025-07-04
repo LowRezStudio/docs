@@ -11,39 +11,39 @@ const selectedChampions = ref<string[]>([]);
 const copyButtonText = ref("Copy");
 
 const champions = [
-	"Androxus",
-	"Ash",
-	"Barik",
-	"Bomb King",
-	"Buck",
-	"Cassie",
-	"Drogoz",
-	"Evie",
-	"Fernando",
-	"Grohk",
-	"Grover",
-	"Inara",
-	"Jenos",
-	"Kinessa",
-	"Lex",
-	"Lian",
-	"Maeve",
-	"Makoa",
-	"Mal'Damba",
-	"Pip",
-	"Ruckus",
-	"Seris",
-	"Sha Lin",
-	"Skye",
-	"Strix",
-	"Torvald",
-	"Tyra",
-	"Viktor",
-	"Willo",
-	"Ying",
-	"Zhin",
-	"Churchill",
-	"Lazarus",
+	{ id: "androxus", name: "Androxus" },
+	{ id: "ash", name: "Ash" },
+	{ id: "barik", name: "Barik" },
+	{ id: "bombking", name: "Bomb King" },
+	{ id: "buck", name: "Buck" },
+	{ id: "cassie", name: "Cassie" },
+	{ id: "drogoz", name: "Drogoz" },
+	{ id: "evie", name: "Evie" },
+	{ id: "fernando", name: "Fernando" },
+	{ id: "grohk", name: "Grohk" },
+	{ id: "grover", name: "Grover" },
+	{ id: "inara", name: "Inara" },
+	{ id: "jenos", name: "Jenos" },
+	{ id: "kinessa", name: "Kinessa" },
+	{ id: "lex", name: "Lex" },
+	{ id: "lian", name: "Lian" },
+	{ id: "maeve", name: "Maeve" },
+	{ id: "makoa", name: "Makoa" },
+	{ id: "maldamba", name: "Mal'Damba" },
+	{ id: "pip", name: "Pip" },
+	{ id: "ruckus", name: "Ruckus" },
+	{ id: "seris", name: "Seris" },
+	{ id: "shalin", name: "Sha Lin" },
+	{ id: "skye", name: "Skye" },
+	{ id: "strix", name: "Strix" },
+	{ id: "torvald", name: "Torvald" },
+	{ id: "tyra", name: "Tyra" },
+	{ id: "viktor", name: "Viktor" },
+	{ id: "willo", name: "Willo" },
+	{ id: "ying", name: "Ying" },
+	{ id: "zhin", name: "Zhin" },
+	{ id: "churchill", name: "Churchill" },
+	{ id: "lazarus", name: "Lazarus" },
 ];
 
 const maps = [
@@ -71,7 +71,7 @@ const resultCommand = computed(() => {
 });
 
 function selectAll() {
-	selectedChampions.value = [...champions];
+	selectedChampions.value = champions.map(champ => champ.id);
 }
 
 function clearAll() {
@@ -133,9 +133,9 @@ function copyToClipboard() {
 				</div>
 			</div>
 			<div class="champions">
-				<label v-for="champ in champions" :key="champ">
-					<input type="checkbox" :value="champ" v-model="selectedChampions" />
-					{{ champ }}
+				<label v-for="champ in champions" :key="champ.id">
+					<input type="checkbox" :value="champ.id" v-model="selectedChampions" />
+					{{ champ.name }}
 				</label>
 			</div>
 			<div v-if="selectedChampions.length > 10" class="warning">
