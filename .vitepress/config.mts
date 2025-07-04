@@ -6,7 +6,7 @@ import footnote from "markdown-it-footnote";
 export default defineConfig({
 	srcDir: "src",
 	lang: "en-US",
-	title: "Paladins Mods",
+	title: "Paladins Documentation",
 	description: `Documentation on Paladins mod making.`,
 	// https://vitepress.dev/reference/default-theme-config
 	themeConfig: {
@@ -38,7 +38,15 @@ export default defineConfig({
 		const head: HeadConfig[] = [];
 
 		head.push(["meta", { property: "theme-color", content: "#33b6b1" }]);
-		head.push(["meta", { property: "og:title", content: pageData.title }]);
+		head.push([
+			"meta",
+			{
+				property: "og:title",
+				content: !!pageData.title?.length
+					? `${pageData.title} - Paladins Documentation`
+					: "Paladins Documentation",
+			},
+		]);
 		head.push(["meta", { property: "og:image", content: "/logo.png" }]);
 
 		if (pageData.frontmatter.description) {
