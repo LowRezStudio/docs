@@ -1,3 +1,6 @@
+---
+description: An introduction to the encryption methods used in Paladins, focusing on Salsa20 and the Diffie-Hellman key exchange.
+---
 # Introduction
 
 Packets that are sent between the client and server are encrypted, Hi-Rez uses Salsa20[^1] which is a rotating key XOR cipher to do that using the Crypto++[^2] C++ library.

@@ -1,3 +1,6 @@
+---
+description: A guide to getting started with Paladins modding, including step-by-step instructions for setting up a modding environment.
+---
 # 🛠️ Getting Started with Paladins Modding
 
 In this section, you will be provided with step-by-step instructions on getting a modding environment up and running.

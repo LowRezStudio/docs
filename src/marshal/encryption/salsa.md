@@ -1,3 +1,6 @@
+---
+description: An explanation of how Salsa20 encryption is used in Paladins for packet encryption and decryption.
+---
 # Salsa20
 
 As said in the [introduction](/marshal/encryption/introduction) the client generates a random KEY/IV pair that it sends to the server using an unencrypted packet when trying to log in.

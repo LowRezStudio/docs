@@ -1,4 +1,5 @@
 ---
+description: The main page of the Paladins modding documentation, providing an overview of the available resources and guides.
 layout: home
 
 hero:

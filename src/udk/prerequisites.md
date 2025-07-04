@@ -1,3 +1,6 @@
+---
+description: An overview of the prerequisites for modding Paladins, including recommended software.
+---
 # Prerequisites
 
 **Windows is recommended**. Even though UDK should run fine under WINE, but if

@@ -34,11 +34,15 @@ export default defineConfig({
 			md.use(footnote);
 		},
 	},
-	transformHead: () => {
+	transformHead: ({ pageData }) => {
 	    const head: HeadConfig[] = []
 
 	    head.push(['meta', { property: 'theme-color', content: "#33b6b1" }])
 	    head.push(['meta', { property: 'og:image', content: "/logo.png" }])
+
+		if (pageData.frontmatter.description) {
+			head.push(['meta', { property: 'og:description', content: pageData.frontmatter.description }])
+		}
 
 	    return head
   	}

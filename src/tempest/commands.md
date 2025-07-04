@@ -1,3 +1,6 @@
+---
+description: A list of console commands, gamemodes and maps available in Paladins.
+---
 # Commands
 
 Activate the console by pressing F2 when in game with the `Enable Console` option checked in the launcher.

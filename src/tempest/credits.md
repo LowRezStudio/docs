@@ -1,3 +1,6 @@
+---
+description: A list of the individuals who have contributed to the Tempest Launcher project.
+---
 # Credits
 
 - [Kyiro](https://github.com/Kyiro) - laying the foundation for the project and recreating the UI

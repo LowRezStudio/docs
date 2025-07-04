@@ -1,3 +1,6 @@
+---
+description: An introduction to the Tempest Launcher, a community-driven project for preserving and playing Paladins with mods.
+---
 # Tempest Launcher
 
 ![Screenshot demonstrating the design of the launcher](/tempest/screenshot01.png)
