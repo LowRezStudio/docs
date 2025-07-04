@@ -6,7 +6,7 @@ import footnote from "markdown-it-footnote";
 export default defineConfig({
 	srcDir: "src",
 	lang: "en-US",
-	title: "Paladins Documentation",
+	title: "Paladins Docs",
 	description: `Documentation on Paladins mod making.`,
 	// https://vitepress.dev/reference/default-theme-config
 	themeConfig: {
