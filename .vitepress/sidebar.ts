@@ -26,6 +26,20 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			text: "Credits",
 			link: "/tempest/credits",
 		},
+		{
+			text: "Changelog",
+			collapsed: false,
+			items: [
+				{
+					text: "Tempest Launcher",
+					link: "/tempest/changelogtl",
+				},
+				{
+					text: "TempestMp",
+					link: "/tempest/changelogtmp",
+				},
+			],
+		},
 	],
 	"/udk": [
 		{
