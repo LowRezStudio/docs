@@ -29,10 +29,10 @@ Make sure you've selected a `Build Directory`, this will define where the builds
 
 ## How do I host a server?
 
-1. Download the [TempestMp Mod](https://cdn.discordapp.com/attachments/1377178319107129344/1387080142697922710/TempestMp.upk?ex=6865450c&is=6863f38c&hm=61ad36d83ad351f2ddd6fa0450176064bee3632a21dba4866702b0ddf0c52b86&) and the [Server DLL](https://cdn.discordapp.com/attachments/1377178319107129344/1386381265867112680/TempestMod57.dll?ex=6864b46b&is=686362eb&hm=b6cc7ae8e8f21e9e4ef099184fd087549a7640725913dd2419f31f4114bfc313&)
+1. Download the [TempestMp Mod](/tempest/changelogtmp) and the [Server DLL](https://cdn.discordapp.com/attachments/1377178319107129344/1390765366904360980/TempestMod57.dll?ex=686f616e&is=686e0fee&hm=77cb90f996aaf5dccf41db6a7ceb8b57096f53688288ce2770b8e9e746bfa17b&)
 2. Make sure you are logged in `RAdmin VPN`
    > The Network name is `paladinskana` and the Password is `kana123`
-3. Load the [TempestMp Mod](https://cdn.discordapp.com/attachments/1377178319107129344/1387080142697922710/TempestMp.upk?ex=6865450c&is=6863f38c&hm=61ad36d83ad351f2ddd6fa0450176064bee3632a21dba4866702b0ddf0c52b86&) using the Mod Loader and make sure `Enable Console` is checked.
+3. Load the [TempestMp Mod](/tempest/changelogtmp) using the Mod Loader and make sure `Enable Console` is checked.
 4. Then, in the launch options at the top of the setting, enter the `server` launch argument followed by the map, gamemode and allowedChampions.
    > Example Launch Args: `server IMM_P_Igloo_v02?game=TempestMp.Siege?allowedChampions=barik,bombking,lian,maeve,zhin,lex,inara,jenos,shalin -log`
    > ::: warning
@@ -41,7 +41,7 @@ Make sure you've selected a `Build Directory`, this will define where the builds
    > As of right now, only `Siege` is supported.
    > :::
 5. As soon as the server log appears, pause it by selecting any text in the console window.
-6. Use an injector to inject the [Server DLL](https://cdn.discordapp.com/attachments/1377178319107129344/1386381265867112680/TempestMod57.dll?ex=6864b46b&is=686362eb&hm=b6cc7ae8e8f21e9e4ef099184fd087549a7640725913dd2419f31f4114bfc313&).
+6. Use an injector to inject the [Server DLL](https://cdn.discordapp.com/attachments/1377178319107129344/1390765366904360980/TempestMod57.dll?ex=686f616e&is=686e0fee&hm=77cb90f996aaf5dccf41db6a7ceb8b57096f53688288ce2770b8e9e746bfa17b&).
    > We recommend Cheat Engine or Process Hacker.
 7. Unpause the server by right clicking in the console window. You can then share your RAdmin ip to anyone.
 
