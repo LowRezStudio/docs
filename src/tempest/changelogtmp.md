@@ -2,6 +2,24 @@
 description: A list of release notes for TempestMp Mod.
 ---
 Here are the release notes for the TempestMp Mod.
+## 2.1
+<p style="color: #10b981; font-weight: bold;">Additions</p>
+
+- Testing future skin support, you can now choose your horse skin with the `?horse` launch argument.
+> ?horse=1 for `Default`, ?horse=2 for `Infernal`, example : `26.203.83.83?name=Cinnamon?class=bk?team=2?horse=2`.
+<p style="color: #f59e0b; font-weight: bold;">Fixes</p>
+
+- Fixed mounts(horses) being invisible.
+- Fixed Ying illusions not working.
+- Fixed players spawning in the wrong spawn at the start of the match.
+- Fixed sprays
+- Fixed talents and loadout cards, each champion now has a deck of 5 cards and talents will show up correctly.
+
+<p style="color: #ef4444; font-weight: bold;">Known Issues/Regressions</p>
+
+- Payload gamemode breaks at round switch.
+### [Download TempestMp 2.1](https://cdn.discordapp.com/attachments/1377178319107129344/1395437074353750229/TempestMp.upk?ex=687a718c&is=6879200c&hm=e661a63aad0b10636fab7e5b2f4e498c8053180c74bf0fc72e46b33e9cf6fb02&)
+
 ## 2.0
 <p style="color: #10b981; font-weight: bold;">Additions</p>
 
