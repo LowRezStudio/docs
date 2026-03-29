@@ -29,66 +29,14 @@ Activate the console by pressing F2 when in game with the `Enable Console` optio
 ## Map files
 
 ::: warning
-This list is incomplete and varies between patches.
+This list is incomplete.
 :::
 
 **Command:** `switchlevel <MAPNAME>?game=<GAMEMODE>`
 
 These map names correspond to the given `.upk` files in `ChaosGame/CookedPCConsole`.
 
-### Serpent Beach
-
-- `TMM_P_Beach_v02`
-- `TMM_Beach_P_v04`
-- `SG_Serpentbeach_P`
-- `SG_SerpentBeach_RW_P`
-
-### Jaguar Falls
-
-- `TMM_P_Temple_v02`
-- `TMM_Falls_P_v04`
-- `SG_Jaguarfalls_P`
-- `SG_JaguarFalls_Rework_P`
-
-### Fish Market
-
-- `FMM_P_Dock_v02`
-- `SG_Fishmarket_P`
-
-### Frog Isle
-
-- `TMM_P_Isle_v02`
-- `SG_FrogIsle_P`
-- `SG_FrogIsle_V2_P`
-
-### Ice Mines
-
-- `IMM_P_Mine_v02`
-- `IMM_Mines_P_v04`
-- `SG_Icemines_P`
-
-### Frozen Guard
-
-- `IMM_P_Igloo_v02`
-- `SG_FrozenGuard_P`
-- `SGA_SG_FrozenGuard_P`
-
-### Stone Keep
-
-- `KMM_P_v01`
-- `SG_Stonekeep_P`
-- `SG_StoneKeep_V2_P`
-- `SG_StoneKeep_V2_DAY_P`
-
-### Brightmarsh
-
-- `BMM_P_v01`
-- `SG_Brightmarsh_P`
-
-### Ascension Peak
-
-- `QMM_P_v01`
-- `SG_Ascensionpeak_P`
+<MapIds/>
 
 ### Battlegrounds
 
@@ -104,6 +52,14 @@ This list is FAR from complete and varies between patches as well.
 
 - `TgGame.TgGame_ChaosSiege_CaptureAndPayload`
 - `TgGame.TgGame_Paladins_Siege`
+
+### Payload
+
+- `TgGame.TgGame_Paladins_Payload`
+
+### Onslaught
+
+- `TgGame.TgGame_Paladins_Onslaught`
 
 ### Battlegrounds:
 
