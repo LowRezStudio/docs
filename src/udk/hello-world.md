@@ -28,29 +28,31 @@ The scripts are compiled in the order that they are listed here.
 
 ## Modifying the code to print Hello World
 
-1. Create a folder with your mod name and a Classes folder inside it if you haven't already. 
+1. Create a folder with your mod name and a Classes folder inside it if you haven't already.
 2. Copy files from the TgMod folder into your folder. We'll use them as a starting point.
 3. Open `TgMutator.uc` with any text editor
 4. Find the Init() function and modify the messages to your liking. For example:
+
 ```
 m_TgPC.ClientMessage(">> HELLO WORLD! <<", , 30.0);
 ```
+
 5. Save the file
 
 ## Compiling and testing
 
 The easiest way to compile is using [Tempest](/tempest/introduction):
+
 1. Open the settings menu where you have your builds
 2. Enable Developer Mode
 3. Under "Projects" add your UDK project folder (for example `C:\UDK\Paladins`)
 4. Under "Scripts" add the folder off your mod (for example `C:\UDK\Paladins\Development\Src\MyMod`)
 5. Click "Compile"
-6. Close the terminal when it finishes 
+6. Close the terminal when it finishes
 7. Click Ok in the dialog that opens
 8. Tempest automatically adds the mod to your game
-8. Launch the game
-9. Run the console command `switchlevel BMM_P_v01?game=siege?mutator=MyMod.TgMutator`, replace MyMod with your mod's name.
-10. You should see the custom message
-
+9. Launch the game
+10. Run the console command `switchlevel BMM_P_v01?game=siege?mutator=MyMod.TgMutator`, replace MyMod with your mod's name.
+11. You should see the custom message
 
 The generated mod upk is in the folder `C:\UDK\<UDK project>\UDKGame\Script`

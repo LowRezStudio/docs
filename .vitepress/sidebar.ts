@@ -70,8 +70,8 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 				},
 				{
 					text: "Hello World",
-					link: "/udk/hello-world"
-				}
+					link: "/udk/hello-world",
+				},
 			],
 		},
 		{
@@ -80,9 +80,9 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			items: [
 				{
 					text: "Decompiling scripts",
-					link: "/udk/decompilation"
-				}
-			]
+					link: "/udk/decompilation",
+				},
+			],
 		},
 		{
 			text: "UnrealScript",
