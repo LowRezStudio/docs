@@ -22,9 +22,7 @@ export default defineConfig({
 			{ icon: "discord", link: "https://discord.gg/YPXJEaNPPe" },
 			{ icon: "github", link: "https://github.com/LowRezStudio" },
 		],
-		footer: {
-			message: "Made by Tom, Kyiro, Cinnamon, Kana and whoever else!",
-		},
+
 		search: {
 			provider: "local",
 		},
