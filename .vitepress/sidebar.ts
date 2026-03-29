@@ -68,7 +68,21 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 					text: "Installation",
 					link: "/udk/installation",
 				},
+				{
+					text: "Hello World",
+					link: "/udk/hello-world"
+				}
 			],
+		},
+		{
+			text: "Topics",
+			collapsed: false,
+			items: [
+				{
+					text: "Decompiling scripts",
+					link: "/udk/decompilation"
+				}
+			]
 		},
 		{
 			text: "UnrealScript",
