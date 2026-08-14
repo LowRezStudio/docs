@@ -1,30 +1,40 @@
 import type { DefaultTheme } from "vitepress";
 
 export const sidebar: DefaultTheme.SidebarMulti = {
-	"/tempest": [
+	"/tempest/": [
 		{
 			text: "Introduction",
 			link: "/tempest/introduction",
 		},
 		{
+			text: "Tempest Legacy",
+			link: "/tempest-legacy/introduction",
+		},
+	],
+	"/tempest-legacy": [
+		{
+			text: "Introduction",
+			link: "/tempest-legacy/introduction",
+		},
+		{
 			text: "Commands",
-			link: "/tempest/commands",
+			link: "/tempest-legacy/commands",
 		},
 		{
 			text: "Developer Mode",
-			link: "/tempest/udk",
+			link: "/tempest-legacy/udk",
 		},
 		{
 			text: "Multiplayer Arguments",
-			link: "/tempest/multiplayer-args",
+			link: "/tempest-legacy/multiplayer-args",
 		},
 		{
 			text: "FAQ",
-			link: "/tempest/faq",
+			link: "/tempest-legacy/faq",
 		},
 		{
 			text: "Credits",
-			link: "/tempest/credits",
+			link: "/tempest-legacy/credits",
 		},
 		{
 			text: "Changelog",
@@ -32,11 +42,11 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			items: [
 				{
 					text: "Tempest Launcher",
-					link: "/tempest/changelogtl",
+					link: "/tempest-legacy/changelogtl",
 				},
 				{
 					text: "TempestMp",
-					link: "/tempest/changelogtmp",
+					link: "/tempest-legacy/changelogtmp",
 				},
 			],
 		},
@@ -170,40 +180,6 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 				{
 					text: "HELLO",
 					link: "/marshal/packets/hello",
-				},
-			],
-		},
-	],
-	"/api-reference": [
-		{
-			text: "Test page",
-			link: "/api-reference/",
-			collapsed: false,
-		},
-		{
-			text: "TgGame.upk",
-			collapsed: false,
-			items: [
-				{
-					text: "TgGame",
-				},
-				{
-					text: "TgPawn",
-				},
-				{
-					text: "TgPlayerController",
-				},
-				{
-					text: "TgRepInfo_Player",
-				},
-			],
-		},
-		{
-			text: "TgClient.upk",
-			collapsed: false,
-			items: [
-				{
-					text: "TgGameViewportClient",
 				},
 			],
 		},

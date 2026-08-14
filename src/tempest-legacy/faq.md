@@ -8,7 +8,7 @@ Here are some of the most frequently asked questions.
 
 ## What is Tempest?
 
-The [Tempest Launcher](/tempest/introduction) is a community-driven project created in order to preserve Paladins and ensure that the game remains playable both in singleplayer and multiplayer on community-hosted modded servers, even if official support ends.
+The [Tempest Launcher](/tempest-legacy/introduction) is a community-driven project created in order to preserve Paladins and ensure that the game remains playable both in singleplayer and multiplayer on community-hosted modded servers, even if official support ends.
 
 ## How do I get in game once I launched?
 
@@ -29,10 +29,10 @@ Make sure you've selected a `Build Directory`, this will define where the builds
 
 ## How do I host a server?
 
-1. Download the [TempestMp Mod](/tempest/changelogtmp) and the [Server DLL](https://github.com/LowRezStudio/Tempest/releases/tag/asmloader-1.0.0)
+1. Download the [TempestMp Mod](/tempest-legacy/changelogtmp) and the [Server DLL](https://github.com/LowRezStudio/Tempest/releases/tag/asmloader-1.0.0)
 2. Make sure you are logged in `RAdmin VPN`
    > The Network name is `paladinskana` and the Password is `kana123`
-3. Load the [TempestMp Mod](/tempest/changelogtmp) using the Mod Loader and make sure `Enable Console` is checked.
+3. Load the [TempestMp Mod](/tempest-legacy/changelogtmp) using the Mod Loader and make sure `Enable Console` is checked.
 4. Then, in the launch options at the top of the setting, enter the `server` launch argument followed by the map, gamemode and allowedChampions.
    > Example Launch Args: `server IMM_P_Igloo_v02?game=TempestMp.Siege?allowedChampions=barik,bombking,lian,maeve,zhin,lex,inara,jenos,shalin -log`
    > ::: warning

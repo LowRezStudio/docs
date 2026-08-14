@@ -15,7 +15,6 @@ export default defineConfig({
 			{ text: "Tempest", link: "/tempest/introduction" },
 			{ text: "UDK", link: "/udk/getting-started" },
 			{ text: "Marshal", link: "/marshal/introduction" },
-			{ text: "API Reference", link: "/api-reference" },
 		],
 		sidebar,
 		socialLinks: [

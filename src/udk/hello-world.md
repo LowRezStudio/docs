@@ -43,7 +43,7 @@ m_TgPC.ClientMessage(">> HELLO WORLD! <<", , 30.0);
 
 ## Compiling and testing
 
-The easiest way to compile is using [Tempest](/tempest/introduction):
+The easiest way to compile is using [Tempest](/tempest-legacy/introduction):
 
 1. Open the settings menu where you have your builds.
 2. Enable Developer Mode.

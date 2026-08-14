@@ -8,4 +8,4 @@ In this section, you will be provided with step-by-step instructions on getting 
 
 ## Tempest Launcher
 
-It's not required, but the development workflow can be made faster with the use of [Tempest](/tempest/introduction).
+It's not required, but the development workflow can be made faster with the use of [Tempest](/tempest-legacy/introduction).

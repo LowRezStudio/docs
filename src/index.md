@@ -12,9 +12,6 @@ hero:
     - theme: brand
       text: Get Started
       link: /udk/getting-started
-    - theme: alt
-      text: API Reference
-      link: /api-reference
 
 features:
   - title: UDK
@@ -30,7 +27,7 @@ features:
     linkText: Learn more
   - title: Tempest Launcher
     icon:
-      src: /tempest/logo.png
+      src: /tempest-legacy/logo.png
     details: A guide for Tempest Launcher, the utility meant to make this all easier.
     link: /tempest/introduction
     linkText: Learn more
