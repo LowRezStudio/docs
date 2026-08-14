@@ -7,7 +7,6 @@
 		"fmt:check": "oxfmt --check"
 	},
 	"dependencies": {
-		"@sugarat/theme": "^0.5.27",
 		"markdown-it-footnote": "^4.0.0"
 	},
 	"devDependencies": {
