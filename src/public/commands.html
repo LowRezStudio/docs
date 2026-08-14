@@ -4,10 +4,7 @@
 		<meta charset="utf-8" />
 		<title>Realm Console Commandant</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link
-			rel="stylesheet"
-			href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"
-		/>
+		<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
@@ -229,8 +226,7 @@
 				padding: 4px;
 				/* tighter so buttons look compact */
 				font-family:
-					"Courier New", ui-monospace, SFMono-Regular, Menlo, Consolas,
-					monospace;
+					"Courier New", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 				font-size: 0.85rem;
 				color: #7dd3fc;
 				word-break: break-all;
@@ -401,31 +397,18 @@
 
 		<div class="tab-container">
 			<div class="tabs" role="tablist" aria-label="Main sections">
-				<button class="tab active" data-tab="how-to" type="button">
-					📖 How to Use
-				</button>
-				<button class="tab" data-tab="offline-setup" type="button">
-					🗺️ Offline Setup
-				</button>
-				<button class="tab" data-tab="offline-tools" type="button">
-					🤖 Offline Tools
-				</button>
+				<button class="tab active" data-tab="how-to" type="button">📖 How to Use</button>
+				<button class="tab" data-tab="offline-setup" type="button">🗺️ Offline Setup</button>
+				<button class="tab" data-tab="offline-tools" type="button">🤖 Offline Tools</button>
 				<button class="tab" data-tab="quick-commands" type="button">
 					⚡ Quick Commands
 				</button>
 			</div>
 
-			<section
-				id="how-to"
-				class="tab-content active instructions"
-				role="tabpanel"
-			>
+			<section id="how-to" class="tab-content active instructions" role="tabpanel">
 				<div class="card">
 					<h3>Welcome</h3>
-					<p>
-						This tool helps you easily set up and enjoy offline Paladins
-						matches.
-					</p>
+					<p>This tool helps you easily set up and enjoy offline Paladins matches.</p>
 
 					<h3>First Time Setup</h3>
 					<ol>
@@ -436,13 +419,9 @@
 					<h3>Starting a Match</h3>
 					<ol>
 						<li>Launch Paladins and wait at the login screen.</li>
-						<li>
-							Press <code>F1</code> or <code>F2</code> to open the console.
-						</li>
+						<li>Press <code>F1</code> or <code>F2</code> to open the console.</li>
 						<li>Open the <strong>🗺️ Offline Setup</strong> tab here.</li>
-						<li>
-							Select Map, Map Version & Game Mode; copy the generated command.
-						</li>
+						<li>Select Map, Map Version & Game Mode; copy the generated command.</li>
 						<li>Paste it into the in-game console and press Enter.</li>
 					</ol>
 
@@ -450,21 +429,20 @@
 					<ol>
 						<li>After loading you'll be in spectator mode.</li>
 						<li>
-							Use the <strong>🤖 Offline Tools</strong> tab to switch your
-							champion.
+							Use the <strong>🤖 Offline Tools</strong> tab to switch your champion.
 						</li>
 						<li>Spawn bots one-at-a-time using the spawn section.</li>
 					</ol>
 
 					<div class="important-note">
-						<strong>Important:</strong> Spawn each bot individually. Copy &
-						paste one command at a time.
+						<strong>Important:</strong> Spawn each bot individually. Copy & paste one
+						command at a time.
 					</div>
 
 					<h3>Ending a Match</h3>
 					<p>
-						Use the <strong>Disconnect</strong> command under Quick Commands or
-						press <code>F1</code> at the end screen to return to login.
+						Use the <strong>Disconnect</strong> command under Quick Commands or press
+						<code>F1</code> at the end screen to return to login.
 					</p>
 
 					<div class="credits" style="margin-top: 1rem">
@@ -504,9 +482,7 @@
 									readonly
 									aria-label="Offline command preview"
 								/>
-								<button id="copy-offline" class="copy-btn" type="button">
-									📋
-								</button>
+								<button id="copy-offline" class="copy-btn" type="button">📋</button>
 							</div>
 						</div>
 					</div>
@@ -517,8 +493,7 @@
 				<div class="card">
 					<h3>🔄 Switch Champion</h3>
 					<p class="section-note">
-						Choose a champion & skin (optional). The preview updates
-						automatically.
+						Choose a champion & skin (optional). The preview updates automatically.
 					</p>
 					<div class="inline-grid">
 						<div class="form-group">
@@ -540,9 +515,7 @@
 								readonly
 								aria-label="Switch champion command"
 							/>
-							<button id="copy-switch" class="copy-btn" type="button">
-								📋
-							</button>
+							<button id="copy-switch" class="copy-btn" type="button">📋</button>
 						</div>
 					</div>
 				</div>
@@ -573,18 +546,14 @@
 					<div class="form-group">
 						<label>Spawn Command</label>
 						<div class="command-output">
-							<input
-								id="spawn-preview"
-								readonly
-								aria-label="Spawn bot command"
-							/>
+							<input id="spawn-preview" readonly aria-label="Spawn bot command" />
 							<button id="copy-spawn" class="copy-btn" type="button">📋</button>
 						</div>
 					</div>
 
 					<div class="important-note">
-						Spawn each bot individually. After copying a command, paste it into
-						the in‑game console and press Enter before generating the next.
+						Spawn each bot individually. After copying a command, paste it into the
+						in‑game console and press Enter before generating the next.
 					</div>
 				</div>
 			</section>
@@ -593,8 +562,8 @@
 				<div class="card">
 					<h3>⚡ Quick Commands</h3>
 					<p class="section-note">
-						Each utility command can be copied directly or edited slightly
-						before copying.
+						Each utility command can be copied directly or edited slightly before
+						copying.
 					</p>
 					<div class="quick-command-grid" id="quick-list"></div>
 				</div>
@@ -620,11 +589,7 @@
 				Brightmarsh: ["SG_Brightmarsh_P", "SGB_Brightmarsh_P"],
 				"Dragon Arena": ["LTM_DragonArena_P", "TD_DragonArena_P"],
 				"Fish Market": ["SG_FishMarket_P"],
-				"Foreman's Rise": [
-					"ON_ForemansRise_P",
-					"TD_ForemansRise_P",
-					"KOTH_Quarry_Rise",
-				],
+				"Foreman's Rise": ["ON_ForemansRise_P", "TD_ForemansRise_P", "KOTH_Quarry_Rise"],
 				"Frog Isle": ["SG_FrogIsle_V2_P"],
 				"Frozen Guard": ["SGA_SG_FrozenGuard_P"],
 				"Ice Mines": ["SG_IceMines_P"],
@@ -643,10 +608,7 @@
 					"KOTH_SnowfallJunction_P",
 					"TD_SnowfallJunction_P",
 				],
-				"Splitstone Quarry": [
-					"SG_SplitstoneQuarry_P",
-					"SGB_SplitstoneQuarry_P",
-				],
+				"Splitstone Quarry": ["SG_SplitstoneQuarry_P", "SGB_SplitstoneQuarry_P"],
 				"Stone Keep": [
 					"SG_StoneKeep_P",
 					"SG_StoneKeep_V2_P",
@@ -1494,9 +1456,7 @@
 			window.updateStatusBar = setStatus;
 
 			function fillSelect(sel, items) {
-				sel.innerHTML = items
-					.map((i) => `<option value="${i}">${i}</option>`)
-					.join("");
+				sel.innerHTML = items.map((i) => `<option value="${i}">${i}</option>`).join("");
 			}
 
 			function updateVersionOptions() {
@@ -1517,10 +1477,7 @@
 				const champ = els.switchChamp.value;
 				const skinsObj = CHAMPION_SKINS[champ] || {};
 				const names = Object.keys(skinsObj);
-				const ordered = [
-					"Default",
-					...names.filter((n) => n !== "Default").sort(),
-				];
+				const ordered = ["Default", ...names.filter((n) => n !== "Default").sort()];
 				fillSelect(els.switchSkin, ordered);
 				updateSwitchPreview();
 			}
@@ -1536,10 +1493,7 @@
 				const champ = els.spawnChamp.value;
 				const skinsObj = CHAMPION_SKINS[champ] || {};
 				const names = Object.keys(skinsObj);
-				const ordered = [
-					"Default",
-					...names.filter((n) => n !== "Default").sort(),
-				];
+				const ordered = ["Default", ...names.filter((n) => n !== "Default").sort()];
 				fillSelect(els.spawnSkin, ordered);
 				updateSpawnPreview();
 			}
@@ -1576,11 +1530,9 @@
         <button type="button" class="copy-btn">📋</button>
       </div>
     `;
-					div
-						.querySelector(".copy-btn")
-						.addEventListener("click", () =>
-							copyToClipboard(q.command, q.name),
-						);
+					div.querySelector(".copy-btn").addEventListener("click", () =>
+						copyToClipboard(q.command, q.name),
+					);
 					els.quickList.appendChild(div);
 				});
 			}
@@ -1591,9 +1543,7 @@
 					els.tabs.forEach((t) => t.classList.remove("active"));
 					btn.classList.add("active");
 					const target = btn.dataset.tab;
-					els.tabContents.forEach((c) =>
-						c.classList.toggle("active", c.id === target),
-					);
+					els.tabContents.forEach((c) => c.classList.toggle("active", c.id === target));
 				});
 			});
 

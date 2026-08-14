@@ -48,9 +48,9 @@ The easiest way to compile is using [Tempest](/tempest-legacy/introduction):
 1. Open the settings menu where you have your builds.
 2. Enable Developer Mode.
 3. Under "Projects" add your UDK project folder.
-   - For example: `C:\UDK\Paladins`
+    - For example: `C:\UDK\Paladins`
 4. Under "Scripts" add the folder off your mod.
-   - For example: `C:\UDK\Paladins\Development\Src\MyMod`
+    - For example: `C:\UDK\Paladins\Development\Src\MyMod`
 5. Click "Compile".
 6. Close the terminal when it finishes.
 7. Click Ok in the dialog that opens.

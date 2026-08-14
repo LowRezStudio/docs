@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import { VPButton } from "vitepress/theme";
+import { ref, computed } from "vue";
 
 const maxPlayers = ref(10);
 const password = ref("");
@@ -91,17 +91,12 @@ function copyToClipboard() {
 			<div class="section">
 				<h3>Basic Settings</h3>
 				<label
-					>Max Players:
-					<input type="number" v-model.number="maxPlayers" min="1" max="50"
+					>Max Players: <input type="number" v-model.number="maxPlayers" min="1" max="50"
 				/></label>
 				<label
-					>Password:
-					<input type="text" v-model="password" placeholder="Optional"
+					>Password: <input type="text" v-model="password" placeholder="Optional"
 				/></label>
-				<label
-					><input type="checkbox" v-model="allowSpectators" /> Allow
-					spectators</label
-				>
+				<label><input type="checkbox" v-model="allowSpectators" /> Allow spectators</label>
 			</div>
 
 			<div class="section">
@@ -134,28 +129,20 @@ function copyToClipboard() {
 			</div>
 			<div class="champions">
 				<label v-for="champ in champions" :key="champ.id">
-					<input
-						type="checkbox"
-						:value="champ.id"
-						v-model="selectedChampions"
-					/>
+					<input type="checkbox" :value="champ.id" v-model="selectedChampions" />
 					{{ champ.name }}
 				</label>
 			</div>
 			<div v-if="selectedChampions.length > 10" class="warning">
-				⚠️ Selecting more than 10 champions may cause issues with loading audio
-				and other assets.
+				⚠️ Selecting more than 10 champions may cause issues with loading audio and other
+				assets.
 			</div>
 		</div>
 
 		<div class="section" v-if="resultCommand">
 			<div class="header">
 				<h3>Generated Command</h3>
-				<VPButton
-					theme="brand"
-					@click="copyToClipboard"
-					:text="copyButtonText"
-				/>
+				<VPButton theme="brand" @click="copyToClipboard" :text="copyButtonText" />
 			</div>
 			<div class="command">
 				<pre>{{ resultCommand }}</pre>

@@ -1,6 +1,6 @@
+import footnote from "markdown-it-footnote";
 import { defineConfig, HeadConfig } from "vitepress";
 import sidebar from "./sidebar";
-import footnote from "markdown-it-footnote";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({

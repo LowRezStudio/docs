@@ -22,27 +22,27 @@ Make sure you've selected a `Build Directory`, this will define where the builds
 
 1. First of all you need to have `OB 57` downloaded<br>
 2. Then you'll need to download a program called `RAdmin VPN` and join the network, to do that once you installed it, open it and go into `Network -> Join Network`
-   > The Network name is `paladinskana` and the Password is `kana123`
+    > The Network name is `paladinskana` and the Password is `kana123`
 3. Then on Tempest settings, make sure `Enable Console` is checked and load the multiplayer mod (the upk file) that you've downloaded using the + icon next to Mod Loader
 4. Then, in the launch options at the top of the setting, enter the ip address of the host followed by the parameters for your name and champion
-   > Example Launch Args: `26.203.83.83?name=Cinnamon?class=shalin`
+    > Example Launch Args: `26.203.83.83?name=Cinnamon?class=shalin`
 
 ## How do I host a server?
 
 1. Download the [TempestMp Mod](/tempest-legacy/changelogtmp) and the [Server DLL](https://github.com/LowRezStudio/Tempest/releases/tag/asmloader-1.0.0)
 2. Make sure you are logged in `RAdmin VPN`
-   > The Network name is `paladinskana` and the Password is `kana123`
+    > The Network name is `paladinskana` and the Password is `kana123`
 3. Load the [TempestMp Mod](/tempest-legacy/changelogtmp) using the Mod Loader and make sure `Enable Console` is checked.
 4. Then, in the launch options at the top of the setting, enter the `server` launch argument followed by the map, gamemode and allowedChampions.
-   > Example Launch Args: `server IMM_P_Igloo_v02?game=TempestMp.Siege?allowedChampions=barik,bombking,lian,maeve,zhin,lex,inara,jenos,shalin -log`
-   > ::: warning
-   > Make sure you have `-log` at the end<br>
-   > While there is no limit on how much champions server hosters can precache, We recommend that you avoid going above 10.<br>
-   > As of right now, only `Siege` is supported.
-   > :::
+    > Example Launch Args: `server IMM_P_Igloo_v02?game=TempestMp.Siege?allowedChampions=barik,bombking,lian,maeve,zhin,lex,inara,jenos,shalin -log`
+    > ::: warning
+    > Make sure you have `-log` at the end<br>
+    > While there is no limit on how much champions server hosters can precache, We recommend that you avoid going above 10.<br>
+    > As of right now, only `Siege` is supported.
+    > :::
 5. As soon as the server log appears, pause it by selecting any text in the console window.
 6. Use an injector to inject the [Server DLL](https://github.com/LowRezStudio/Tempest/releases/tag/asmloader-1.0.0).
-   > We recommend Cheat Engine or Process Hacker.
+    > We recommend Cheat Engine or Process Hacker.
 7. Unpause the server by right clicking in the console window. You can then share your RAdmin ip to anyone.
 
 ## Can you balance the game, like change champions damage, health etc?

@@ -33,11 +33,7 @@ const filteredMaps = computed(() => {
 		<label
 			>Game Version:
 			<select v-model="gameVersion">
-				<option
-					v-for="version in versions"
-					:key="version.id"
-					:value="version.version"
-				>
+				<option v-for="version in versions" :key="version.id" :value="version.version">
 					{{ version.version + ": " + version.name }}
 				</option>
 			</select>

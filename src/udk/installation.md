@@ -7,8 +7,8 @@ description: Step-by-step instructions for installing UDK and setting up a recom
 ## Steps
 
 1. Run the **UDK Installer** and complete the setup.
-   - The Source code will be located in `C:\UDK\<PROJECT>\Developement\Src`
-   - Each folder there is called a `Package`, in which there is a `Classes` folder that contains all the `.uc` files.
+    - The Source code will be located in `C:\UDK\<PROJECT>\Developement\Src`
+    - Each folder there is called a `Package`, in which there is a `Classes` folder that contains all the `.uc` files.
 2. Create a **Package** with your mod name, then create the **Classes** folder inside.
 
 ## Recommended Text Editor Setup

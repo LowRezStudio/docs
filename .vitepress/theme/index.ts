@@ -1,9 +1,9 @@
-// https://vitepress.dev/guide/custom-theme
-import type { Theme } from "vitepress";
-import Layout from "./Layout.vue";
+import MapIds from "./components/MapIds.vue";
 import MultiplayerArgs from "./components/MultiplayerArgs.vue";
 import MultiplayerArgsForm from "./components/MultiplayerArgsForm.vue";
-import MapIds from "./components/MapIds.vue";
+import Layout from "./Layout.vue";
+// https://vitepress.dev/guide/custom-theme
+import type { Theme } from "vitepress";
 import "./style.css";
 
 export default {
