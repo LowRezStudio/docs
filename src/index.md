@@ -3,17 +3,26 @@ description: The main page of the Paladins modding documentation, providing an o
 layout: home
 
 hero:
-    name: "Paladins"
-    text: "Mod Creation"
-    image: /logo.png
-    tagline: Provided to you by the Tempest Launcher developers
+    name: "Tempest"
+    text: "Paladins Launcher"
+    image: /tempest-logo.png
+    tagline: Play any Paladins patch from the last ten years, add mods, and set up private games.
 
     actions:
         - theme: brand
           text: Get Started
-          link: /udk/getting-started
+          link: /tempest/introduction
+        - theme: alt
+          text: Blog
+          link: /blog/
 
 features:
+    - title: Tempest
+      icon:
+          src: /tempest-logo.png
+      details: Play any Paladins patch from the last ten years, add mods, and set up private games.
+      link: /tempest/introduction
+      linkText: Learn more
     - title: UDK
       icon:
           src: /udk-logo.png
@@ -24,12 +33,6 @@ features:
       icon: 🔢
       details: Learn about Hi-Rez's proprietary binary serialization format & networking layer.
       link: /marshal/introduction
-      linkText: Learn more
-    - title: Tempest Launcher
-      icon:
-          src: /tempest-legacy/logo.png
-      details: A guide for Tempest Launcher, the utility meant to make this all easier.
-      link: /tempest/introduction
       linkText: Learn more
     - title: Community Discord Server
       icon:

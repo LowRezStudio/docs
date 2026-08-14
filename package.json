@@ -1,7 +1,9 @@
 {
+	"type": "module",
 	"scripts": {
 		"dev": "vitepress dev",
 		"build": "vitepress build",
+		"typecheck": "vue-tsc --noEmit",
 		"preview": "vitepress preview",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check"
@@ -11,10 +13,13 @@
 	},
 	"devDependencies": {
 		"@types/markdown-it-footnote": "^3.0.4",
+		"@types/node": "^26.2.0",
 		"oxfmt": "^0.63.0",
-		"vite": "^8.2.1",
+		"typescript": "^5.9.3",
+		"vite": "^5.4.21",
 		"vitepress": "^1.6.4",
-		"vue": "^3.5.41"
+		"vue": "^3.5.41",
+		"vue-tsc": "^3.3.9"
 	},
 	"packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
 }
