@@ -1,6 +1,6 @@
 import footnote from "markdown-it-footnote";
 import { defineConfig } from "vitepress";
-import { rssPlugin } from "./rss";
+import { feedsPlugin } from "./feeds";
 import sidebar from "./sidebar";
 import type { HeadConfig } from "vitepress";
 
@@ -72,6 +72,15 @@ export default defineConfig({
 				href: `${SITE_URL}/rss.xml`,
 			},
 		],
+		[
+			"link",
+			{
+				rel: "alternate",
+				type: "application/atom+xml",
+				title: "Tempest Blog (Atom)",
+				href: `${SITE_URL}/atom.xml`,
+			},
+		],
 	],
 	// https://vitepress.dev/reference/default-theme-config
 	themeConfig: {
@@ -103,10 +112,12 @@ export default defineConfig({
 	},
 	vite: {
 		plugins: [
-			rssPlugin({
+			feedsPlugin({
 				url: SITE_URL,
 				title: "Tempest Blog",
 				description: `Documentation on Tempest and Paladins mod making.`,
+				logo: LOGO_URL,
+				author: "LowRezStudio Team",
 			}),
 		],
 	},

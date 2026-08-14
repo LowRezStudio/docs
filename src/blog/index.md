@@ -19,7 +19,7 @@ function formatDate(date) {
 
 <p class="blog-description">
 	News and updates from the LowRezStudio team.
-	<a href="/rss.xml">Subscribe via RSS.</a>
+	Subscribe via <a href="/rss.xml">RSS</a> or <a href="/atom.xml">Atom</a>.
 </p>
 
 <p v-if="!posts.length" class="blog-empty">No posts yet.</p>
