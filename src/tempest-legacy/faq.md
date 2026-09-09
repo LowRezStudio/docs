@@ -1,5 +1,5 @@
 ---
-description: A list of frequently asked questions about Tempest Launcher, including troubleshooting tips and guides for multiplayer.
+description: Tempest FAQ and troubleshooting. Fix install and login problems, join playtests over RAdmin VPN, and host your own Paladins server.
 ---
 
 # FAQ / Common Issues

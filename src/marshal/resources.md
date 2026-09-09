@@ -1,5 +1,6 @@
 ---
-description: A list of resources for working with Marshal, including parsers and server emulators.
+title: Marshal resources
+description: Marshal tools and source code. A Go parser with TCP server emulator and a C# parser to study or build on.
 ---
 
 # Resources

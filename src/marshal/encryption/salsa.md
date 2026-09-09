@@ -1,5 +1,5 @@
 ---
-description: An explanation of how Salsa20 encryption is used in Paladins for packet encryption and decryption.
+description: How Salsa20 packet encryption works in Paladins. The client generates a random KEY/IV pair and sends it to the server at login.
 ---
 
 # Salsa20

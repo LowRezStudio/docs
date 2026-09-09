@@ -1,5 +1,5 @@
 ---
-description: A list of the individuals who have contributed to the Tempest Launcher project.
+description: The people behind Tempest. Contributors who built the launcher UI, developer mode, and ongoing maintenance.
 ---
 
 # Credits

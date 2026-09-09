@@ -1,5 +1,5 @@
 ---
-description: The main page of the Paladins modding documentation, providing an overview of the available resources and guides.
+description: Guides for Paladins modding. Play old patches with the Tempest launcher, build mods with UDK, and work with the Marshal network protocol.
 layout: home
 
 hero:
@@ -43,3 +43,5 @@ features:
 ---
 
 <small>\*Most of the information on this website is also applicable to most other Hi-Rez UE3 games like Realm Royale.</small>
+
+<small>Built by [LowRezStudio](https://lowrezstudio.com).</small>

@@ -1,5 +1,6 @@
 ---
-description: An introduction to the Tempest Launcher, a community-driven project for preserving and playing Paladins with mods.
+title: Legacy launcher
+description: The Tempest Legacy launcher for Paladins. Download builds, manage versions, and launch the game with custom arguments and mods.
 ---
 
 # Tempest Launcher

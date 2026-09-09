@@ -1,5 +1,5 @@
 ---
-description: An overview of the prerequisites for modding Paladins, including recommended software.
+description: What you need before modding Paladins. Windows, UDK 2013-BETA2, and basic UnrealScript knowledge.
 ---
 
 # Prerequisites

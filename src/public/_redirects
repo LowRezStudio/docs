@@ -1,0 +1,33 @@
+# Old /tempest/* pages moved to /tempest-legacy/* and /api-reference/* was removed. Every URL is listed in clean, trailing-slash, and .html form.
+
+/tempest /tempest/introduction 301
+/tempest/ /tempest/introduction 301
+/tempest/index /tempest/introduction 301
+/tempest/index.html /tempest/introduction 301
+/tempest/changelogtl /tempest-legacy/changelogtl 301
+/tempest/changelogtl/ /tempest-legacy/changelogtl 301
+/tempest/changelogtl.html /tempest-legacy/changelogtl 301
+/tempest/changelogtmp /tempest-legacy/changelogtmp 301
+/tempest/changelogtmp/ /tempest-legacy/changelogtmp 301
+/tempest/changelogtmp.html /tempest-legacy/changelogtmp 301
+/tempest/commands /tempest-legacy/commands 301
+/tempest/commands/ /tempest-legacy/commands 301
+/tempest/commands.html /tempest-legacy/commands 301
+/tempest/credits /tempest-legacy/credits 301
+/tempest/credits/ /tempest-legacy/credits 301
+/tempest/credits.html /tempest-legacy/credits 301
+/tempest/faq /tempest-legacy/faq 301
+/tempest/faq/ /tempest-legacy/faq 301
+/tempest/faq.html /tempest-legacy/faq 301
+/tempest/multiplayer-args /tempest-legacy/multiplayer-args 301
+/tempest/multiplayer-args/ /tempest-legacy/multiplayer-args 301
+/tempest/multiplayer-args.html /tempest-legacy/multiplayer-args 301
+/tempest/udk /tempest-legacy/udk 301
+/tempest/udk/ /tempest-legacy/udk 301
+/tempest/udk.html /tempest-legacy/udk 301
+/tempest/logo.png /tempest-legacy/logo.png 301
+/tempest/screenshot01.png /tempest-legacy/screenshot01.png 301
+/api-reference / 301
+/api-reference/ / 301
+/api-reference/index.html / 301
+/api-reference/* / 301

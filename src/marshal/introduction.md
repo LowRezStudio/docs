@@ -1,5 +1,6 @@
 ---
-description: An introduction to Marshal, a proprietary binary serialization format used in Hi-Rez UE3 games for internal and network communication.
+title: Marshal protocol
+description: Marshal is the proprietary binary format behind Paladins networking. How the game talks to itself and to its servers.
 ---
 
 # Introduction

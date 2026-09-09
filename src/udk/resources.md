@@ -1,5 +1,6 @@
 ---
-description: A list of resources for UDK development, including links to documentation, tutorials, and community servers.
+title: UDK resources
+description: UDK resources for Paladins modders. Official docs, the BeyondUnreal wiki, video tutorials, and community Discord servers.
 ---
 
 # Resources

@@ -1,5 +1,6 @@
 ---
-description: A list of release notes for TempestMp Mod.
+title: TempestMp changelog
+description: TempestMp release notes. New multiplayer features, fixes, and known issues for the Paladins multiplayer mod, with downloads.
 ---
 
 Here are the release notes for the TempestMp Mod.

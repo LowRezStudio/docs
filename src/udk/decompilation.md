@@ -1,5 +1,5 @@
 ---
-description: Instructions on how to decompile scripts inside Paladins .upk files in order to make dummy files.
+description: Decompile scripts inside Paladins .upk files with the Unreal Package Decompressor and UE Explorer to make dummy source files.
 ---
 
 # Decompiling scripts inside .upk files

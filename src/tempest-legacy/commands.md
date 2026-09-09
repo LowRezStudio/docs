@@ -1,10 +1,12 @@
 ---
-description: A list of console commands, gamemodes and maps available in Paladins.
+description: Paladins console commands for Tempest. Open the console with F2, then use commands like freezeai and Set1p, plus gamemode and map lists.
 ---
 
 # Commands
 
 Activate the console by pressing F2 when in game with the `Enable Console` option checked in the launcher.
+
+Prefer a UI? The interactive [Realm Console Commandant](/commands.html) generates offline-match commands for you.
 
 ## _Useful_ commands
 

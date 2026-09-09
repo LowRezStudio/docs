@@ -1,6 +1,6 @@
 ---
 title: Blog
-description: News and updates from the LowRezStudio team.
+description: News and updates from LowRezStudio. Tempest releases, Paladins modding guides, and project announcements, also available over RSS and Atom.
 ---
 
 <script setup>

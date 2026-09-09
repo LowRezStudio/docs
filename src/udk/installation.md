@@ -1,5 +1,5 @@
 ---
-description: Step-by-step instructions for installing UDK and setting up a recommended text editor for Unreal Script development.
+description: Install UDK and set up Visual Studio Code with UnrealScript syntax highlighting and code completion for Paladins modding.
 ---
 
 # Installation

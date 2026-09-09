@@ -1,5 +1,6 @@
 ---
-description: A guide to getting started with Paladins modding, including step-by-step instructions for setting up a modding environment.
+title: Getting started with Paladins modding
+description: Start modding Paladins. Set up your UDK modding environment step by step, with Tempest as an optional faster workflow.
 ---
 
 # 🛠️ Getting Started with Paladins Modding

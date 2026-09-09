@@ -1,3 +1,7 @@
+---
+description: Why Paladins does not use Diffie-Hellman yet. The KEY/IV travels in a plain-text packet today, with DH planned next.
+---
+
 # Diffie-Hellman
 
 We are currently not using Diffie-Hellman to pass the KEY/IV to the server, instead we made a DLL that sends a custom packet with the KEY/IV in plain text for ease of use.

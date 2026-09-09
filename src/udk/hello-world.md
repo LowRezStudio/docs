@@ -1,5 +1,5 @@
 ---
-description: Step-by-step instructions for building your first mod
+description: Build your first Paladins mod. Print Hello World on screen using the OB57 dummy files, then compile and test it in Tempest.
 ---
 
 # Hello World example

@@ -1,6 +1,6 @@
 ---
 title: Docs Rebrand & New Blog
-description: A rebrand, a new blog, and an RSS feed.
+description: The Tempest docs got a new look and a blog. See what moved, what stayed, and how to follow LowRezStudio updates over RSS.
 image: /guide.jpg
 date: 2026-08-14
 tags:

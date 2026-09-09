@@ -18,17 +18,31 @@ function absoluteUrl(path: string | undefined, fallback: string): string {
 
 /**
  * Converts a page's source path (e.g. "blog/2026-08/14-docs-revamped.md")
- * to its URL path. Mirrors VitePress's own sitemap logic.
+ * to its clean URL path. Must stay in sync with `cleanUrls: true` below and
+ * VitePress's own sitemap logic, so canonical/OG URLs match the served URLs
+ * (the host redirects *.html to clean URLs).
  */
 function pageUrl(relativePath: string, base: string): string {
-	const url = relativePath.replace(/(^|\/)index\.md$/, "$1").replace(/\.md$/, ".html");
+	const url = relativePath.replace(/(^|\/)index\.md$/, "$1").replace(/\.md$/, "");
 	const withBase = `${base.replace(/\/$/, "")}${url}`;
-	return withBase.startsWith("/") ? withBase : `/${withBase}`;
+	return withBase.startsWith("/") ? withBase || "/" : `/${withBase}`;
 }
 
 function isBlogPost(relativePath: string): boolean {
 	return relativePath.startsWith("blog/") && relativePath !== "blog/index.md";
 }
+
+/** Sitemap URL paths (relative, no leading slash) for placeholder pages with no content yet. */
+const SITEMAP_EXCLUDED_PAGES = new Set([
+	"marshal/files/assembly",
+	"marshal/files/lang",
+	"marshal/packets/hello",
+	"marshal/parsing/deserialization",
+	"marshal/parsing/introduction",
+	"marshal/parsing/serialization",
+	"marshal/servers/game-server",
+	"marshal/servers/login-server",
+]);
 
 function toIso(value: string | number | null | undefined): string | undefined {
 	if (typeof value === "number") {
@@ -50,6 +64,10 @@ export default defineConfig({
 	// Compute per-page last-modified timestamps from git (used for
 	// article:modified_time and sitemap lastmod).
 	lastUpdated: true,
+	// Serve and advertise clean URLs (no .html suffix). The host redirects
+	// *.html to clean URLs, so sitemap/canonical must use the clean form or
+	// they point at a redirect and search signals split.
+	cleanUrls: true,
 	head: [
 		["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
 		["link", { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }],
@@ -90,6 +108,7 @@ export default defineConfig({
 			{ text: "UDK", link: "/udk/getting-started" },
 			{ text: "Marshal", link: "/marshal/introduction" },
 			{ text: "Blog", link: "/blog/" },
+			{ text: "LowRezStudio", link: "https://lowrezstudio.com" },
 		],
 		sidebar,
 		socialLinks: [
@@ -109,6 +128,14 @@ export default defineConfig({
 	// Built-in sitemap generation (sitemap.xml at build time).
 	sitemap: {
 		hostname: SITE_URL,
+		// Deprecated sections (prefix match) and placeholder pages with no content
+		// yet (exact match). Both stay accessible via site navigation; they just
+		// aren't advertised to search engines.
+		transformItems: (items) =>
+			items.filter((item) => {
+				const url = item.url.replace(/^\/+|\/+$/g, "");
+				return !url.startsWith("tempest-legacy/") && !SITEMAP_EXCLUDED_PAGES.has(url);
+			}),
 	},
 	vite: {
 		plugins: [

@@ -1,5 +1,6 @@
 ---
-description: An introduction to the encryption methods used in Paladins, focusing on Salsa20 and the Diffie-Hellman key exchange.
+title: Marshal encryption
+description: How Paladins encrypts client-server packets. Salsa20 rotating-key XOR through Crypto++ and Diffie-Hellman key exchange.
 ---
 
 # Introduction
