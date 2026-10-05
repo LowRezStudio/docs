@@ -319,3 +319,22 @@
 .VPLastUpdated {
 	display: none;
 }
+
+/**
+ * Component: YouTube embed
+ *
+ * Produced by the markdown-it extension in .vitepress/youtube-embed.ts.
+ * -------------------------------------------------------------------------- */
+
+.vp-doc .youtube-embed {
+	margin: 24px 0;
+}
+
+.vp-doc .youtube-embed iframe {
+	display: block;
+	width: 100%;
+	/* Reserve the 16:9 player box so nothing shifts while it loads. */
+	aspect-ratio: 16 / 9;
+	border: 0;
+	border-radius: 12px;
+}

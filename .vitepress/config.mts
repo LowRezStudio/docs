@@ -2,6 +2,7 @@ import footnote from "markdown-it-footnote";
 import { defineConfig } from "vitepress";
 import { feedsPlugin } from "./feeds";
 import sidebar from "./sidebar";
+import { youtubeEmbed } from "./youtube-embed";
 import type { HeadConfig } from "vitepress";
 
 // Absolute site URL used for RSS links, sitemap and canonical URLs.
@@ -125,6 +126,7 @@ export default defineConfig({
 	markdown: {
 		config: (md) => {
 			md.use(footnote);
+			md.use(youtubeEmbed);
 		},
 	},
 	// Built-in sitemap generation (sitemap.xml at build time).
