@@ -39,7 +39,12 @@ You can download the mod from [our Discord server](https://discord.gg/YPXJEaNPPe
 >
 > - **Shiro** (via Discord forum announcement)
 
----
+## Video
+
+Special thanks to [took4ever](https://www.youtube.com/channel/UCnBVI3c8Qh7ohsEDgWnpHNw) for making a great video guide on how to install and use this mod. Check it out if you need a walkthrough.
+
+
+[Wolper Replays in action](https://www.youtube.com/watch?v=0AN90Jux5Wk)
 
 ## Screenshots
 
