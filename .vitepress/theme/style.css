@@ -62,10 +62,16 @@
 	--vp-c-brand-1: #23837f;
 	--vp-c-brand-2: #268d89;
 	--vp-c-brand-3: #33b6b1;
-	--vp-c-brand-soft: #99dbd8;
+	/* Translucent, so the tint follows the active light/dark background. */
+	--vp-c-brand-soft: rgba(35, 131, 127, 0.14);
 
-	--vp-c-tip-1: var(--vp-c-brand-1);
-	--vp-c-tip-2: var(--vp-c-brand-2);
+	/*
+	 * `brand-1` only reaches 3.8:1 on top of `brand-soft`, so the tip
+	 * accents get their own darker shades to stay above the 4.5:1
+	 * contrast ratio required for body text.
+	 */
+	--vp-c-tip-1: #1a6b68;
+	--vp-c-tip-2: #125e5b;
 	--vp-c-tip-3: var(--vp-c-brand-3);
 	--vp-c-tip-soft: var(--vp-c-brand-soft);
 
@@ -78,6 +84,21 @@
 	--vp-c-danger-2: var(--vp-c-red-2);
 	--vp-c-danger-3: var(--vp-c-red-3);
 	--vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+/**
+ * Colors (dark mode)
+ *
+ * The soft colors and the tip accents have to be re-tuned here, because
+ * both are defined against the light background. Reusing the light values
+ * would put light text on a light tint, which is unreadable.
+ * -------------------------------------------------------------------------- */
+
+.dark {
+	--vp-c-brand-soft: rgba(51, 182, 177, 0.16);
+
+	--vp-c-tip-1: #4ecdc8;
+	--vp-c-tip-2: #5cd6d1;
 }
 
 /**
@@ -132,8 +153,9 @@
 :root {
 	--vp-custom-block-tip-border: transparent;
 	--vp-custom-block-tip-text: var(--vp-c-text-1);
-	--vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-	--vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+	--vp-custom-block-tip-bg: var(--vp-c-tip-soft);
+	/* Layered on top of the tip bg so inline code reads as a chip. */
+	--vp-custom-block-tip-code-bg: var(--vp-c-default-soft);
 }
 
 /**
