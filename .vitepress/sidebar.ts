@@ -92,6 +92,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 					text: "Decompiling scripts",
 					link: "/udk/decompilation",
 				},
+				{
+					text: "Editing animations",
+					link: "/udk/edit-animations"
+				}
 			],
 		},
 		{
