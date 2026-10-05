@@ -5,6 +5,7 @@
 		"build": "vitepress build",
 		"typecheck": "vue-tsc --noEmit",
 		"preview": "vitepress preview",
+		"indexnow": "node scripts/indexnow.mjs",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check"
 	},

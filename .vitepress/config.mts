@@ -9,6 +9,8 @@ import type { HeadConfig } from "vitepress";
 const SITE_URL = (process.env.SITE_URL ?? "https://docs.lowrezstudio.com").replace(/\/$/, "");
 const SITE_NAME = "Tempest";
 const LOGO_URL = `${SITE_URL}/tempest-logo.png`;
+/** Official profiles, surfaced to search engines via schema.org `sameAs`. */
+const SOCIAL_PROFILES = ["https://github.com/LowRezStudio", "https://discord.gg/YPXJEaNPPe"];
 
 /** Resolves site-relative paths (e.g. "/guide.jpg") to absolute URLs. */
 function absoluteUrl(path: string | undefined, fallback: string): string {
@@ -128,6 +130,9 @@ export default defineConfig({
 	// Built-in sitemap generation (sitemap.xml at build time).
 	sitemap: {
 		hostname: SITE_URL,
+		// Emit YYYY-MM-DD instead of a full timestamp; cleaner and enough for
+		// search-engine freshness signals.
+		lastmodDateOnly: true,
 		// Deprecated sections (prefix match) and placeholder pages with no content
 		// yet (exact match). Both stay accessible via site navigation; they just
 		// aren't advertised to search engines.
@@ -202,6 +207,14 @@ export default defineConfig({
 		}
 
 		// Structured data (JSON-LD)
+		const organization = {
+			"@type": "Organization",
+			name: "LowRezStudio",
+			url: SITE_URL,
+			logo: { "@type": "ImageObject", url: LOGO_URL },
+			sameAs: SOCIAL_PROFILES,
+		};
+
 		if (isArticle) {
 			head.push([
 				"script",
@@ -218,14 +231,15 @@ export default defineConfig({
 						"@type": "Organization",
 						name: frontmatter.author ?? "LowRezStudio Team",
 					},
-					publisher: {
-						"@type": "Organization",
-						name: "LowRezStudio",
-						url: SITE_URL,
-						logo: { "@type": "ImageObject", url: LOGO_URL },
-					},
+					publisher: organization,
 					mainEntityOfPage: { "@type": "WebPage", "@id": url },
 					url,
+					inLanguage: "en-US",
+					isPartOf: {
+						"@type": "Blog",
+						name: `${SITE_NAME} Blog`,
+						url: `${SITE_URL}/blog/`,
+					},
 					...(frontmatter.tags?.length ? { keywords: frontmatter.tags.join(", ") } : {}),
 					articleSection: "Blog",
 				}),
@@ -238,20 +252,17 @@ export default defineConfig({
 					"@context": "https://schema.org",
 					"@type": "WebSite",
 					name: SITE_NAME,
+					alternateName: "Paladins Modding Documentation",
 					url: `${SITE_URL}/`,
 					description,
+					inLanguage: "en-US",
+					publisher: organization,
 				}),
 			]);
 			head.push([
 				"script",
 				{ type: "application/ld+json" },
-				JSON.stringify({
-					"@context": "https://schema.org",
-					"@type": "Organization",
-					name: "LowRezStudio",
-					url: SITE_URL,
-					logo: { "@type": "ImageObject", url: LOGO_URL },
-				}),
+				JSON.stringify({ "@context": "https://schema.org", ...organization }),
 			]);
 		} else if (relativePath === "blog/index.md") {
 			head.push([
@@ -263,8 +274,48 @@ export default defineConfig({
 					name: `${SITE_NAME} Blog`,
 					url,
 					description: pageData.description ?? description,
+					inLanguage: "en-US",
+					publisher: organization,
 				}),
 			]);
+		} else {
+			// Documentation page: describe it as a TechArticle so search engines
+			// get a title, description, modified date and site context.
+			head.push([
+				"script",
+				{ type: "application/ld+json" },
+				JSON.stringify({
+					"@context": "https://schema.org",
+					"@type": "TechArticle",
+					headline: pageData.title,
+					description,
+					url,
+					mainEntityOfPage: { "@type": "WebPage", "@id": url },
+					...(modified ? { dateModified: modified } : {}),
+					inLanguage: "en-US",
+					publisher: organization,
+					isPartOf: { "@type": "WebSite", name: SITE_NAME, url: `${SITE_URL}/` },
+				}),
+			]);
+
+			// The launcher intro doubles as the product landing page.
+			if (relativePath === "tempest/introduction.md") {
+				head.push([
+					"script",
+					{ type: "application/ld+json" },
+					JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "SoftwareApplication",
+						name: "Tempest",
+						applicationCategory: "GameApplication",
+						operatingSystem: "Windows",
+						url,
+						description,
+						offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+						publisher: organization,
+					}),
+				]);
+			}
 		}
 
 		return head;

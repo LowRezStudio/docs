@@ -2,7 +2,7 @@
 title: "Wolper Replays: Replay your Paladins matches"
 description: "Record demos of Paladins matches with Wolper."
 image: /blog/2026-10/05-replay-mod/wolper-match.webp
-date: 2026-10-05
+date: "2026-10-05T19:30:37+02:00"
 tags:
     - mods
     - live

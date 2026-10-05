@@ -1,4 +1,5 @@
 ---
+title: Paladins Modding Docs
 description: Guides for Paladins modding. Play old patches with the Tempest launcher, build mods with UDK, and work with the Marshal network protocol.
 layout: home
 
