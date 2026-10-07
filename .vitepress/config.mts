@@ -1,41 +1,12 @@
 import footnote from "markdown-it-footnote";
 import { defineConfig } from "vitepress";
 import { feedsPlugin } from "./feeds";
+import { transformHead } from "./head";
 import sidebar from "./sidebar";
+import { LOGO_URL, SITE_NAME, SITE_URL } from "./site";
 import { youtubeEmbed } from "./youtube-embed";
-import type { HeadConfig } from "vitepress";
 
-// Absolute site URL used for RSS links, sitemap and canonical URLs.
-// Override for CI/local previews with SITE_URL.
-const SITE_URL = (process.env.SITE_URL ?? "https://docs.lowrezstudio.com").replace(/\/$/, "");
-const SITE_NAME = "Tempest";
-const LOGO_URL = `${SITE_URL}/tempest-logo.png`;
-/** Official profiles, surfaced to search engines via schema.org `sameAs`. */
-const SOCIAL_PROFILES = ["https://github.com/LowRezStudio", "https://discord.gg/YPXJEaNPPe"];
-
-/** Resolves site-relative paths (e.g. "/guide.jpg") to absolute URLs. */
-function absoluteUrl(path: string | undefined, fallback: string): string {
-	if (!path) return fallback;
-	return /^https?:\/\//i.test(path) ? path : `${SITE_URL}${path}`;
-}
-
-/**
- * Converts a page's source path (e.g. "blog/2026-08/14-docs-revamped.md")
- * to its clean URL path. Must stay in sync with `cleanUrls: true` below and
- * VitePress's own sitemap logic, so canonical/OG URLs match the served URLs
- * (the host redirects *.html to clean URLs).
- */
-function pageUrl(relativePath: string, base: string): string {
-	const url = relativePath.replace(/(^|\/)index\.md$/, "$1").replace(/\.md$/, "");
-	const withBase = `${base.replace(/\/$/, "")}${url}`;
-	return withBase.startsWith("/") ? withBase || "/" : `/${withBase}`;
-}
-
-function isBlogPost(relativePath: string): boolean {
-	return relativePath.startsWith("blog/") && relativePath !== "blog/index.md";
-}
-
-/** Sitemap URL paths (relative, no leading slash) for placeholder pages with no content yet. */
+/** Placeholder pages with no content yet, as sitemap paths without leading slash. */
 const SITEMAP_EXCLUDED_PAGES = new Set([
 	"marshal/files/assembly",
 	"marshal/files/lang",
@@ -47,29 +18,16 @@ const SITEMAP_EXCLUDED_PAGES = new Set([
 	"marshal/servers/login-server",
 ]);
 
-function toIso(value: string | number | null | undefined): string | undefined {
-	if (typeof value === "number") {
-		return Number.isNaN(value) ? undefined : new Date(value).toISOString();
-	}
-	if (typeof value === "string") {
-		const time = +new Date(value);
-		return Number.isNaN(time) ? undefined : new Date(time).toISOString();
-	}
-	return undefined;
-}
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
 	srcDir: "src",
 	lang: "en-US",
 	title: SITE_NAME,
 	description: `Documentation on Tempest and Paladins mod making.`,
-	// Compute per-page last-modified timestamps from git (used for
-	// article:modified_time and sitemap lastmod).
+	// Git-based lastmod, consumed by article:modified_time and the sitemap.
 	lastUpdated: true,
-	// Serve and advertise clean URLs (no .html suffix). The host redirects
-	// *.html to clean URLs, so sitemap/canonical must use the clean form or
-	// they point at a redirect and search signals split.
+	// The host redirects *.html to clean URLs, so canonical, OG and sitemap URLs
+	// must use the clean form or search signals split across both variants.
 	cleanUrls: true,
 	head: [
 		["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
@@ -129,15 +87,12 @@ export default defineConfig({
 			md.use(youtubeEmbed);
 		},
 	},
-	// Built-in sitemap generation (sitemap.xml at build time).
 	sitemap: {
 		hostname: SITE_URL,
-		// Emit YYYY-MM-DD instead of a full timestamp; cleaner and enough for
-		// search-engine freshness signals.
+		// Date-only lastmod; a full timestamp adds nothing for search freshness.
 		lastmodDateOnly: true,
-		// Deprecated sections (prefix match) and placeholder pages with no content
-		// yet (exact match). Both stay accessible via site navigation; they just
-		// aren't advertised to search engines.
+		// tempest-legacy is deprecated and the listed pages are empty placeholders.
+		// Both stay reachable through navigation, just not advertised to search engines.
 		transformItems: (items) =>
 			items.filter((item) => {
 				const url = item.url.replace(/^\/+|\/+$/g, "");
@@ -155,171 +110,5 @@ export default defineConfig({
 			}),
 		],
 	},
-	transformHead: ({ pageData, siteData, title, description }) => {
-		const head: HeadConfig[] = [];
-		const { frontmatter, relativePath } = pageData;
-		const post = isBlogPost(relativePath);
-		const url = `${SITE_URL}${pageUrl(relativePath, siteData.base)}`;
-		const image = absoluteUrl(frontmatter.image, LOGO_URL);
-		const published = toIso(frontmatter.date);
-		const modified = toIso(pageData.lastUpdated) ?? published;
-		const isArticle = post && published !== undefined;
-
-		head.push(["meta", { property: "theme-color", content: "#33b6b1" }]);
-
-		// Canonical URL
-		head.push(["link", { rel: "canonical", href: url }]);
-
-		// Open Graph
-		head.push(["meta", { property: "og:site_name", content: SITE_NAME }]);
-		head.push(["meta", { property: "og:locale", content: "en_US" }]);
-		head.push(["meta", { property: "og:type", content: isArticle ? "article" : "website" }]);
-		head.push(["meta", { property: "og:url", content: url }]);
-		head.push(["meta", { property: "og:title", content: title }]);
-		head.push(["meta", { property: "og:description", content: description }]);
-		head.push(["meta", { property: "og:image", content: image }]);
-		head.push(["meta", { property: "og:image:alt", content: title }]);
-
-		// Twitter Card
-		head.push([
-			"meta",
-			{
-				name: "twitter:card",
-				content: frontmatter.image ? "summary_large_image" : "summary",
-			},
-		]);
-		head.push(["meta", { name: "twitter:title", content: title }]);
-		head.push(["meta", { name: "twitter:description", content: description }]);
-		head.push(["meta", { name: "twitter:image", content: image }]);
-		head.push(["meta", { name: "twitter:image:alt", content: title }]);
-
-		// Article metadata (blog posts only)
-		if (isArticle) {
-			head.push(["meta", { property: "article:published_time", content: published }]);
-			if (modified) {
-				head.push(["meta", { property: "article:modified_time", content: modified }]);
-			}
-			if (frontmatter.author) {
-				head.push(["meta", { property: "article:author", content: frontmatter.author }]);
-			}
-			head.push(["meta", { property: "article:section", content: "Blog" }]);
-			for (const tag of frontmatter.tags ?? []) {
-				head.push(["meta", { property: "article:tag", content: tag }]);
-			}
-		}
-
-		// Structured data (JSON-LD)
-		const organization = {
-			"@type": "Organization",
-			name: "LowRezStudio",
-			url: SITE_URL,
-			logo: { "@type": "ImageObject", url: LOGO_URL },
-			sameAs: SOCIAL_PROFILES,
-		};
-
-		if (isArticle) {
-			head.push([
-				"script",
-				{ type: "application/ld+json" },
-				JSON.stringify({
-					"@context": "https://schema.org",
-					"@type": "BlogPosting",
-					headline: pageData.title,
-					description,
-					image: [image],
-					datePublished: published,
-					dateModified: modified,
-					author: {
-						"@type": "Organization",
-						name: frontmatter.author ?? "LowRezStudio Team",
-					},
-					publisher: organization,
-					mainEntityOfPage: { "@type": "WebPage", "@id": url },
-					url,
-					inLanguage: "en-US",
-					isPartOf: {
-						"@type": "Blog",
-						name: `${SITE_NAME} Blog`,
-						url: `${SITE_URL}/blog/`,
-					},
-					...(frontmatter.tags?.length ? { keywords: frontmatter.tags.join(", ") } : {}),
-					articleSection: "Blog",
-				}),
-			]);
-		} else if (relativePath === "index.md") {
-			head.push([
-				"script",
-				{ type: "application/ld+json" },
-				JSON.stringify({
-					"@context": "https://schema.org",
-					"@type": "WebSite",
-					name: SITE_NAME,
-					alternateName: "Paladins Modding Documentation",
-					url: `${SITE_URL}/`,
-					description,
-					inLanguage: "en-US",
-					publisher: organization,
-				}),
-			]);
-			head.push([
-				"script",
-				{ type: "application/ld+json" },
-				JSON.stringify({ "@context": "https://schema.org", ...organization }),
-			]);
-		} else if (relativePath === "blog/index.md") {
-			head.push([
-				"script",
-				{ type: "application/ld+json" },
-				JSON.stringify({
-					"@context": "https://schema.org",
-					"@type": "Blog",
-					name: `${SITE_NAME} Blog`,
-					url,
-					description: pageData.description ?? description,
-					inLanguage: "en-US",
-					publisher: organization,
-				}),
-			]);
-		} else {
-			// Documentation page: describe it as a TechArticle so search engines
-			// get a title, description, modified date and site context.
-			head.push([
-				"script",
-				{ type: "application/ld+json" },
-				JSON.stringify({
-					"@context": "https://schema.org",
-					"@type": "TechArticle",
-					headline: pageData.title,
-					description,
-					url,
-					mainEntityOfPage: { "@type": "WebPage", "@id": url },
-					...(modified ? { dateModified: modified } : {}),
-					inLanguage: "en-US",
-					publisher: organization,
-					isPartOf: { "@type": "WebSite", name: SITE_NAME, url: `${SITE_URL}/` },
-				}),
-			]);
-
-			// The launcher intro doubles as the product landing page.
-			if (relativePath === "tempest/introduction.md") {
-				head.push([
-					"script",
-					{ type: "application/ld+json" },
-					JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "SoftwareApplication",
-						name: "Tempest",
-						applicationCategory: "GameApplication",
-						operatingSystem: "Windows",
-						url,
-						description,
-						offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-						publisher: organization,
-					}),
-				]);
-			}
-		}
-
-		return head;
-	},
+	transformHead,
 });
