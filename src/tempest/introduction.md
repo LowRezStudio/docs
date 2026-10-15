@@ -16,7 +16,8 @@ and host or join private servers — keeping the game playable even without offi
   [Tempest Legacy](/tempest-legacy/introduction), including the
   [console commands](/tempest-legacy/commands) reference and
   [FAQ](/tempest-legacy/faq).
-- Want to build mods? See [UDK getting started](/udk/getting-started).
+- Want to build mods? [Lua scripting](/tempest/scripting/introduction) needs no compiler and
+  hooks the live game; [UDK getting started](/udk/getting-started) covers UnrealScript mods.
 - Curious how the networking works? See the [Marshal introduction](/marshal/introduction).
 
 Updates are announced on the [blog](/blog/) and in the community Discord.

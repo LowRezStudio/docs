@@ -22,9 +22,9 @@ The folder `<Paladins install folder>/ChaosGame/CookedPCConsole` contains compre
 
 1. Export the animation you wish to edit with umodel64.
 2. Open your decompressed and processed UPK file with UPK Explorer. Locate the relevant AnimSet and the AnimSequence for your location.
-::: tip
-AnimSequence objects for 1st person animations are usually located in `DEVICES_{number}_ASSETS_SF.upk` files, under the `AS_WEP_{character}_skin00a_1p` AnimSet object. You have to figure out which number corresponds to your character. The ones for 3rd person animations are located in `ASSETS_{CHARACTER}_SF.upk` files.`
-:::
+   ::: tip
+   AnimSequence objects for 1st person animations are usually located in `DEVICES_{number}_ASSETS_SF.upk` files, under the `AS_WEP_{character}_skin00a_1p` AnimSet object. You have to figure out which number corresponds to your character. The ones for 3rd person animations are located in `ASSETS_{CHARACTER}_SF.upk` files.`
+   :::
 3. Once you've located the AnimSequence, take note of its SequenceName as well as the AnimSet and close UPK Explorer.
 4. Open your UPK file with UE Viewer, and navigate until you locate your AnimSequence. Export the current object as a PSK export. You will have two files: the mesh **.psk file** and the animation **.psa file**.
 
@@ -34,9 +34,9 @@ AnimSequence objects for 1st person animations are usually located in `DEVICES_{
 2. Import the PSK file, select your skeleton.
 3. Import the PSA file.
 4. Select the animation you want to edit and get to work.
-::: danger
-Do not remove or add bones. You may only change their positions within your animation.
-:::
+   ::: danger
+   Do not remove or add bones. You may only change their positions within your animation.
+   :::
 5. Once you're done creating your animation, export your PSA and select all animations.
 
 ## 3. Injecting into the UPK
@@ -47,4 +47,4 @@ Do not remove or add bones. You may only change their positions within your anim
     python ue3_psa_upk_injector.py --upk {Workable UPK File} --psa-original {First PSA export file} --psa-modified {Edited PSA file} --sequence {SequenceName} --animset {AnimSet} --out {Output UPK file}
     ```
     This command will run the injection script and will output a UPK File. You may verify your animation was properly injected through UE Viewer.
-4. Compress the output UPK with UPK Parser. You now have a mod you may cook with Tempest.
+3. Compress the output UPK with UPK Parser. You now have a mod you may cook with Tempest.

@@ -7,6 +7,54 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/introduction",
 		},
 		{
+			text: "Lua Scripting",
+			collapsed: false,
+			items: [
+				{
+					text: "Introduction",
+					link: "/tempest/scripting/introduction",
+				},
+				{
+					text: "Getting Started",
+					link: "/tempest/scripting/getting-started",
+				},
+				{
+					text: "Concepts",
+					link: "/tempest/scripting/concepts",
+				},
+				{
+					text: "Cookbook",
+					link: "/tempest/scripting/cookbook",
+				},
+				{
+					text: "Limitations & Troubleshooting",
+					link: "/tempest/scripting/limitations",
+				},
+			],
+		},
+		{
+			text: "Scripting API",
+			collapsed: false,
+			items: [
+				{
+					text: "tempest",
+					link: "/tempest/scripting/api/tempest",
+				},
+				{
+					text: "Objects & Containers",
+					link: "/tempest/scripting/api/objects",
+				},
+				{
+					text: "Console & Input",
+					link: "/tempest/scripting/api/console-and-input",
+				},
+				{
+					text: "memory",
+					link: "/tempest/scripting/api/memory",
+				},
+			],
+		},
+		{
 			text: "Tempest Legacy",
 			link: "/tempest-legacy/introduction",
 		},
@@ -94,8 +142,8 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 				},
 				{
 					text: "Editing animations",
-					link: "/udk/edit-animations"
-				}
+					link: "/udk/edit-animations",
+				},
 			],
 		},
 		{
