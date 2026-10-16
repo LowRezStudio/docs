@@ -61,13 +61,21 @@ events the engine raises, `ProcessInternal` for every UnrealScript function body
 replacement for natives. Calls made from Lua bypass the first but still reach the other two, so a
 hooked native sees calls made with `obj:Func()` too.
 
+Engine code that is not a UnrealScript function has no name to hook by. For that there is
+[`memory.hook(addr, fn)`](./api/memory#address-hooks): an inline detour on a raw address, with
+the handler receiving the integer arguments and an `original` to call through. It is the escape
+hatch for C++ internals (package loading, the network layer, a native's implementation) and
+comes with fewer guarantees than the named hooks: no parameter names or types, no floats, and
+the handler runs on whichever thread made the call.
+
 ## Threads
 
 The game runs its logic on one thread, and scripts should touch game objects only from there.
 Hook handlers already run on it. Code that starts elsewhere, such as the DLL's console REPL, is
 queued and executes at the next event; `tempest.queue(fn)` does the same for your own code, and
 `tempest.on_game_thread()` tells you where you are. Key bindings and console commands dispatch on
-the game thread as well.
+the game thread as well. The one exception is `memory.hook`: its handlers run on the thread that
+called the hooked function, which is the game thread only when that function is.
 
 ## Mods and sandboxes
 

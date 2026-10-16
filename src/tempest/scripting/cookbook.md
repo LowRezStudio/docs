@@ -141,6 +141,39 @@ tempest.trace("Tick", 3)          -- which objects tick, with their DeltaTime
 tempest.trace("TakeDamage", 5)    -- damage events and their params
 ```
 
+## Hook a C++ function by address
+
+`memory.hook` detours anything with an address, not only UnrealScript functions. A native's C++
+implementation is the easiest to find: every `UFunction` object stores it in its `Func` field.
+
+```lua
+local fn = tempest.find_object("Function Engine.PlayerController.ConsoleCommand")
+local entry = memory.read_ptr(fn:ptr() + 0xF0)          -- UFunction.Func on 8.1
+
+local id = memory.hook(entry, function(original, this, frame, result)
+  print("ConsoleCommand on " .. tostring(tempest.object(this)))
+  return original()                                      -- pass through unchanged
+end, { args = 3 })
+
+tempest.command("stop_tracing", function() memory.unhook(id) end)
+```
+
+For a function found by signature, scan for it and hook the first hit:
+
+```lua
+local target = memory.scan("48 89 5C 24 ? 57 48 83 EC 30 48 8B D9 ...")[1]
+memory.hook(target, function(original, a, b)
+  local r = original(a, b)
+  if r == 0 then print("call failed") end
+  return r
+end, { args = 2 })
+```
+
+Arguments are integers (registers and stack slots), so read strings with `memory.read_wstr(ptr)`
+and wrap object pointers with `tempest.object(ptr)`. See the
+[`memory` reference](./api/memory#address-hooks) for the rules on `original`, return values and
+threads.
+
 ## Enable the game console
 
 The shipping game does not create its console. A mod can, the way TgMod does:

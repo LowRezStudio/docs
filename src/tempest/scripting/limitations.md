@@ -17,7 +17,10 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
   return `nil`. Use the `*Spawnable` classes or a class of your own.
 - **Unqualified hooks (`"Func"`) do not catch natives.** Natives are hooked per function and need
   `"Package.Class.Func"`.
-- **64 native hooks** at a time per process.
+- **64 native hooks** at a time per process. Address hooks (`memory.hook`) have no such limit.
+- **Address hooks see integers only.** `memory.hook` and `memory.call` pass the integer registers
+  and stack slots; float arguments and results (XMM registers) are invisible. Their handlers run
+  on the calling thread, not necessarily the game thread.
 - **Input** covers keyboard, mouse buttons and wheel. No gamepad.
 - **No DLL unload.** The runtime stays until the game exits; scripts reload, the DLL does not.
 - **One runtime per process.** If several mods ship the DLL, the first one loaded runs everything
@@ -39,6 +42,9 @@ changed through the environment the game is launched with: `TEMPEST_SCRIPT_LOG=<
 | `cannot hook native X: has out params and GPropAddr is not resolved yet` | retried automatically once the game thread runs; a later line says `(deferred)` when it succeeds |
 | `GPropAddr probe found nothing`                                          | out-param natives stay unhookable on this build                                                  |
 | `[mod] handler for X failed: ...`                                        | a Lua error in that mod's hook; the call itself still ran                                        |
+| `memory.hook: cannot detour 0x...`                                       | the address is not a relocatable function entry (mid-function, jump target, too short)           |
+| `[mod] hook #N on 0x... failed: ...`                                     | a Lua error in an address hook; the original function ran instead                                |
+| `address hook on 0x... panicked; running the original`                   | a runtime bug in the hook path; the game call still went through, please report the log          |
 | `X has no property \`Y\``                                                | typo, or the property only exists on a subclass; check `obj:class():path()` and `obj:prop("Y")`  |
 | `no game window yet; will keep looking`                                  | key bindings wait for the game window; normal during startup                                     |
 | `another Tempest.Scripting instance already runs`                        | a second mod ships the DLL; harmless                                                             |
@@ -50,6 +56,7 @@ Useful checks from the DLL console or `lua` in the game console:
 =tempest.status().notes            -- anything that failed to resolve
 =tempest.status().subscriptions    -- every hook, with its owning mod
 =tempest.status().native_hooks     -- natives currently hooked
+=memory.hooks()                    -- address hooks, with their owning mod
 =tempest.local_player()            -- nil outside a match
 =tempest.local_player():prop("Pawn")
 ```

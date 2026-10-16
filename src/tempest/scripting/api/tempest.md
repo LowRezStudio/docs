@@ -35,6 +35,7 @@ Returns a table describing what the runtime resolved:
 | `notes`                      | list of strings explaining anything that failed                   |
 | `subscriptions`              | map of hook id → `"[mod] before Spec"` strings                    |
 | `native_hooks`               | full names of natives currently hooked                            |
+| `address_hooks`              | `{ id, addr, mod }` entries, one per `memory.hook`                |
 | `mods`                       | ids of loaded mods                                                |
 
 Other fields (`engine`, `process_event`, `process_internal`, `gmalloc`, `gnatives`, `xor_mask`,
@@ -109,6 +110,13 @@ The `UEngine` instance (`Engine.Engine`).
 
 The local `PlayerController` (`Engine.PlayerController`), or `nil` in menus. Most gameplay scripts
 start from here: `pc.Pawn`, `pc.PlayerReplicationInfo`, `pc.myHUD`, `pc.PlayerInput`.
+
+### `tempest.object(ptr)` → Object
+
+Wraps a raw `UObject*` address, such as an argument of a [`memory.hook`](./memory#address-hooks)
+handler or the result of `memory.call`, as an Object proxy. Returns `nil` when the pointer or its
+class pointer is not readable, so a stray integer gives `nil` rather than a crash. It does not
+prove the memory is an object: use it on values you know hold one.
 
 ## Creating objects
 
