@@ -37,9 +37,9 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
 
 ## Troubleshooting
 
-The log is `%TEMP%\tempest-scripting.log`. The console window shows the same lines. (Both can be
-changed through the environment the game is launched with: `TEMPEST_SCRIPT_LOG=<path>` and
-`TEMPEST_SCRIPT_CONSOLE=0`; a configuration file is planned.)
+The log is `%TEMP%\tempest-scripting.log`. The console window shows the same lines. Both are
+settings in `<game>/ChaosGame/Config/tempest.toml` (`[runtime] log` and `console`); the environment
+variables `TEMPEST_SCRIPT_LOG=<path>` and `TEMPEST_SCRIPT_CONSOLE=0` override them.
 
 | symptom                                                                  | what it means                                                                                    |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
@@ -61,6 +61,9 @@ changed through the environment the game is launched with: `TEMPEST_SCRIPT_LOG=<
 | `[mod] draw handler #N failed: ...`                                      | a Lua error in a `ui.on_draw` handler; logged once per distinct message, the UI keeps running    |
 | `imgui assertion failed: ...`                                            | an internal ImGui assertion, logged instead of aborting; please report the log                   |
 | `another Tempest.Scripting instance already runs`                        | a second mod ships the DLL; harmless                                                             |
+| `game folder unknown ...; using defaults`                                | the DLL was not injected from `<game>/Binaries/Win64`; set `TEMPEST_GAME_DIR`                    |
+| `[hot] <file> changed (<mod>)`                                           | hot reload noticed a save; the mod reloads after the quiet period                                |
+| `[config] [mod] wrote defaults to ...`                                   | first run of a mod that calls `tempest.config`; edit that file                                   |
 | `[VEH][crash] ACCESS_VIOLATION ...`                                      | the game faulted; the address and the last script line before it narrow it down                  |
 
 Useful checks from the DLL console or `lua` in the game console:

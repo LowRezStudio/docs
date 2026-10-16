@@ -38,6 +38,7 @@ Returns a table describing what the runtime resolved:
 | `address_hooks`              | `{ id, addr, mod }` entries, one per `memory.hook`                |
 | `lua_natives`                | full names of the `dllimport` functions bound to Lua              |
 | `mods`                       | ids of loaded mods                                                |
+| `dev_mods`                   | ids of the mods loaded from the dev folder                        |
 
 Other fields (`engine`, `process_event`, `process_internal`, `gmalloc`, `gnatives`, `xor_mask`,
 `runtime_uc_flags`, `gpropaddr`) are addresses for debugging.
@@ -217,6 +218,31 @@ Publish a value for other mods, or fetch one. Values live in the global `shared`
 also be used directly; `export` additionally records the provider in `shared.__providers`, and
 `import` logs a hint when the name is not provided yet (load order matters, see
 [`[scripting] after`](/tempest/scripting/concepts#mods-and-sandboxes)).
+
+### `tempest.config(defaults)` → table
+
+This mod's configuration: `defaults`, then the mod's `config.toml`, then (installed mods) the
+user's `<game>/ChaosGame/Config/mods/<mod-id>.toml`, deep-merged in that order. The editable file
+(a dev mod's `config.toml`, an installed mod's user file) is written with the merged values when it
+does not exist. Values are strings, numbers, booleans and tables
+(arrays or maps). See [Concepts](/tempest/scripting/concepts#mod-configuration).
+
+### `tempest.save_config(table)` → path
+
+Writes the mod's config file (the table replaces it). The watcher then reloads the mod, so write
+the complete config rather than a fragment.
+
+### `tempest.config_path()` → string
+
+### `tempest.settings()` → table
+
+The runtime settings from `<game>/ChaosGame/Config/tempest.toml`, read-only: `path`, `game_dir`,
+`log`, `console`, `jit`, `dev_mods`, `hot_reload`, `hot_reload_delay_ms`, `mod_configs`,
+`ui_scale`. `tempest.game_dir()` returns the game folder alone.
+
+### `tempest.toast(msg)`
+
+Logs `msg` and shows it in chat when a local player exists.
 
 ### `tempest.reload(mod_id)`
 

@@ -121,6 +121,27 @@ Hooks, commands and key bindings remember which mod registered them. Errors in a
 logged with the mod's id, and `tempest.reload("my-lib")` drops only that mod's registrations
 before running it again.
 
+## Mod configuration
+
+Each mod has one editable config file. For an installed mod it is
+`<game>/ChaosGame/Config/mods/<mod-id>.toml`, next to the game's own `.ini` files; for a dev mod it
+is the `config.toml` in the mod folder, so everything about a dev mod stays in one place.
+`tempest.config(defaults)` returns it as a table: the defaults you pass, overridden by the mod's
+`config.toml`, overridden (installed mods) by the user's file. The editable file is created from
+the merged values the first time, so there is always something to edit, and saving it reloads the
+mod.
+
+```lua
+local cfg = tempest.config({
+  enabled = true,
+  speed = 1.0,
+  keys = { toggle = "Insert" },
+})
+tempest.on_key(cfg.keys.toggle, function() ... end)
+```
+
+`tempest.save_config(cfg)` writes changes back (from a settings panel, say).
+
 ## Memory ownership
 
 Strings and arrays written from Lua are allocated with the engine's allocator, so the game can

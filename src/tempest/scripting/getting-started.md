@@ -61,7 +61,40 @@ end, "hello [name]")
 Scripts in a mod run alphabetically. Everything printed with `print` lands in the log and the
 console window, prefixed with the mod id.
 
-## 3. Pack and install
+## 3. Develop in the game folder
+
+For quick iteration, skip packing: put the mod folder in `<game>/mods/`:
+
+```text
+<game>/mods/my-first-mod/scripts/main.lua
+```
+
+The runtime loads every folder there like an installed mod (`manifest.toml` is optional; the
+folder name is the id without one) and **reloads the mod whenever you save a file in it**, with a
+chat message to confirm. A dev mod with the same id as an installed mod replaces it, so you can
+iterate on a released mod in place. The runtime also drops `types/` and a `.luarc.json` into
+`<game>/mods/`, so opening that folder in VS Code gives completion right away.
+
+Both the dev folder and hot reload are settings in `<game>/ChaosGame/Config/tempest.toml`, which
+the runtime writes with comments on first run:
+
+```toml
+[runtime]
+console = true            # console window + Lua REPL
+jit = true
+[dev]
+mods = "mods"             # the dev folder, relative to the game folder
+hot_reload = true
+hot_reload_delay_ms = 300
+[mods]
+configs = "ChaosGame/Config/mods"
+[ui]
+scale = 1.0
+```
+
+`tempest_config` in the game console prints where these files are.
+
+## 4. Pack and install
 
 Pack the folder with the Tempest CLI:
 
@@ -74,10 +107,10 @@ pick it from the mods screen. Launch the game and look for `[my-first-mod] loade
 
 To update a mod, pack and install it again; the launcher replaces the previous version.
 
-## 4. Iterate while the game runs
+## 5. Iterate while the game runs
 
-Scripts reload in place, so a script change does not need a game restart. From the game console
-(F2 when the console mod is enabled):
+Dev mods reload themselves on save. Installed mods reload from the game console (F2 when the
+console mod is enabled):
 
 ```text
 tempest_reload                reload every mod
@@ -91,7 +124,7 @@ The runtime's own console window is a Lua REPL as well: type `tempest.reload()` 
 
 A new version of the runtime DLL does need a game restart.
 
-## 5. Editor completion
+## 6. Editor completion
 
 `types/tempest.d.lua` in the
 [Tempest.Scripting repository](https://github.com/LowRezStudio) describes the whole API for the
@@ -123,7 +156,7 @@ tempest.on("PostRender", function(this, params)
 end)
 ```
 
-## 6. Explore
+## 7. Explore
 
 Type `ui_demo` in the game console to open Dear ImGui's demo window: every widget the
 [`ui`](/tempest/scripting/api/ui) module can draw, with the mouse.
