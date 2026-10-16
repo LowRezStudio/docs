@@ -102,10 +102,31 @@ end)
 `fn(this, params)` runs in place of the function, from UnrealScript, from the engine, or from
 Lua (`game:LuaAdd(1, 2)`). Its return value becomes the result; `out` parameters are whatever it
 assigned into `params`. A `dllimport` function with no handler returns zero or an empty value and
-logs once. The DLL name in `DLLBind` is only a label; the game never loads it. UDK limits
-`dllimport` parameters to `int`, `float`, `byte`, `bool`, `string` and structs of those (no object
-references), but the handler always gets the calling object as `this`. Returns a hook id that
-`tempest.off` removes.
+logs once. The DLL name in `DLLBind` is only a label; the game never loads it. Returns a hook id
+that `tempest.off` removes.
+
+UDK limits `dllimport` parameters to `int`, `float`, `byte`, `bool`, `string` and structs of
+those: no object references. For those, declare an ordinary function with a stub body instead;
+`tempest.native` implements it the same way, with any UnrealScript types, and the body is what
+runs when no Lua handler is registered:
+
+```unrealscript
+function string LuaDescribe(Actor A) { return "(not implemented in Lua)"; }
+function bool LuaControllerOf(Pawn P, out Controller C) { return false; }
+```
+
+```lua
+tempest.native("TmLuaTest.TmLuaGame.LuaDescribe", function(game, params)
+  return params.A:full_name()
+end)
+tempest.native("TmLuaTest.TmLuaGame.LuaControllerOf", function(game, params)
+  params.C = params.P.Controller       -- `out` object reference
+  return params.C ~= nil
+end)
+```
+
+`tempest.native` refuses a native that already has a C++ implementation; hook those with
+`tempest.before`.
 
 ### `tempest.off(id)`
 

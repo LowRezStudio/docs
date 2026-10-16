@@ -18,9 +18,10 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
 - **Unqualified hooks (`"Func"`) do not catch natives.** Natives are hooked per function and need
   `"Package.Class.Func"`.
 - **64 native hooks** at a time per process. Address hooks (`memory.hook`) have no such limit.
-- **Lua natives take what UDK allows.** `dllimport` parameters are `int`, `float`, `byte`,
-  `bool`, `string` and structs of those; object references cannot be parameters (the calling
-  object arrives as `this`). `out` parameters write back for plain kinds, not strings or arrays.
+- **`dllimport` parameters are what UDK allows**: `int`, `float`, `byte`, `bool`, `string` and
+  structs of those. For object references give the function a stub body instead of `dllimport`;
+  `tempest.native` handles both. `out` parameters write back for plain kinds (numbers, names,
+  objects, vectors), not strings or arrays.
 - **Address hooks see integers only.** `memory.hook` and `memory.call` pass the integer registers
   and stack slots; float arguments and results (XMM registers) are invisible. Their handlers run
   on the calling thread, not necessarily the game thread.
