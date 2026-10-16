@@ -36,6 +36,7 @@ Returns a table describing what the runtime resolved:
 | `subscriptions`              | map of hook id → `"[mod] before Spec"` strings                    |
 | `native_hooks`               | full names of natives currently hooked                            |
 | `address_hooks`              | `{ id, addr, mod }` entries, one per `memory.hook`                |
+| `lua_natives`                | full names of the `dllimport` functions bound to Lua              |
 | `mods`                       | ids of loaded mods                                                |
 
 Other fields (`engine`, `process_event`, `process_internal`, `gmalloc`, `gnatives`, `xor_mask`,
@@ -71,6 +72,40 @@ matching rules.
 
 Handlers run on the game thread. A Lua error inside one is logged with the mod id and never
 reaches the game.
+
+### `tempest.native(spec, fn)` → id
+
+Implements an UnrealScript function of your own package in Lua. The package declares the
+function without a body, as a `dllimport` function of a `DLLBind` class (UDK compiles this, no
+C++ needed):
+
+```unrealscript
+class TmLuaGame extends TgGame_Paladins_ShootingRange DLLBind(TempestScripting);
+
+dllimport final function int LuaAdd(int A, int B);
+dllimport final function bool LuaOnPlayerSpawned(int PlayerId, out Vector Boost);
+```
+
+The runtime binds every `dllimport` function it finds to Lua when scripts load, and
+`tempest.native` supplies the body:
+
+```lua
+tempest.native("TmLuaTest.TmLuaGame.LuaAdd", function(game, params)
+  return params.A + params.B                 -- the return value
+end)
+tempest.native("TmLuaTest.TmLuaGame.LuaOnPlayerSpawned", function(game, params)
+  params.Boost = { x = 0, y = 0, z = 600 }   -- `out` parameters: assign into params
+  return true
+end)
+```
+
+`fn(this, params)` runs in place of the function, from UnrealScript, from the engine, or from
+Lua (`game:LuaAdd(1, 2)`). Its return value becomes the result; `out` parameters are whatever it
+assigned into `params`. A `dllimport` function with no handler returns zero or an empty value and
+logs once. The DLL name in `DLLBind` is only a label; the game never loads it. UDK limits
+`dllimport` parameters to `int`, `float`, `byte`, `bool`, `string` and structs of those (no object
+references), but the handler always gets the calling object as `this`. Returns a hook id that
+`tempest.off` removes.
 
 ### `tempest.off(id)`
 

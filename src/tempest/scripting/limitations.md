@@ -18,6 +18,9 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
 - **Unqualified hooks (`"Func"`) do not catch natives.** Natives are hooked per function and need
   `"Package.Class.Func"`.
 - **64 native hooks** at a time per process. Address hooks (`memory.hook`) have no such limit.
+- **Lua natives take what UDK allows.** `dllimport` parameters are `int`, `float`, `byte`,
+  `bool`, `string` and structs of those; object references cannot be parameters (the calling
+  object arrives as `this`). `out` parameters write back for plain kinds, not strings or arrays.
 - **Address hooks see integers only.** `memory.hook` and `memory.call` pass the integer registers
   and stack slots; float arguments and results (XMM registers) are invisible. Their handlers run
   on the calling thread, not necessarily the game thread.
@@ -43,6 +46,7 @@ changed through the environment the game is launched with: `TEMPEST_SCRIPT_LOG=<
 | `GPropAddr probe found nothing`                                          | out-param natives stay unhookable on this build                                                  |
 | `[mod] handler for X failed: ...`                                        | a Lua error in that mod's hook; the call itself still ran                                        |
 | `memory.hook: cannot detour 0x...`                                       | the address is not a relocatable function entry (mid-function, jump target, too short)           |
+| `X has no Lua implementation (tempest.native); returning zero`           | a `dllimport` function ran before (or without) a `tempest.native` handler for it                 |
 | `[mod] hook #N on 0x... failed: ...`                                     | a Lua error in an address hook; the original function ran instead                                |
 | `address hook on 0x... panicked; running the original`                   | a runtime bug in the hook path; the game call still went through, please report the log          |
 | `X has no property \`Y\``                                                | typo, or the property only exists on a subclass; check `obj:class():path()` and `obj:prop("Y")`  |
