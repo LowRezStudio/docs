@@ -99,14 +99,15 @@ A new version of the runtime DLL does need a game restart.
 
 ```json
 {
-	"runtime.version": "Lua 5.4",
+	"runtime.version": "LuaJIT",
 	"workspace.library": ["types"],
 	"diagnostics.globals": ["MOD", "shared"]
 }
 ```
 
-Open the mod folder in VS Code with the Lua extension and `tempest.*`, `memory.*`, objects,
-arrays and maps complete.
+Open the mod folder in VS Code with the Lua extension and `tempest.*`, `memory.*`, `ui.*`,
+objects, arrays and maps complete. `types/imgui.d.lua` next to it covers the raw Dear ImGui API
+(`ui.C.*`).
 
 For the game's own classes, run `tempest.dump_sdk("C:/path/to/my-first-mod/types/sdk")` once from
 the console (or bind it to a key with `tempest.on_key`). It writes one `<Package>.lua` per package,
@@ -123,6 +124,9 @@ end)
 ```
 
 ## 6. Explore
+
+Type `ui_demo` in the game console to open Dear ImGui's demo window: every widget the
+[`ui`](/tempest/scripting/api/ui) module can draw, with the mouse.
 
 `tempest.trace("PostRender", 5)` logs the first five firings of an event with the object and its
 parameters, which is the quickest way to find out what fires and with what. `obj:prop("Name")`

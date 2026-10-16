@@ -112,6 +112,45 @@ tempest.on_key("Ctrl+F5", function()
 end)
 ```
 
+## A settings panel
+
+```lua
+local panel = { open = false, speed = 1.0, godmode = false }
+
+tempest.on_key("Insert", function()
+  panel.open = not panel.open
+  ui.capture(panel.open)
+  return true
+end)
+
+ui.on_draw(function()
+  if not panel.open then return end
+  local still_open = ui.window("Settings", { open = true }, function()
+    panel.speed = ui.slider_float("Speed", panel.speed, 0.5, 3, "%.1fx")
+    panel.godmode = ui.checkbox("God mode", panel.godmode)
+    local pawn = tempest.local_player() and tempest.local_player().Pawn
+    if pawn and ui.button("Apply") then
+      pawn.GroundSpeed = 600 * panel.speed
+    end
+  end)
+  if still_open == false then panel.open = false ui.capture(false) end
+end)
+```
+
+## Draw over the game
+
+No window, no mouse: draw lists paint straight onto the screen.
+
+```lua
+ui.on_draw(function()
+  local pc = tempest.local_player()
+  if not pc or not pc.Pawn then return end
+  local w, h = ui.screen()
+  ui.fg.text(8, h - 24, ui.rgb(0xffffff, 0.8), "health %d", pc.Pawn.Health)
+  ui.fg.circle(w / 2, h / 2, 5, ui.rgb(0x00ff00), 0, 2)
+end)
+```
+
 ## Share code between mods
 
 ```lua

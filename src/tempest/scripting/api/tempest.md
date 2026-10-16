@@ -235,9 +235,10 @@ Documented on their own pages:
 
 ## Globals
 
-| name      | description                                                      |
-| --------- | ---------------------------------------------------------------- |
-| `MOD`     | id of the mod the script belongs to                              |
-| `shared`  | table visible to every mod (see `export` / `import`)             |
-| `require` | loads `scripts/<name>.lua` from the same mod (`.` becomes `/`)   |
-| `memory`  | raw memory access, see [`memory`](/tempest/scripting/api/memory) |
+| name      | description                                                                                                  |
+| --------- | ------------------------------------------------------------------------------------------------------------ |
+| `MOD`     | id of the mod the script belongs to                                                                          |
+| `shared`  | table visible to every mod (see `export` / `import`)                                                         |
+| `require` | loads `scripts/<name>.lua` from the same mod (`.` becomes `/`), else a built-in module (`ffi`, `bit`, `jit`) |
+| `memory`  | raw memory access, see [`memory`](/tempest/scripting/api/memory)                                             |
+| `ui`      | the in-game UI, see [`ui`](/tempest/scripting/api/ui)                                                        |

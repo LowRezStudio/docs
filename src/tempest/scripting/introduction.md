@@ -1,11 +1,12 @@
 ---
 title: Lua scripting
-description: Tempest.Scripting is a Lua modding runtime for Paladins. Hook game functions, read and write any object, call UnrealScript and native functions, and ship mods with no compiler.
+description: Tempest.Scripting is a LuaJIT modding runtime for Paladins. Hook game functions, read and write any object, call UnrealScript and native functions, draw an in-game UI, and ship mods with no compiler.
 ---
 
 # Lua scripting
 
-Tempest.Scripting is a Lua 5.4 runtime that the launcher injects into Paladins alongside V2 mods.
+Tempest.Scripting is a LuaJIT runtime (Lua 5.1 with the 5.2 extensions, `ffi` and `bit`
+included) that the launcher injects into Paladins alongside V2 mods.
 It gives a script live access to the game's UnrealScript object model without a UDK project,
 a compiler, or any hard-coded offsets.
 
@@ -16,6 +17,7 @@ With it a mod can:
 - hook functions before or after they run, change their arguments, or cancel them
 - construct objects, spawn actors, and iterate arrays and maps
 - add console commands and key bindings
+- draw an in-game UI with Dear ImGui: windows, widgets, tables, overlays
 - share values with other Lua mods
 
 Scripts reload while the game runs, so iteration is edit, save, reload.
@@ -53,7 +55,7 @@ supported.
 - The API reference: [`tempest`](/tempest/scripting/api/tempest),
   [objects and containers](/tempest/scripting/api/objects),
   [console and input](/tempest/scripting/api/console-and-input),
-  [`memory`](/tempest/scripting/api/memory).
+  [`memory`](/tempest/scripting/api/memory), [`ui`](/tempest/scripting/api/ui).
 - [Cookbook](/tempest/scripting/cookbook) has copy-paste recipes.
 - [Limitations and troubleshooting](/tempest/scripting/limitations) lists what does not work and
   how to read the log.

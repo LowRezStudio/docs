@@ -26,6 +26,11 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
   and stack slots; float arguments and results (XMM registers) are invisible. Their handlers run
   on the calling thread, not necessarily the game thread.
 - **Input** covers keyboard, mouse buttons and wheel. No gamepad.
+- **Numbers are doubles** (LuaJIT). Addresses and object pointers are exact, but
+  `memory.read_u64` of arbitrary data loses precision above 2^53 (use `ffi` for 64-bit arithmetic),
+  and `tostring` prints a large address in exponent form: format addresses with `%x`.
+- **UI** has one default font and no images yet; widgets are only valid inside a draw handler; the
+  D3D9 path exists but the client ships D3D11.
 - **No DLL unload.** The runtime stays until the game exits; scripts reload, the DLL does not.
 - **One runtime per process.** If several mods ship the DLL, the first one loaded runs everything
   and the others log that they are idle.
@@ -52,6 +57,9 @@ changed through the environment the game is launched with: `TEMPEST_SCRIPT_LOG=<
 | `address hook on 0x... panicked; running the original`                   | a runtime bug in the hook path; the game call still went through, please report the log          |
 | `X has no property \`Y\``                                                | typo, or the property only exists on a subclass; check `obj:class():path()` and `obj:prop("Y")`  |
 | `no game window yet; will keep looking`                                  | key bindings wait for the game window; normal during startup                                     |
+| `waiting for d3d9.dll or d3d11.dll to load`                              | the UI hooks poll for the renderer; `IDXGISwapChain::Present detour live` follows                |
+| `[mod] draw handler #N failed: ...`                                      | a Lua error in a `ui.on_draw` handler; logged once per distinct message, the UI keeps running    |
+| `imgui assertion failed: ...`                                            | an internal ImGui assertion, logged instead of aborting; please report the log                   |
 | `another Tempest.Scripting instance already runs`                        | a second mod ships the DLL; harmless                                                             |
 | `[VEH][crash] ACCESS_VIOLATION ...`                                      | the game faulted; the address and the last script line before it narrow it down                  |
 
@@ -62,6 +70,7 @@ Useful checks from the DLL console or `lua` in the game console:
 =tempest.status().subscriptions    -- every hook, with its owning mod
 =tempest.status().native_hooks     -- natives currently hooked
 =memory.hooks()                    -- address hooks, with their owning mod
+=ui.stats()                        -- UI frames built vs rendered (ui_status in the game console)
 =tempest.local_player()            -- nil outside a match
 =tempest.local_player():prop("Pawn")
 ```

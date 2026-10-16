@@ -83,12 +83,21 @@ queued and executes at the next event; `tempest.queue(fn)` does the same for you
 the game thread as well. The one exception is `memory.hook`: its handlers run on the thread that
 called the hooked function, which is the game thread only when that function is.
 
+## The UI frame
+
+[`ui.on_draw`](/tempest/scripting/api/ui) handlers are game-thread code too. Each frame the game
+presents asks for one UI frame; the game thread builds it at its next engine event by running every
+draw handler, and the render thread draws the finished result. So a draw handler may read
+properties and call functions like any hook, and the render thread never runs Lua. The cost is one
+frame of latency between a widget and the screen, which is invisible in practice.
+
 ## Mods and sandboxes
 
 At startup the runtime finds every enabled mod next to its own and runs each one's `scripts/`
 in a private environment. Globals a mod sets are invisible to other mods; reads fall through to
 the API and the standard library. `MOD` holds the mod's id, and `require("a.b")` loads
-`scripts/a/b.lua` from the same mod into the same sandbox.
+`scripts/a/b.lua` from the same mod into the same sandbox; a name with no such file falls through
+to the built-in modules, so `require("ffi")` and `require("bit")` work.
 
 To share something, use the `shared` table or the explicit pair:
 

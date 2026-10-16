@@ -52,6 +52,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 					text: "memory",
 					link: "/tempest/scripting/api/memory",
 				},
+				{
+					text: "ui (Dear ImGui)",
+					link: "/tempest/scripting/api/ui",
+				},
 			],
 		},
 		{
