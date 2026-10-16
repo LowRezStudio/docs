@@ -301,6 +301,38 @@ ui.C.igGetWindowSize(size)
 ui.C.igTextUnformatted("raw", nil)
 ```
 
+## Fonts
+
+`ui.add_font(path, size, opts)` loads a TTF at `size` pixels and returns an `ImFont` to use with
+`ui.push_font(font)` / `ui.pop_font()`, `ui.with_font(font, fn)` or `ui.set_default_font(font)`.
+`ui.add_font(nil, size)` is the built-in font at another size. `opts.merge = true` adds the glyphs
+to the previous font (icon fonts), with `opts.ranges = "icons"` (the private-use block most icon
+fonts use) or `{ first, last, ... }` pairs. Add fonts at load time: the font texture is rebuilt by
+the render thread before the next frame, so the font is usable from then on.
+
+```lua
+local big = ui.add_font("C:/Windows/Fonts/segoeui.ttf", 28)
+local icons = ui.add_font("C:/Games/Paladins/mods/my-mod/icons.ttf", 16, { merge = true, ranges = "icons" })
+ui.on_draw(function()
+  ui.window("Title", function()
+    ui.with_font(big, function() ui.text("Headline") end)
+  end)
+end)
+```
+
+## Images
+
+`ui.load_image(path)` decodes a PNG, JPEG, BMP or TGA and returns an image with `width`, `height`,
+`img:ready()` (the render thread uploads it on the next frame) and `img:free()`.
+`ui.image_from_rgba(w, h, bytes)` takes raw RGBA8 pixels. Draw with `ui.image(img, w, h)` (a blank
+placeholder until uploaded), `ui.image_button(id, img, w, h)` or `ui.fg.image(img, x1, y1, x2, y2,
+tint)` and its `bg`/`dl` siblings.
+
+## Layout file
+
+Window positions and sizes persist in `<game>/ChaosGame/Config/tempest-ui.ini`, outside any
+checksummed mod folder.
+
 ## Built-in commands
 
 | command             | effect                                            |
@@ -309,8 +341,3 @@ ui.C.igTextUnformatted("raw", nil)
 | `ui_status`         | backend, capture state, frames built and rendered |
 | `ui_capture [0\|1]` | `ui.capture` from the console                     |
 
-## Not yet
-
-Custom fonts and images: the font atlas is built once when the backend initialises, and there is no
-texture upload from Lua yet. Window positions are not persisted between runs (`imgui.ini` is
-disabled because mod folders are checksummed).

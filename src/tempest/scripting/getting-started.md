@@ -92,7 +92,9 @@ configs = "ChaosGame/Config/mods"
 scale = 1.0
 ```
 
-`tempest_config` in the game console prints where these files are.
+`tempest_config` in the game console prints where these files are. The repository ships two
+dev mods to start from: `examples/hot-reload` (a counter that shows reloads happening) and
+`examples/fps-limit` (a slider for the frame-rate cap, kept in the mod's config).
 
 ## 4. Pack and install
 

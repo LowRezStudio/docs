@@ -28,8 +28,9 @@ Reads give you Lua values for simple kinds and live proxies for compound ones:
 | `array<T>`       | [Array](/tempest/scripting/api/objects#array) proxy (live)   |
 | `Map{K, V}`      | [Map](/tempest/scripting/api/objects#map) proxy (live)       |
 
-Writes go the other way with the same rules. An unknown property reads as `nil` and logs once;
-writing one raises a Lua error, so typos fail loudly.
+Writes go the other way with the same rules. Names follow `FName` rules and compare
+case-insensitively (`engine.MaxSmoothedFramerate` finds `MaxSmoothedFrameRate`). An unknown
+property reads as `nil` and logs once; writing one raises a Lua error, so typos fail loudly.
 
 Functions resolve the same way: `pc.ClientMessage` is a bound function and `pc:ClientMessage("hi")`
 calls it. Script and native functions both work.
@@ -52,14 +53,16 @@ by assigning to `params`, and can `return false` to cancel the call entirely (se
 The spec decides what matches:
 
 - `"Package.Class.Func"` binds to that exact function and fires whenever its body runs, including
-  inside a `Super` chain. Use this form for natives; it is the only way to hook them.
+  inside a `Super` chain.
 - `"Func"` matches any function with that name, on any class, and fires once per logical call
-  (the outermost frame of a `Super` chain). Handy for exploring, less precise.
+  (the outermost frame of a `Super` chain). Natives of that name are hooked one by one, and the
+  runtime rescans for more as classes load.
 
 Under the hood three entry points are hooked so that nothing is missed: `ProcessEvent` for
 events the engine raises, `ProcessInternal` for every UnrealScript function body, and a per-function
 replacement for natives. Calls made from Lua bypass the first but still reach the other two, so a
-hooked native sees calls made with `obj:Func()` too.
+hooked native sees calls made with `obj:Func()` too. `out` parameters of every kind, strings and
+arrays included, are written back to the caller's variables with assignment semantics.
 
 Hooks also run the other way round: a mod's own UnrealScript package can declare bodiless
 `dllimport` functions and have Lua implement them with

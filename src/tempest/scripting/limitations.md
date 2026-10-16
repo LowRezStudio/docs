@@ -11,26 +11,20 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
   to that build. On another version the log says which signature failed, and nothing hooks.
 - **Maps cannot grow.** `map:set` replaces the value of an existing key; inserting keys would need
   the engine's set re-hash.
-- **`out` parameters of hooked natives** are written back for plain kinds (numbers, names,
-  objects, vectors). String and array `out` parameters are not.
-- **Spawning** follows engine rules: `bStatic` and `bNoDelete` classes (lights, static meshes)
-  return `nil`. Use the `*Spawnable` classes or a class of your own.
-- **Unqualified hooks (`"Func"`) do not catch natives.** Natives are hooked per function and need
-  `"Package.Class.Func"`.
-- **64 native hooks** at a time per process. Address hooks (`memory.hook`) have no such limit.
+- **Spawning** follows engine rules by default: `bStatic` and `bNoDelete` classes (lights, static
+  meshes) return `nil`. `tempest.spawn(..., { force = true })` lifts the two flags around the call.
 - **`dllimport` parameters are what UDK allows**: `int`, `float`, `byte`, `bool`, `string` and
   structs of those. For object references give the function a stub body instead of `dllimport`;
-  `tempest.native` handles both. `out` parameters write back for plain kinds (numbers, names,
-  objects, vectors), not strings or arrays.
-- **Address hooks see integers only.** `memory.hook` and `memory.call` pass the integer registers
-  and stack slots; float arguments and results (XMM registers) are invisible. Their handlers run
-  on the calling thread, not necessarily the game thread.
+  `tempest.native` handles both.
+- **Address hooks need the signature.** `memory.hook` sees integers unless a position is declared
+  `f32`/`f64`; floats past the fourth argument come from stack slots. Handlers run on the calling
+  thread, not necessarily the game thread.
 - **Input** covers keyboard, mouse buttons and wheel. No gamepad.
 - **Numbers are doubles** (LuaJIT). Addresses and object pointers are exact, but
   `memory.read_u64` of arbitrary data loses precision above 2^53 (use `ffi` for 64-bit arithmetic),
   and `tostring` prints a large address in exponent form: format addresses with `%x`.
-- **UI** has one default font and no images yet; widgets are only valid inside a draw handler; the
-  D3D9 path exists but the client ships D3D11.
+- **UI** widgets are only valid inside a draw handler (immediate mode); the D3D9 path exists but
+  the client ships D3D11.
 - **No DLL unload.** The runtime stays until the game exits; scripts reload, the DLL does not.
 - **One runtime per process.** If several mods ship the DLL, the first one loaded runs everything
   and the others log that they are idle.

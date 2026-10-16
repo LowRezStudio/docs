@@ -67,8 +67,9 @@ Runs `fn(this, params)` **before** the function executes. Assign to `params` to 
 game sees. Return `false` to skip the original call; set `params.ReturnValue` first if the caller
 uses it. Any other return value lets the call proceed.
 
-`spec` is either `"Package.Class.Func"` (that exact function, required for natives) or `"Func"`
-(any class, once per logical call). See [Concepts](/tempest/scripting/concepts#hooks) for the
+`spec` is either `"Package.Class.Func"` (that exact function) or `"Func"` (any class, once per
+logical call). Both catch natives: a bare name hooks every native of that name on loaded classes
+and keeps looking as new classes load. See [Concepts](/tempest/scripting/concepts#hooks) for the
 matching rules.
 
 Handlers run on the game thread. A Lua error inside one is logged with the mod id and never
@@ -190,17 +191,24 @@ viewport.ViewportConsole = console           -- keep it referenced
 viewport:InsertInteraction(console, 0)
 ```
 
-### `tempest.spawn(class, location, rotation, owner, context)` → Object
+### `tempest.spawn(class, location, rotation, owner, context, opts)` → Object
 
 Spawns an actor through `Actor.Spawn`. `context` is the actor to spawn from (default: the local
 player controller); `location` and `rotation` default to the context's. Classes marked `bStatic`
-or `bNoDelete` (all lights, static meshes, notes) cannot be spawned at runtime and yield `nil`;
-the `*Spawnable` classes exist for this purpose.
+or `bNoDelete` (all lights, static meshes, notes) are refused by the engine and yield `nil`;
+`opts = { force = true }` clears both flags on the class default object around the call so they
+spawn anyway (the new actor keeps the flags and behaves like a placed one).
 
 ```lua
 local l = pc.Pawn.Location
 tempest.spawn("Engine.KActorSpawnable", { x = l.x + 200, y = l.y, z = l.z })
+tempest.spawn("Engine.PointLight", { x = l.x, y = l.y, z = l.z + 300 }, nil, nil, nil, { force = true })
 ```
+
+### `tempest.default_object(class)` → Object
+
+The class default object (`Default__Name`) of a class path or class object: the per-class flags
+and default property values the engine consults. `nil` when the class is not loaded.
 
 ## Mods
 
