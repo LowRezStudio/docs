@@ -37,6 +37,7 @@ Returns `{ { name, help }, ... }` sorted by name.
 | `tempest_help`            | lists every Lua command in chat                       |
 | `tempest_reload [mod-id]` | reloads all mods, or one                              |
 | `tempest_config`          | where the settings and mod config files are           |
+| `tempest_mods`            | every installed mod with its kind and state           |
 | `lua <code>`              | runs a Lua chunk; `lua =<expr>` prints the expression |
 | `ui_demo`                 | toggles Dear ImGui's demo window                      |
 | `ui_status`               | UI backend and frame counters                         |

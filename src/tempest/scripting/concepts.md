@@ -131,8 +131,10 @@ Each mod has one editable config file. For an installed mod it is
 is the `config.toml` in the mod folder, so everything about a dev mod stays in one place.
 `tempest.config(defaults)` returns it as a table: the defaults you pass, overridden by the mod's
 `config.toml`, overridden (installed mods) by the user's file. The editable file is created from
-the merged values the first time, so there is always something to edit, and saving it reloads the
-mod.
+the merged values the first time, so there is always something to edit, and saving it by hand
+reloads the mod (`reload_on_config = false` in the settings turns that off). A save the mod makes
+itself with `tempest.save_config` never triggers a reload, so a settings panel can write its
+values freely.
 
 ```lua
 local cfg = tempest.config({

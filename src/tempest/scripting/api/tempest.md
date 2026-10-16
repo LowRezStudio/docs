@@ -37,8 +37,7 @@ Returns a table describing what the runtime resolved:
 | `native_hooks`               | full names of natives currently hooked                            |
 | `address_hooks`              | `{ id, addr, mod }` entries, one per `memory.hook`                |
 | `lua_natives`                | full names of the `dllimport` functions bound to Lua              |
-| `mods`                       | ids of loaded mods                                                |
-| `dev_mods`                   | ids of the mods loaded from the dev folder                        |
+| `ui_backend`, `ui_ready`     | the UI renderer (`"d3d11"`, `"d3d9"`) and whether it initialised  |
 
 Other fields (`engine`, `process_event`, `process_internal`, `gmalloc`, `gnatives`, `xor_mask`,
 `runtime_uc_flags`, `gpropaddr`) are addresses for debugging.
@@ -218,7 +217,17 @@ Id of the mod whose script or handler is running.
 
 ### `tempest.mods()` → string[]
 
-Ids of all loaded mods, in load order.
+Ids of the Lua mods running, in load order. For everything the launcher installed, including
+mods without scripts, disabled ones and the dev folder, use `tempest.installed()`.
+
+### `tempest.installed()` → table[]
+
+Every mod the launcher installed, Lua or not, from its registry, plus the dev folder. Each entry
+has `id`, `name`, `version`, `authors`, `kind` (`"V2"` for packaged mods, `"NativePackage"`,
+`"Asset"` or `"Voice"` for legacy ones, `"dev"` for the dev folder), `enabled`, and what the mod
+ships: `lua` (a `scripts/` folder), `dll`, `files` (game files it installs), with `loaded` telling
+whether its scripts are running and `path` its folder. `tempest_mods` in the console prints the
+same list with those tags, so a skin pack, a DLL mod and a Lua mod are told apart at a glance.
 
 ### `tempest.export(name, value)` / `tempest.import(name)`
 
@@ -237,8 +246,8 @@ does not exist. Values are strings, numbers, booleans and tables
 
 ### `tempest.save_config(table)` → path
 
-Writes the mod's config file (the table replaces it). The watcher then reloads the mod, so write
-the complete config rather than a fragment.
+Writes the mod's config file (the table replaces it, so write the complete config rather than a
+fragment). The hot-reload watcher ignores this write: only hand edits reload the mod.
 
 ### `tempest.config_path()` → string
 

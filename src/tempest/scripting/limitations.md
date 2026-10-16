@@ -74,5 +74,6 @@ Useful checks from the DLL console or `lua` in the game console:
 
 ## Reporting a problem
 
-Attach the log from the start of the session, the mod's scripts, and the game version. The
+Attach the log from the start of the session (`tempest-scripting.prev.log` if the game was
+restarted since), the mod's scripts, and the game version. The
 `resolve` lines at the top identify the build; the last lines before a crash identify the script.

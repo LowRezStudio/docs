@@ -9,7 +9,8 @@ description: Create your first Tempest Lua mod for Paladins, pack and install it
 
 Install the Tempest.Scripting runtime through the launcher like any other mod, then launch the
 game. A console window opens next to it, and the same lines go to
-`%TEMP%\tempest-scripting.log`. A healthy start looks like this:
+`%TEMP%\tempest-scripting.log` (started fresh each run; the previous run is kept as
+`tempest-scripting.prev.log`). A healthy start looks like this:
 
 ```text
 [resolve] GNames/GObjects live
@@ -85,6 +86,7 @@ jit = true
 [dev]
 mods = "mods"             # the dev folder, relative to the game folder
 hot_reload = true
+reload_on_config = true   # hand edits of a config file reload its mod
 hot_reload_delay_ms = 300
 [mods]
 configs = "ChaosGame/Config/mods"
