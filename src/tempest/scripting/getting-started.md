@@ -83,6 +83,7 @@ the runtime writes with comments on first run:
 [runtime]
 console = true            # console window + Lua REPL
 jit = true
+trace_calls = false       # log every obj:Func() / tempest.new from Lua (crash triage)
 [dev]
 mods = "mods"             # the dev folder, relative to the game folder
 hot_reload = true

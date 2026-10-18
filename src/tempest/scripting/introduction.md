@@ -25,9 +25,11 @@ Scripts reload while the game runs, so iteration is edit, save, reload.
 ## How it fits with Tempest
 
 A Lua mod is a regular Tempest mod: a folder with a `manifest.toml` and a `scripts/` directory,
-packed into a `.tempest` file with the CLI and installed through the launcher. The runtime itself,
-`Tempest.Scripting64.dll`, is installed the same way, once; the launcher injects it at launch and
-it then runs the scripts of **every** enabled mod. Script mods do not bundle the DLL.
+packed into a `.tempest` file with the CLI and installed through the launcher. The runtime itself
+is installed the same way, once: its package carries `dlls/64/Tempest.Scripting64.dll` for the
+Win64 client and `dlls/32/Tempest.Scripting32.dll` for the Win32 client, and the launcher injects
+the one matching the game executable at launch. The runtime then runs the scripts of **every**
+enabled mod. Script mods do not bundle the DLL.
 
 ```text
 my-first-mod/
@@ -40,12 +42,15 @@ my-first-mod/
 Each mod runs in its own sandbox. Globals a script sets stay private to its mod; the API,
 the standard library, and the `shared` table are visible to all.
 
-## Supported game version
+## Supported game versions
 
-The runtime targets the Paladins **8.1** Win64 client. Engine addresses are found by signature
-scanning at startup, and game-class layouts are read from live reflection, so a new patch mostly
-means re-checking a handful of signatures rather than every offset. Other versions are not
-supported.
+The runtime is built for the Paladins **8.1** client, Win64 and Win32, and has also been run on
+the **0.57 (OB57)** Win32 client. Engine addresses are found by signature scanning at startup
+and game-class layouts are read from live reflection, so other versions may well work: the log
+says at startup which signatures resolved, and nothing hooks when one is missing. Scripts are the
+same on both clients; the only visible differences are in `memory.hook` / `memory.call`, which
+need the calling convention on Win32 (see the [`memory` reference](/tempest/scripting/api/memory)),
+and `tempest.status().arch`, which tells a script where it runs.
 
 ## Where to go next
 

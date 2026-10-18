@@ -25,6 +25,7 @@ Returns a table describing what the runtime resolved:
 
 | field                        | meaning                                                           |
 | ---------------------------- | ----------------------------------------------------------------- |
+| `arch`                       | `"x64"` or `"x86"`: which client the runtime runs in              |
 | `gobjects`, `gnames`         | addresses of the object and name tables, `nil` if unresolved      |
 | `gnames_ok`, `gobjects_ok`   | the live self-test passed (`GNames[0] == "None"`, objects decode) |
 | `hook_installed`             | `ProcessEvent` is hooked                                          |
@@ -35,7 +36,7 @@ Returns a table describing what the runtime resolved:
 | `notes`                      | list of strings explaining anything that failed                   |
 | `subscriptions`              | map of hook id → `"[mod] before Spec"` strings                    |
 | `native_hooks`               | full names of natives currently hooked                            |
-| `address_hooks`              | `{ id, addr, mod }` entries, one per `memory.hook`                |
+| `address_hooks`              | `{ id, addr, mod, args, conv }` entries, one per `memory.hook`    |
 | `lua_natives`                | full names of the `dllimport` functions bound to Lua              |
 | `ui_backend`, `ui_ready`     | the UI renderer (`"d3d11"`, `"d3d9"`) and whether it initialised  |
 

@@ -187,12 +187,15 @@ implementation is the easiest to find: every `UFunction` object stores it in its
 
 ```lua
 local fn = tempest.find_object("Function Engine.PlayerController.ConsoleCommand")
-local entry = memory.read_ptr(fn:ptr() + 0xF0)          -- UFunction.Func on 8.1
+-- UFunction.Func: 0xF0 on the Win64 client, 0xA0 on Win32
+local entry = memory.read_ptr(fn:ptr() + (tempest.status().arch == "x86" and 0xA0 or 0xF0))
 
+-- Func(this, FFrame&, Result) is a C++ method: on Win32 that means thiscall
+-- (the option is ignored on Win64).
 local id = memory.hook(entry, function(original, this, frame, result)
   print("ConsoleCommand on " .. tostring(tempest.object(this)))
   return original()                                      -- pass through unchanged
-end, { args = 3 })
+end, { args = 3, conv = "thiscall" })
 
 tempest.command("stop_tracing", function() memory.unhook(id) end)
 ```
@@ -209,9 +212,10 @@ end, { args = 2 })
 ```
 
 Arguments are integers (registers and stack slots), so read strings with `memory.read_wstr(ptr)`
-and wrap object pointers with `tempest.object(ptr)`. See the
-[`memory` reference](./api/memory#address-hooks) for the rules on `original`, return values and
-threads.
+and wrap object pointers with `tempest.object(ptr)`. Signatures differ between the two clients, so
+a mod that hooks by signature scans for the right one per `tempest.status().arch`. See the
+[`memory` reference](./api/memory#address-hooks) for the rules on `original`, return values,
+calling conventions and threads.
 
 ## Enable the game console
 

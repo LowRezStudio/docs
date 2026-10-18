@@ -72,8 +72,14 @@ end, { args = 3 })
   R8, R9 and then the caller's stack slots; a float at position 0 to 3 travels in XMM0 to XMM3 and
   is read from there when the position is declared as a float. For a C++ method, `this` is the
   first argument.
+- `opts.conv` is the calling convention, which matters on the **Win32** client only (Win64 has a
+  single one and ignores it): `"cdecl"` (default) and `"stdcall"` pass everything on the stack,
+  `"thiscall"` passes `this` in ECX, `"fastcall"` the first two integers in ECX and EDX. The eight
+  visible positions are stack dwords there, an `f64` taking two of them, and the convention also
+  decides who pops the arguments, so every hook on one address must declare the same `conv`,
+  `args` and `ret`.
 - `opts.ret` types the result: `"int"` (default), `"f32"` or `"f64"`. A float result is placed in
-  XMM0, where the caller expects it.
+  XMM0 on Win64 and in ST(0) on Win32, where the caller expects it.
 
 ```lua
 -- float __fastcall GetDamageScale(APawn* self, float base, int type)
@@ -108,7 +114,7 @@ round trip through Lua.
 Removes a hook; `false` when the id is unknown. A mod's hooks are also removed when the mod is
 reloaded.
 
-### `memory.hooks()` → `{ { id, addr, mod, args }, ... }`
+### `memory.hooks()` → `{ { id, addr, mod, args, conv }, ... }`
 
 Every active address hook. `tempest.status().address_hooks` is the same list.
 
@@ -118,11 +124,14 @@ Every active address hook. `tempest.status().address_hooks` is the same list.
 
 Calls the function at `addr` with up to eight arguments: integers, booleans (`1`/`0`), Objects
 (their pointer), and `memory.f32(x)` / `memory.f64(x)` for floats, which go to the XMM register
-of their position. The result is an integer unless the last argument is `{ ret = "f32" }` or
-`{ ret = "f64" }`. Calling a hooked address runs its hooks, like any other caller would.
+of their position on Win64 and to the stack on Win32. The result is an integer unless the last
+argument is a table with `ret = "f32"` or `ret = "f64"`; the same table takes `conv` for the Win32
+calling convention (`"cdecl"` default, `"stdcall"`, `"thiscall"` with `this` as the first
+argument, `"fastcall"`). Calling a hooked address runs its hooks, like any other caller would.
 
 ```lua
 local scaled = memory.call(scale_fn, pawn, memory.f32(1.5), { ret = "f32" })
+local name = memory.call(get_name, actor, buf, { conv = "thiscall" })   -- actor->GetName(buf) on Win32
 ```
 
 ```lua

@@ -7,8 +7,12 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
 
 ## Limitations
 
-- **Paladins 8.1 Win64 only.** The five engine signatures and the engine-core layouts are pinned
-  to that build. On another version the log says which signature failed, and nothing hooks.
+- **Paladins 8.1 (Win64 and Win32) and OB57 (Win32) are the tested versions.** Engine signatures
+  and engine-core layouts are pinned per client; other versions may work but are untested. On a
+  version where a signature fails the log says which one, and nothing hooks.
+- **Win32 panics end the game.** The 32-bit DLL is built with `panic = "abort"` (its toolchain
+  cannot unwind Rust panics), so an internal runtime fault closes the game instead of being
+  logged. Lua errors are unaffected on both clients.
 - **Maps cannot grow.** `map:set` replaces the value of an existing key; inserting keys would need
   the engine's set re-hash.
 - **Spawning** follows engine rules by default: `bStatic` and `bNoDelete` classes (lights, static
@@ -17,14 +21,15 @@ description: What Tempest.Scripting cannot do yet, and how to read its log when 
   structs of those. For object references give the function a stub body instead of `dllimport`;
   `tempest.native` handles both.
 - **Address hooks need the signature.** `memory.hook` sees integers unless a position is declared
-  `f32`/`f64`; floats past the fourth argument come from stack slots. Handlers run on the calling
-  thread, not necessarily the game thread.
+  `f32`/`f64`; floats past the fourth argument come from stack slots. On Win32 the hook also needs
+  the calling convention (`opts.conv`), and every hook on one address must declare the same one.
+  Handlers run on the calling thread, not necessarily the game thread.
 - **Input** covers keyboard, mouse buttons and wheel. No gamepad.
 - **Numbers are doubles** (LuaJIT). Addresses and object pointers are exact, but
   `memory.read_u64` of arbitrary data loses precision above 2^53 (use `ffi` for 64-bit arithmetic),
   and `tostring` prints a large address in exponent form: format addresses with `%x`.
-- **UI** widgets are only valid inside a draw handler (immediate mode); the D3D9 path exists but
-  the client ships D3D11.
+- **UI** widgets are only valid inside a draw handler (immediate mode). The Win64 client renders
+  with D3D11, the Win32 client with D3D9; both are supported.
 - **No DLL unload.** The runtime stays until the game exits; scripts reload, the DLL does not.
 - **One runtime per process.** If several mods ship the DLL, the first one loaded runs everything
   and the others log that they are idle.
@@ -55,7 +60,7 @@ variables `TEMPEST_SCRIPT_LOG=<path>` and `TEMPEST_SCRIPT_CONSOLE=0` override th
 | `[mod] draw handler #N failed: ...`                                      | a Lua error in a `ui.on_draw` handler; logged once per distinct message, the UI keeps running    |
 | `imgui assertion failed: ...`                                            | an internal ImGui assertion, logged instead of aborting; please report the log                   |
 | `another Tempest.Scripting instance already runs`                        | a second mod ships the DLL; harmless                                                             |
-| `game folder unknown ...; using defaults`                                | the DLL was not injected from `<game>/Binaries/Win64`; set `TEMPEST_GAME_DIR`                    |
+| `game folder unknown ...; using defaults`                                | the DLL was not injected from `<game>/Binaries/Win64` or `Win32`; set `TEMPEST_GAME_DIR`         |
 | `[hot] <file> changed (<mod>)`                                           | hot reload noticed a save; the mod reloads after the quiet period                                |
 | `[config] [mod] wrote defaults to ...`                                   | first run of a mod that calls `tempest.config`; edit that file                                   |
 | `[VEH][crash] ACCESS_VIOLATION ...`                                      | the game faulted; the address and the last script line before it narrow it down                  |
