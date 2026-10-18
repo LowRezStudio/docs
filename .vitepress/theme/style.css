@@ -86,6 +86,11 @@
 	--vp-c-danger-soft: var(--vp-c-red-soft);
 }
 
+:root {
+	--hat-meta-struck: #c0392b;
+	--hat-meta-current: #1a7f37;
+}
+
 /**
  * Colors (dark mode)
  *
@@ -99,6 +104,9 @@
 
 	--vp-c-tip-1: #4ecdc8;
 	--vp-c-tip-2: #5cd6d1;
+
+	--hat-meta-struck: #ff7b72;
+	--hat-meta-current: #56d364;
 }
 
 /**
@@ -337,4 +345,85 @@
 	aspect-ratio: 16 / 9;
 	border: 0;
 	border-radius: 12px;
+}
+
+/**
+ * Component: Image overlay tag
+ *
+ * Wrap a blog image in <figure class="img-overlay"> to show a short
+ * caption as a badge over the bottom-left corner of the image.
+ * -------------------------------------------------------------------------- */
+
+.vp-doc .img-overlay {
+	position: relative;
+	margin: 24px 0;
+}
+
+.vp-doc .img-overlay img {
+	display: block;
+	width: 100%;
+	margin: 0;
+	border-radius: 12px;
+}
+
+.vp-doc .img-overlay .img-overlay-tag {
+	position: absolute;
+	left: 12px;
+	bottom: 12px;
+	margin: 0;
+	padding: 0.25rem 0.7rem;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.65);
+	color: #fff;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	line-height: 1.4;
+	backdrop-filter: blur(4px);
+}
+
+/**
+ * Component: Meta timeline
+ *
+ * Past metas in red, the current one highlighted in green.
+ * -------------------------------------------------------------------------- */
+
+.vp-doc .meta-panel {
+	margin: 24px 0;
+	padding: 1.1rem 1.2rem;
+	border: 1px solid var(--vp-c-divider);
+	border-radius: 16px;
+	background-color: var(--vp-c-bg-soft);
+	background-image: radial-gradient(
+		circle at top right,
+		color-mix(in srgb, var(--hat-meta-current) 14%, transparent),
+		transparent 62%
+	);
+}
+
+.vp-doc .meta-timeline {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vp-doc .meta-timeline li {
+	margin: 0;
+	padding: 0.3rem 0.85rem;
+	border: 1px solid var(--vp-c-divider);
+	border-radius: 999px;
+	background: var(--vp-c-bg);
+	color: var(--hat-meta-struck);
+	font-size: 0.9rem;
+}
+
+.vp-doc .meta-timeline li.meta-current {
+	border-color: transparent;
+	background: var(--hat-meta-current);
+	color: #fff;
+	font-weight: 700;
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--hat-meta-current) 25%, transparent);
 }
