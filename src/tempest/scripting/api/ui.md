@@ -340,4 +340,3 @@ checksummed mod folder.
 | `ui_demo`           | toggles Dear ImGui's demo window (with the mouse) |
 | `ui_status`         | backend, capture state, frames built and rendered |
 | `ui_capture [0\|1]` | `ui.capture` from the console                     |
-

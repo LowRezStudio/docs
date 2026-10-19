@@ -87,6 +87,7 @@ memory.hook(addr, function(original, self, base, kind)
   return original(self, base * 2, kind)       -- base arrives from XMM1 as a Lua number
 end, { args = { "ptr", "f32", "int" }, ret = "f32" })
 ```
+
 - `original(...)` runs the real function (or the next hook on the same address). Arguments that
   are `nil` or missing keep the caller's values, so `original()` is a plain pass-through. It is
   only valid while the handler runs; stash it and calling it later raises.

@@ -7,6 +7,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/introduction",
 		},
 		{
+			text: "Mod repository",
+			link: "/tempest/mods",
+		},
+		{
 			text: "Lua Scripting",
 			collapsed: false,
 			items: [
