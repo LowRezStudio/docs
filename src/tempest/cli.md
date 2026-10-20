@@ -27,6 +27,7 @@ tempest mod remove <game folder> <name> remove a mod
 tempest mod enable/disable ...          toggle a mod
 tempest mod search <words>              search the repository
 tempest mod login / publish ...         publish to the repository
+tempest mod gen-key / sign / sign-text  package signing and key verification
 tempest marshal ...                     token/assembly tooling used by instance setup
 ```
 

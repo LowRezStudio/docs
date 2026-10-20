@@ -48,17 +48,30 @@ the last approved version) before it is listed.
 
 ## Publishing
 
+The easiest way to get a signed package is the launcher's **Mod Cooker**: enable **Mod developer**
+in the settings, open **Cook Mod** in the sidebar, drop your files (or an old v1 package) in, and
+cook — it produces a signed `.tempest` ready to upload. The command line works too:
+
 1. **Pack**: `tempest mod pack ./my-mod my-mod.tempest`. The `id` in `manifest.toml` becomes the
    mod's permanent id; it must be lowercase (`my-mod`, not `My Mod`) and every upload needs a
    higher semver `version`.
 2. **Sign** (code mods): `tempest mod gen-key` once, then `tempest mod sign my-mod.tempest`.
 3. **Sign in** on the website with GitHub or Discord and accept the publishing terms.
 4. **Register your key** under **Settings → Signing keys**: paste the `tempest.pub` content, then
-   prove you hold the private key by signing the challenge the page shows with
-   `tempest mod sign-text "<challenge>"` and pasting the signature. Only verified keys count.
-5. **Upload**: drop the package on **Publish a mod**, pick the compatible patches (a range such as
-   "0.56 and later", or specific patches) and add a summary, tags and a changelog. Or from the
-   command line: create an API key under **Settings → API keys**, then
+   prove you hold the private key by signing the challenge the page shows and pasting the
+   signature. Only verified keys count. You can sign the challenge from the launcher
+   (**Settings → Mod Publishing → Verify Key**, paste the challenge and copy the signature
+   back) or the command line:
+
+    ```
+    tempest mod sign-text "<challenge>"
+    ```
+
+5. **Upload**: publishing from the launcher is disabled for now (a `mod-publishing` feature
+   flag turn-on away), so download your package and drop it on **Publish a mod** by hand. Pick
+   the compatible patches (a range such as "0.56 and later", or specific patches) and add a
+   summary, tags and a changelog. Command line publishing still works: create an API key under
+   **Settings → API keys**, then
 
     ```
     tempest mod login tm_live_…
