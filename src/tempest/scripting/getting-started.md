@@ -101,7 +101,8 @@ dev mods to start from: `examples/hot-reload` (a counter that shows reloads happ
 
 ## 4. Pack and install
 
-Pack the folder with the Tempest CLI:
+Pack the folder with the Tempest CLI (shipped with the launcher; see
+[the command line](/tempest/mods#the-command-line) if `tempest` is not on your PATH):
 
 ```text
 tempest mod pack my-first-mod my-first-mod.tempest

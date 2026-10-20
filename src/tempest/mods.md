@@ -23,6 +23,29 @@ packages there for review.
 
 The repository URL is configurable in the launcher under **Settings → Advanced**.
 
+## The command line
+
+The launcher bundles the Tempest CLI and makes it available in your terminal as `tempest`:
+Windows and Linux set it up automatically the first time the launcher runs, and on macOS you
+can install it from **Settings → Advanced → Terminal command** (it may ask for administrator
+permission to place it in `/usr/local/bin`).
+
+With it you can manage mods without the launcher, and script your own workflows:
+
+```text
+tempest mod list <game folder>          installed mods
+tempest mod install <game folder> x     install a .tempest file or repository id
+tempest mod remove <game folder> <name> remove a mod
+tempest mod enable/disable ...          toggle a mod
+tempest mod search <words>              search the repository
+tempest mod login / publish ...         publish to the repository (see below)
+tempest marshal ...                     token/assembly tooling used by instance setup
+```
+
+Run `tempest --help` and `tempest mod --help` for the full reference. If the command is not
+found after installing the launcher, reinstall it from **Settings → Advanced** and open a new
+terminal.
+
 ## Trust
 
 Every package with Lua scripts or DLLs must be signed, and the repository checks the signature
