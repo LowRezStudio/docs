@@ -11,6 +11,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/mods",
 		},
 		{
+			text: "Command line",
+			link: "/tempest/cli",
+		},
+		{
 			text: "Lua Scripting",
 			collapsed: false,
 			items: [
