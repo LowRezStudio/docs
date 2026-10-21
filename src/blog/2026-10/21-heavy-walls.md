@@ -1,6 +1,7 @@
 ---
 title: "Heavy Walls: Solved"
 description: "The Heavy Wall is a bug that has been plaguing paladins maps for 10 years"
+image: /blog/2026-10/stone-keep-classic-rooftops-heavy-walls-1.png
 date: "2026-10-21T12:00:00+01:00"
 tags:
     - live
