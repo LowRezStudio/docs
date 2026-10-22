@@ -40,6 +40,15 @@ But in every case we investigated, the walls with this rooftop setting were the 
 
 Sometimes this happens because an object, such as a tree, is made from a single piece of geometry. Instead of flagging only its top as a rooftop, the setting gets applied to the entire object. Other times, it appears to be a straightforward mistake.
 
+## Frogisle: one of the worst offenders
+
+Frogisle is one of the worst maps for heavy walls. Every grey wall visible in this visualiser view is a heavy wall, making the map's geometry a clear example of the problem.
+
+<figure class="img-overlay">
+	<img src="/blog/2026-10/frogisle-heavy-walls.png" alt="Tempest visualiser view of Frogisle, where every grey wall shown is a heavy wall" loading="lazy" />
+	<figcaption class="img-overlay-tag">Frogisle</figcaption>
+</figure>
+
 ## Brightmarsh: no heavy walls found
 
 Brightmarsh is the map we’ve confirmed without heavy walls — possibly the only one in the game. Here, the rooftop setting appears on rooftops where it belongs, rather than across vertical walls. It’s a carefully made map, and a fan favourite for a reason.
