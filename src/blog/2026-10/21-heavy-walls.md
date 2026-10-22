@@ -40,13 +40,13 @@ But in every case we investigated, the walls with this rooftop setting were the 
 
 Sometimes this happens because an object, such as a tree, is made from a single piece of geometry. Instead of flagging only its top as a rooftop, the setting gets applied to the entire object. Other times, it appears to be a straightforward mistake.
 
-## Frogisle: one of the worst offenders
+## Frog Isle: one of the worst offenders
 
-Frogisle is one of the worst maps for heavy walls. Every grey wall visible in this visualiser view is a heavy wall, making the map's geometry a clear example of the problem.
+Frog Isle is one of the worst maps for heavy walls. Every grey wall visible in this visualiser view is a heavy wall, making the map's geometry a clear example of the problem.
 
 <figure class="img-overlay">
-	<img src="/blog/2026-10/frogisle-heavy-walls.png" alt="Tempest visualiser view of Frogisle, where every grey wall shown is a heavy wall" loading="lazy" />
-	<figcaption class="img-overlay-tag">Frogisle</figcaption>
+	<img src="/blog/2026-10/frogisle-heavy-walls.png" alt="Tempest visualiser view of Frog Isle, where every grey wall shown is a heavy wall" loading="lazy" />
+	<figcaption class="img-overlay-tag">Frog Isle</figcaption>
 </figure>
 
 ## Brightmarsh: no heavy walls found
