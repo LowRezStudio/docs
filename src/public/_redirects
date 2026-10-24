@@ -32,16 +32,22 @@
 /api-reference/index.html / 301
 /api-reference/* / 301
 
-# 2026 rework: UDK and Marshal docs were removed, Lua scripting moved to /lua/* and the mod repository to /mods/*.
+# 2026 rework: Marshal docs were removed, Lua scripting moved to /lua/*, the mod repository to /mods/*,
+# and the short UDK setup pages were merged into /udk/getting-started.
 /tempest/scripting /lua/introduction 301
 /tempest/scripting/ /lua/introduction 301
 /tempest/scripting/* /lua/:splat 301
 /tempest/mods /mods/introduction 301
 /tempest/mods/ /mods/introduction 301
 /tempest/mods.html /mods/introduction 301
-/udk /lua/introduction 301
-/udk/ /lua/introduction 301
-/udk/* /lua/introduction 301
+/udk /udk/getting-started 301
+/udk/ /udk/getting-started 301
+/udk/prerequisites /udk/getting-started 301
+/udk/prerequisites/ /udk/getting-started 301
+/udk/prerequisites.html /udk/getting-started 301
+/udk/installation /udk/getting-started 301
+/udk/installation/ /udk/getting-started 301
+/udk/installation.html /udk/getting-started 301
 /marshal /mods/introduction 301
 /marshal/ /mods/introduction 301
 /marshal/* /mods/introduction 301

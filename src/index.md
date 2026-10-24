@@ -1,6 +1,6 @@
 ---
 title: Paladins Modding Docs
-description: Guides for Paladins modding. Play old patches with the Tempest launcher, install mods from the mod repository, and script the game with the Lua API.
+description: Guides for Paladins modding. Play old patches with the Tempest launcher, install mods from the mod repository, and make your own with Lua scripting or UDK.
 layout: home
 
 hero:
@@ -24,16 +24,27 @@ features:
       details: Play any Paladins patch from the last ten years, add mods, and set up private games.
       link: /tempest/introduction
       linkText: Learn more
-    - title: Lua API
-      icon: 🔢
-      details: Learn about our JIT Lua API for Paladins. Hook the live game with no compiler needed.
-      link: /lua/introduction
-      linkText: Learn more
     - title: Mods
       icon: 🧩
       details: Browse, install and publish Tempest mods through the mod repository.
       link: /mods/introduction
       linkText: Learn more
+    - title: Lua API
+      icon: 🔢
+      details: Our LuaJIT scripting runtime for Paladins. Hook into the live game without a compiler.
+      link: /lua/introduction
+      linkText: Learn more
+    - title: UDK
+      icon:
+          src: /udk-logo.png
+      details: The engine Paladins is built on. Compile UnrealScript mods and edit the game's animations.
+      link: /udk/getting-started
+      linkText: Learn more
+    - title: Blog
+      icon: 📰
+      details: News, new mods and write-ups on how Paladins works.
+      link: /blog/
+      linkText: Read the blog
     - title: Community Discord Server
       icon:
           src: /social/discord.svg

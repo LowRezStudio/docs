@@ -5,19 +5,34 @@ description: Install Tempest mods from the launcher, the mods.lowrezstudio.com w
 
 # Installing mods
 
-- **From the launcher**: open an instance and switch to the **Browse** tab. It only shows mods
-  compatible with that instance's patch. Installed mods that have a newer version show an
-  **Update** button, and a popup lists all available updates when you open the instance.
-  Open a mod's details to read its readme, see every version and downgrade if you need to.
-- **From the website**: every mod page has **Install in Tempest**, which opens the launcher through
-  a `tempest://install` link, and a **Download** button for the package itself.
-- **From the command line**: the launcher bundles the Tempest CLI as `tempest` (see
-  [Command line](/tempest/cli) for setup and the command reference).
-  `tempest mod install <game folder> <mod id>` fetches the newest version compatible with the
-  instance (`--patch 0.57` to pick a patch, `<id>@1.2.0` for an exact version).
-  `tempest mod search <words>` searches the repository.
+## From the launcher
 
-The repository URL is configurable in the launcher under **Settings → Advanced**.
+Open an instance and switch to the **Browse** tab, which only lists mods compatible with that
+instance's patch. When an installed mod has a newer version it shows an **Update** button, and
+opening the instance brings up a popup with every available update. A mod's details page has its
+readme and the full version list, so you can downgrade if you need to.
 
-Mods with code come from signed packages; see [Trust and moderation](/mods/trust) for what the
-signer labels mean.
+The launcher uses mods.lowrezstudio.com by default. You can point it at another repository under
+**Settings → Advanced**.
+
+## From the website
+
+Every mod page has an **Install in Tempest** button that opens the launcher through a
+`tempest://install` link. **Download** gives you the package file instead.
+
+## From the command line
+
+The launcher bundles the Tempest CLI as `tempest`. [Command line](/tempest/cli) covers setup and
+the full command reference. To install the newest version compatible with an instance:
+
+```text
+tempest mod install <game folder> <mod id>
+```
+
+Add `--patch 0.57` to target a specific patch, or write `<id>@1.2.0` to pin an exact version.
+`tempest mod search <words>` searches the repository.
+
+## Signed mods
+
+Mods that contain code are signed by their publisher. [Trust and moderation](/mods/trust) explains
+the signer labels the launcher shows.
