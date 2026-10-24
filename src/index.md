@@ -1,6 +1,6 @@
 ---
 title: Paladins Modding Docs
-description: Guides for Paladins modding. Play old patches with the Tempest launcher, build mods with UDK, and work with the Marshal network protocol.
+description: Guides for Paladins modding. Play old patches with the Tempest launcher, install mods from the mod repository, and script the game with the Lua API.
 layout: home
 
 hero:
@@ -24,16 +24,15 @@ features:
       details: Play any Paladins patch from the last ten years, add mods, and set up private games.
       link: /tempest/introduction
       linkText: Learn more
-    - title: UDK
-      icon:
-          src: /udk-logo.png
-      details: The Paladins' game engine. Learn how to set it up and use the editor to the fullest.
-      link: /udk/getting-started
-      linkText: Learn more
-    - title: Marshal
+    - title: Lua API
       icon: 🔢
-      details: Learn about Hi-Rez's proprietary binary serialization format & networking layer.
-      link: /marshal/introduction
+      details: Learn about our JIT Lua API for Paladins. Hook the live game with no compiler needed.
+      link: /lua/introduction
+      linkText: Learn more
+    - title: Mods
+      icon: 🧩
+      details: Browse, install and publish Tempest mods through the mod repository.
+      link: /mods/introduction
       linkText: Learn more
     - title: Community Discord Server
       icon:

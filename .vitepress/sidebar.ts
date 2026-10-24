@@ -7,64 +7,8 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/introduction",
 		},
 		{
-			text: "Mod repository",
-			link: "/tempest/mods",
-		},
-		{
 			text: "Command line",
 			link: "/tempest/cli",
-		},
-		{
-			text: "Lua Scripting",
-			collapsed: false,
-			items: [
-				{
-					text: "Introduction",
-					link: "/tempest/scripting/introduction",
-				},
-				{
-					text: "Getting Started",
-					link: "/tempest/scripting/getting-started",
-				},
-				{
-					text: "Concepts",
-					link: "/tempest/scripting/concepts",
-				},
-				{
-					text: "Cookbook",
-					link: "/tempest/scripting/cookbook",
-				},
-				{
-					text: "Limitations & Troubleshooting",
-					link: "/tempest/scripting/limitations",
-				},
-			],
-		},
-		{
-			text: "Scripting API",
-			collapsed: false,
-			items: [
-				{
-					text: "tempest",
-					link: "/tempest/scripting/api/tempest",
-				},
-				{
-					text: "Objects & Containers",
-					link: "/tempest/scripting/api/objects",
-				},
-				{
-					text: "Console & Input",
-					link: "/tempest/scripting/api/console-and-input",
-				},
-				{
-					text: "memory",
-					link: "/tempest/scripting/api/memory",
-				},
-				{
-					text: "ui (Dear ImGui)",
-					link: "/tempest/scripting/api/ui",
-				},
-			],
 		},
 		{
 			text: "Tempest Legacy",
@@ -79,10 +23,6 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 		{
 			text: "Commands",
 			link: "/tempest-legacy/commands",
-		},
-		{
-			text: "Developer Mode",
-			link: "/tempest-legacy/udk",
 		},
 		{
 			text: "Multiplayer Arguments",
@@ -101,151 +41,82 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			collapsed: false,
 			items: [
 				{
-					text: "Tempest Launcher",
-					link: "/tempest-legacy/changelogtl",
-				},
-				{
 					text: "TempestMp",
 					link: "/tempest-legacy/changelogtmp",
 				},
 			],
 		},
 	],
-	"/udk": [
+	"/lua/": [
 		{
-			text: "Introduction",
+			text: "Lua Scripting",
 			collapsed: false,
 			items: [
+				{
+					text: "Introduction",
+					link: "/lua/introduction",
+				},
 				{
 					text: "Getting Started",
-					link: "/udk/getting-started",
+					link: "/lua/getting-started",
 				},
 				{
-					text: "Resources",
-					link: "/udk/resources",
+					text: "Concepts",
+					link: "/lua/concepts",
+				},
+				{
+					text: "Cookbook",
+					link: "/lua/cookbook",
+				},
+				{
+					text: "Limitations & Troubleshooting",
+					link: "/lua/limitations",
 				},
 			],
 		},
 		{
-			text: "Setup",
+			text: "Scripting API",
 			collapsed: false,
 			items: [
 				{
-					text: "Prerequisites",
-					link: "/udk/prerequisites",
+					text: "tempest",
+					link: "/lua/api/tempest",
 				},
 				{
-					text: "Installation",
-					link: "/udk/installation",
+					text: "Objects & Containers",
+					link: "/lua/api/objects",
 				},
 				{
-					text: "Hello World",
-					link: "/udk/hello-world",
+					text: "Console & Input",
+					link: "/lua/api/console-and-input",
+				},
+				{
+					text: "memory",
+					link: "/lua/api/memory",
+				},
+				{
+					text: "ui (Dear ImGui)",
+					link: "/lua/api/ui",
 				},
 			],
-		},
-		{
-			text: "Topics",
-			collapsed: false,
-			items: [
-				{
-					text: "Decompiling scripts",
-					link: "/udk/decompilation",
-				},
-				{
-					text: "Editing animations",
-					link: "/udk/edit-animations",
-				},
-			],
-		},
-		{
-			text: "UnrealScript",
-			collapsed: false,
-			items: [],
 		},
 	],
-	"/marshal": [
+	"/mods/": [
 		{
-			text: "Introduction",
-			link: "/marshal/introduction",
+			text: "Mod repository",
+			link: "/mods/introduction",
 		},
 		{
-			text: "Resources",
-			link: "/marshal/resources",
+			text: "Installing mods",
+			link: "/mods/installing",
 		},
 		{
-			text: "Encryption",
-			collapsed: false,
-			items: [
-				{
-					text: "Introduction",
-					link: "/marshal/encryption/introduction",
-				},
-				{
-					text: "Salsa20",
-					link: "/marshal/encryption/salsa",
-				},
-				{
-					text: "Diffie-Hellman",
-					link: "/marshal/encryption/hellman",
-				},
-			],
+			text: "Publishing mods",
+			link: "/mods/publishing",
 		},
 		{
-			text: "Parsing",
-			collapsed: false,
-			items: [
-				{
-					text: "Introduction",
-					link: "/marshal/parsing/introduction",
-				},
-				{
-					text: "Deserialization",
-					link: "/marshal/parsing/deserialization",
-				},
-				{
-					text: "Serialization",
-					link: "/marshal/parsing/serialization",
-				},
-			],
-		},
-		{
-			text: "Files",
-			collapsed: false,
-			items: [
-				{
-					text: "assembly.dat",
-					link: "/marshal/files/assembly",
-				},
-				{
-					text: "lang.dat",
-					link: "/marshal/files/lang",
-				},
-			],
-		},
-		{
-			text: "Servers",
-			collapsed: false,
-			items: [
-				{
-					text: "Login Server",
-					link: "/marshal/servers/login-server",
-				},
-				{
-					text: "Game Server",
-					link: "/marshal/servers/game-server",
-				},
-			],
-		},
-		{
-			text: "Packets",
-			collapsed: false,
-			items: [
-				{
-					text: "HELLO",
-					link: "/marshal/packets/hello",
-				},
-			],
+			text: "Trust and moderation",
+			link: "/mods/trust",
 		},
 	],
 };

@@ -47,7 +47,7 @@ Returns `{ { name, help }, ... }` sorted by name.
 
 The shipping game does not create its console. A mod can enable it the way TgMod does, by
 constructing an `Engine.Console` and registering it as the first viewport interaction; see the
-[cookbook](/tempest/scripting/cookbook#enable-the-game-console). The console then opens with the
+[cookbook](/lua/cookbook#enable-the-game-console). The console then opens with the
 key set as `ConsoleKey` (F2 in that recipe) and the single-line prompt with `TypeKey` (Tab).
 
 ## Key bindings

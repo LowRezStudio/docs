@@ -49,18 +49,18 @@ the **0.57 (OB57)** Win32 client. Engine addresses are found by signature scanni
 and game-class layouts are read from live reflection, so other versions may well work: the log
 says at startup which signatures resolved, and nothing hooks when one is missing. Scripts are the
 same on both clients; the only visible differences are in `memory.hook` / `memory.call`, which
-need the calling convention on Win32 (see the [`memory` reference](/tempest/scripting/api/memory)),
+need the calling convention on Win32 (see the [`memory` reference](/lua/api/memory)),
 and `tempest.status().arch`, which tells a script where it runs.
 
 ## Where to go next
 
-- [Getting started](/tempest/scripting/getting-started) walks through a first mod, the console,
+- [Getting started](/lua/getting-started) walks through a first mod, the console,
   reloading, and editor completion.
-- [Concepts](/tempest/scripting/concepts) explains objects, hooks, threads, and the sandbox.
-- The API reference: [`tempest`](/tempest/scripting/api/tempest),
-  [objects and containers](/tempest/scripting/api/objects),
-  [console and input](/tempest/scripting/api/console-and-input),
-  [`memory`](/tempest/scripting/api/memory), [`ui`](/tempest/scripting/api/ui).
-- [Cookbook](/tempest/scripting/cookbook) has copy-paste recipes.
-- [Limitations and troubleshooting](/tempest/scripting/limitations) lists what does not work and
+- [Concepts](/lua/concepts) explains objects, hooks, threads, and the sandbox.
+- The API reference: [`tempest`](/lua/api/tempest),
+  [objects and containers](/lua/api/objects),
+  [console and input](/lua/api/console-and-input),
+  [`memory`](/lua/api/memory), [`ui`](/lua/api/ui).
+- [Cookbook](/lua/cookbook) has copy-paste recipes.
+- [Limitations and troubleshooting](/lua/limitations) lists what does not work and
   how to read the log.

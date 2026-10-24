@@ -57,6 +57,17 @@ export async function transformHead({
 
 	head.push(["meta", { property: "theme-color", content: "#33b6b1" }]);
 	head.push(["link", { rel: "canonical", href: url }]);
+	// tempest-legacy is deprecated and left out of the sitemap; noindex keeps the
+	// signals consistent so Google doesn't report it as crawled but not indexed.
+	head.push([
+		"meta",
+		{
+			name: "robots",
+			content: relativePath.startsWith("tempest-legacy/")
+				? "noindex, follow"
+				: "index, follow, max-image-preview:large",
+		},
+	]);
 
 	head.push(["meta", { property: "og:site_name", content: SITE_NAME }]);
 	head.push(["meta", { property: "og:locale", content: "en_US" }]);

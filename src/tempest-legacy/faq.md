@@ -48,4 +48,4 @@ Make sure you've selected a `Build Directory`, this will define where the builds
 ## Can you balance the game, like change champions damage, health etc?
 
 Short answer: No<br>
-Long answer: Yes, but it requires going through the [assembly](/marshal/files/assembly) file to make changes about a specific value for a specific champion which is tedious to do and not a priority, then everyone needs to have the same [assembly](/marshal/files/assembly) file
+Long answer: Yes, but it requires going through the `assembly.dat` file to make changes about a specific value for a specific champion which is tedious to do and not a priority, then everyone needs to have the same `assembly.dat` file
