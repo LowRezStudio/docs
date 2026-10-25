@@ -17,7 +17,6 @@ https://discord.gg/YPXJEaNPPe
 
 ## Functionality
 
-- [Developer mode](/tempest-legacy/udk)
 - Build downloader
 - Build managment
 - Primitive mod manager

@@ -1,3 +1,0 @@
----
-title: Tempest Launcher changelog
----

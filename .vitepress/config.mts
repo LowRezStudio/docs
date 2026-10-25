@@ -6,18 +6,6 @@ import sidebar from "./sidebar";
 import { LOGO_URL, SITE_NAME, SITE_URL } from "./site";
 import { youtubeEmbed } from "./youtube-embed";
 
-/** Placeholder pages with no content yet, as sitemap paths without leading slash. */
-const SITEMAP_EXCLUDED_PAGES = new Set([
-	"marshal/files/assembly",
-	"marshal/files/lang",
-	"marshal/packets/hello",
-	"marshal/parsing/deserialization",
-	"marshal/parsing/introduction",
-	"marshal/parsing/serialization",
-	"marshal/servers/game-server",
-	"marshal/servers/login-server",
-]);
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
 	srcDir: "src",
@@ -41,7 +29,6 @@ export default defineConfig({
 		],
 		["link", { rel: "icon", href: "/favicon.ico" }],
 		["link", { rel: "apple-touch-icon", href: "/tempest-logo.png" }],
-		["meta", { name: "robots", content: "index, follow, max-image-preview:large" }],
 		[
 			"link",
 			{
@@ -66,8 +53,7 @@ export default defineConfig({
 		logo: "/tempest-logo.png",
 		nav: [
 			{ text: "Launcher", link: "/tempest/introduction" },
-			{ text: "UDK", link: "/udk/getting-started" },
-			{ text: "Marshal", link: "/marshal/introduction" },
+			{ text: "Mods", link: "/mods/introduction", activeMatch: "^/(mods|lua|udk)/" },
 			{ text: "Blog", link: "/blog/" },
 			{ text: "LowRezStudio", link: "https://lowrezstudio.com" },
 		],
@@ -91,13 +77,10 @@ export default defineConfig({
 		hostname: SITE_URL,
 		// Date-only lastmod; a full timestamp adds nothing for search freshness.
 		lastmodDateOnly: true,
-		// tempest-legacy is deprecated and the listed pages are empty placeholders.
-		// Both stay reachable through navigation, just not advertised to search engines.
+		// tempest-legacy is deprecated: still reachable through navigation, just not
+		// advertised to search engines.
 		transformItems: (items) =>
-			items.filter((item) => {
-				const url = item.url.replace(/^\/+|\/+$/g, "");
-				return !url.startsWith("tempest-legacy/") && !SITEMAP_EXCLUDED_PAGES.has(url);
-			}),
+			items.filter((item) => !item.url.replace(/^\/+/, "").startsWith("tempest-legacy/")),
 	},
 	vite: {
 		plugins: [

@@ -13,7 +13,7 @@ Parts of Paladins are written in UnrealScript. When making mods, your code may r
 
 However, you **do not need to have the real source code** to compile your mod. You only need to have dummy (stub) source files that only contain class and function definitions. These files are only used during the compilation and do not contain any real implementations.
 
-You can download the OB57 dummy files [from here](https://mega.nz/file/tiAnBJbR#kEWerIEFWajTIzNVhAkmS24Nezccpx9c8f8lbojktlw). Extract and place them into the `Developement/Src` folder and replace any existing files if prompted.
+You can download the OB57 dummy files [from here](https://mega.nz/file/tiAnBJbR#kEWerIEFWajTIzNVhAkmS24Nezccpx9c8f8lbojktlw). Extract and place them into the `Development/Src` folder and replace any existing files if prompted.
 
 The dummy files need to also be included in the file: `C:\UDK\<UDK project>\UDKGame\Config\DefaultEngine.ini`. Open the file and find the section `[UnrealEd.EditorEngine]`. Add lines to make it look like below:
 

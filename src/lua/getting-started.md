@@ -22,7 +22,7 @@ game. A console window opens next to it, and the same lines go to
 ```
 
 Any `NOTE:` or `... not found` line means something did not resolve; see
-[troubleshooting](/tempest/scripting/limitations#troubleshooting).
+[troubleshooting](/lua/limitations#troubleshooting).
 
 ## 2. Write a mod
 
@@ -165,7 +165,7 @@ end)
 ## 7. Explore
 
 Type `ui_demo` in the game console to open Dear ImGui's demo window: every widget the
-[`ui`](/tempest/scripting/api/ui) module can draw, with the mouse.
+[`ui`](/lua/api/ui) module can draw, with the mouse.
 
 `tempest.trace("PostRender", 5)` logs the first five firings of an event with the object and its
 parameters, which is the quickest way to find out what fires and with what. `obj:prop("Name")`

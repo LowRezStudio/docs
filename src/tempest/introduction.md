@@ -6,8 +6,8 @@ description: Tempest is a community Paladins launcher. Download and play any pat
 # Tempest
 
 Tempest is the community Paladins launcher built by [LowRezStudio](https://lowrezstudio.com).
-It lets you download and play any Paladins release, install gameplay and script mods,
-and host or join private servers — keeping the game playable even without official support.
+It lets you download and play any Paladins release, install gameplay and script mods
+and host or join private servers, keeping the game playable even without official support.
 
 ## Start here
 
@@ -16,10 +16,9 @@ and host or join private servers — keeping the game playable even without offi
   [Tempest Legacy](/tempest-legacy/introduction), including the
   [console commands](/tempest-legacy/commands) reference and
   [FAQ](/tempest-legacy/faq).
-- Want to build mods? [Lua scripting](/tempest/scripting/introduction) needs no compiler and
-  hooks the live game; [UDK getting started](/udk/getting-started) covers UnrealScript mods.
-- Looking for mods, or want to publish yours? The [mod repository](/tempest/mods) is browsable
+- Want to build mods? [Lua scripting](/lua/introduction) needs no compiler and
+  hooks the live game; [UDK](/udk/getting-started) covers UnrealScript, animations and maps.
+- Looking for mods, or want to publish yours? The [mod repository](/mods/introduction) is browsable
   from the launcher and the website.
-- Curious how the networking works? See the [Marshal introduction](/marshal/introduction).
 
 Updates are announced on the [blog](/blog/) and in the community Discord.

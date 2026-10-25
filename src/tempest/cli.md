@@ -42,7 +42,7 @@ tempest mod install "C:\Games\Tempest\0.57" my-mod.tempest
 tempest mod install "C:\Games\Tempest\0.57" hud-plus --patch 0.57
 ```
 
-Pack and publish a mod you are developing (see [the mod repository](/tempest/mods#publishing)
+Pack and publish a mod you are developing (see [publishing mods](/mods/publishing)
 for the full publishing flow):
 
 ```text

@@ -24,9 +24,9 @@ Reads give you Lua values for simple kinds and live proxies for compound ones:
 | object reference | Object proxy, or `nil` when none                             |
 | `Vector`         | table `{ x, y, z }` (a copy)                                 |
 | `Rotator`        | table `{ pitch, yaw, roll }` (a copy)                        |
-| any other struct | [Struct](/tempest/scripting/api/objects#struct) proxy (live) |
-| `array<T>`       | [Array](/tempest/scripting/api/objects#array) proxy (live)   |
-| `Map{K, V}`      | [Map](/tempest/scripting/api/objects#map) proxy (live)       |
+| any other struct | [Struct](/lua/api/objects#struct) proxy (live) |
+| `array<T>`       | [Array](/lua/api/objects#array) proxy (live)   |
+| `Map{K, V}`      | [Map](/lua/api/objects#map) proxy (live)       |
 
 Writes go the other way with the same rules. Names follow `FName` rules and compare
 case-insensitively (`engine.MaxSmoothedFramerate` finds `MaxSmoothedFrameRate`). An unknown
@@ -88,7 +88,7 @@ called the hooked function, which is the game thread only when that function is.
 
 ## The UI frame
 
-[`ui.on_draw`](/tempest/scripting/api/ui) handlers are game-thread code too. Each frame the game
+[`ui.on_draw`](/lua/api/ui) handlers are game-thread code too. Each frame the game
 presents asks for one UI frame; the game thread builds it at its next engine event by running every
 draw handler, and the render thread draws the finished result. So a draw handler may read
 properties and call functions like any hook, and the render thread never runs Lua. The cost is one
