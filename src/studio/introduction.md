@@ -1,72 +1,59 @@
 ---
 title: Tempest Studio
-description: Tempest Studio is a desktop editor for Paladins packages, textures, meshes, sounds, scripts and the game's content database.
+description: Tempest Studio is a desktop editor for Paladins packages, textures, meshes, sounds, scripts and the game's content database, and it builds the result into a launcher mod.
 ---
 
 # Tempest Studio
 
 Tempest Studio is a desktop editor for the game's files. It opens the UPK packages of a Paladins
 install, previews and replaces their assets, edits the content database (`assembly.dat`) and the
-language files, and exports the result as a launcher mod. It runs on Windows, macOS and Linux.
+language files, and builds your changes into a `.tempest` mod the launcher can install. It runs on
+Windows, macOS and Linux.
 
-Download it from the
-[Tempest releases](https://github.com/LowRezStudio/Tempest/releases) (look for **Tempest Studio**).
+## Install
 
-## Getting started
+Download the latest **Tempest Studio** build from the
+[Tempest releases](https://github.com/LowRezStudio/Tempest/releases): the `.exe` installer on
+Windows, the `.dmg` on macOS, an AppImage, `.deb` or `.rpm` on Linux. The Studio is a separate app
+from the launcher, but it uses the same mod format and the same signing key.
 
-Open a game folder (the `CookedPCConsole` folder of an instance) from the welcome screen. The left
-pane lists its packages; pick one to see its exports as a tree and select an export to inspect it.
-You can also open a single `.upk` from anywhere with **Open file** or by opening it from your file
-manager.
+You also need a Paladins install. Any instance the launcher downloaded works: the Studio opens its
+`ChaosGame/CookedPCConsole` folder, which holds every package of the game.
 
-Changes stay in memory until you **Save** (in place, compressed like the original) or **Save as**.
-**Undo** (Ctrl+Z) keeps the last 50 changes per package, even after saving. **Discard** reloads the
-package from disk. **New window** (Ctrl+Shift+N) opens another game folder side by side.
+## Three ways to start
 
-## Packages
+The welcome screen offers:
 
-- **Properties**: every property of an export, editable, with references as links. Back and
-  Forward (Alt+←/→ or the mouse side buttons) retrace the links you followed.
-- **Textures**: preview any mip, export to PNG or DDS, replace from PNG or DDS.
-- **Materials**: a lit preview with the resolved textures, the parent chain and the parameters.
-  Scalar and vector parameters are editable.
-- **Meshes**: a 3D viewer (LOD, textures, wireframe, skeleton). Export to glTF, FBX or OBJ, and
-  replace from the same formats, static and skeletal.
-- **Sounds**: play, export, replace (Ogg, WAV, wem) and edit: trim, fade, gain, normalise.
-- **Wwise audio**: events and banks show what they play; media can be played, exported, replaced
-  and edited the same way.
-- **Particles**: a live preview of a particle system and a curve editor for its modules.
-- **Movies** (Scaleform UI): edit text fields and ActionScript strings, rename image references.
-- **Scripts**: a **Source** tab on classes and functions shows the decompiled UnrealScript. Edit it
-  and **Compile** to rebuild the package.
-- **Search** across every package of the folder, **Replace** (Ctrl+H) text and references across a
-  package, and **Batch import** a folder of `<package>.<object>.<ext>` files in one go.
-- **Replace…** on any export also accepts its raw serialized data, the inverse of Extract raw.
+- **New mod project**: the recommended way to make a mod. A short wizard names the mod, picks the
+  game folder and creates a project folder that keeps your edits until you come back. See
+  [Your first mod](/studio/first-mod).
+- **Open a project**: reopens a project (a `.twrk` file) where you left it.
+- **Or just look around**: open a game folder or a single `.upk` file to browse and preview assets
+  without making a mod.
 
-## Assembly
+## How the Studio thinks about your changes
 
-The **Assembly** mode edits `assembly.dat` and the `Lang_*.dat` files: champions, devices, items,
-cards, skins and their texts in every language. The grid filters and sorts, id columns link to the
-rows they reference, and the row pane edits every field and its messages.
+The Studio never changes the game's files behind your back. When you edit something, the change
+lives in the Studio:
 
-- **New content…** clones a champion, device, card, item or skin with fresh ids and new name and
-  description messages. Set an **id range** in the dialog so mods made by different people never
-  use the same ids.
-- **Champion Vendor…** lists champions missing from the vendor table (a champion without an entry
-  never shows in the lobby) and adds them.
+- **In a mod project** it is kept in the project file, which saves itself. The game folder stays
+  untouched, so you can always compare with the original and build a clean mod.
+- **Without a project** the file shows as _unsaved_ until you **Save** it into the game folder,
+  **Export a copy** elsewhere, or **Discard** it.
 
-## Exporting a mod
+When the mod is ready, the [mod cooker](/studio/mod-cooker) turns each changed game file into a
+[delta](/mods/deltas): only the objects and table rows you changed. Deltas let your mod sit next to
+other mods that edit the same files.
 
-**Export mod…** (Assembly) and **Mod folder** (Packages) write a launcher mod folder with a
-`manifest.toml` and your changes. Wherever the Studio recorded the original file, changes are
-written as [deltas](/mods/deltas), so your mod only carries what you changed and can be installed
-next to other mods editing the same files. For new champions and devices the export also writes
-script stubs, a `scripts/main.lua` and the rows a private server needs.
+## Guide
 
-Pack and publish the folder as described in [Publishing mods](/mods/publishing).
-
-## Automation
-
-The plug icon in the toolbar starts an MCP server on `127.0.0.1`, so an AI assistant such as Claude
-Code can drive the Studio: open packages, call any backend method, take screenshots. The dialog shows
-the command to register it.
+- [Your first mod](/studio/first-mod): a walkthrough from an empty project to an installed mod.
+- [The interface](/studio/interface): the header, views, tabs, the command palette and the panes.
+- [Projects and saving](/studio/projects): what is saved where, undo, discard, workspace files and
+  crash recovery.
+- [Packages](/studio/packages): browsing packages and editing textures, materials, meshes, sounds,
+  Wwise audio, particles, UI movies and scripts.
+- [Assembly](/studio/assembly): champions, devices, cards, items, skins and their texts.
+- [Building mods](/studio/mod-cooker): the mod cooker, signing, installing and publishing.
+- [Keyboard shortcuts](/studio/shortcuts).
+- [Automation](/studio/automation): let an AI assistant drive the Studio through MCP.

@@ -1,6 +1,6 @@
 ---
 title: Mod deltas
-description: How Tempest mods change only the objects and table rows they touch, so several mods can edit the same game file.
+description: How Tempest mods change only the objects and table rows they touch, so several mods can edit the same game file, and how to make deltas with Tempest Studio or the upk tool.
 ---
 
 # Mod deltas
@@ -9,22 +9,94 @@ A mod can change a game file in two ways:
 
 - **Whole file**: `files/<game path>` replaces the file. Two mods that replace the same file
   conflict, and only one of them can win.
-- **Delta**: `deltas/<game path>.tdelta` holds only what the mod added, changed or removed. Objects
-  in a UPK package are keyed by their path, rows in `assembly.dat` and the `Lang_*.dat` files by
-  their id column, never by position. Several mods can delta the same file.
+- **Delta**: `deltas/<game path>.tdelta` holds only what the mod added, changed or removed. Several
+  mods can delta the same file.
 
 Prefer deltas. A skin mod that changes three textures in a package and a balance mod that edits one
 device row in `assembly.dat` can both be installed next to any other mod touching those files.
+Deltas are also small: a texture swap in a 30 MB package ships as the texture alone.
+
+## What can be a delta
+
+| File                                                     | Keyed by                                                               |
+| -------------------------------------------------------- | ---------------------------------------------------------------------- |
+| UPK packages (`.upk`), content and script packages alike | The object's path, such as `skinicon_kasumi.collection_kasumi_default` |
+| `assembly.dat`                                           | The id column of each table, such as `ITEM_ID`                         |
+| `Lang_<LANG>.dat` language files                         | The message id                                                         |
+
+Objects and rows are never matched by position, so a delta still applies after another mod added or
+removed objects in the same file. Anything else (Wwise `.pck` files, configuration files, movies
+outside packages) ships whole under `files/`.
+
+A package delta keeps every reference by path. An object that points at another object, in the same
+package or elsewhere, still points at it after the delta is applied, wherever that object ended up in
+the table. Script packages work too: a recompiled `ChaosGame.upk` delta holds only the classes that
+changed.
+
+## Making deltas
+
+### With Tempest Studio
+
+[Tempest Studio](/studio/introduction) makes deltas for you. Edit the files, open the
+[mod cooker](/studio/mod-cooker) and build: every game file you changed ships as a delta unless you
+choose **Ship the whole file**. The cooker shows what each delta holds before you build.
+
+A delta is a comparison with the original file. The Studio takes the original from, in order:
+
+1. its own record, made before it first saved the file into the game folder;
+2. the launcher's backup of the file, made when an installed mod first changed it;
+3. the game folder's own file.
+
+The third is the usual case, so build from an unmodified game folder. If you edited the game's files
+by other means, run **Verify** on the instance in the launcher first. Working in a
+[mod project](/studio/projects) avoids the problem entirely: the project never writes into the game
+folder.
+
+### With the command line
+
+The `upk` tool that ships with the launcher and the Studio makes and applies deltas:
+
+```text
+upk delta create <original> <edited> -o <out.tdelta>   make a delta (original may be a digest)
+upk delta apply <file> <delta>... -o <out>            apply deltas in order
+upk delta info <delta>                                list what a delta changes
+upk delta digest <file> -o <digest.json>              record a file's per-object hashes
+upk delta verify <original> <edited>                  create, apply and compare (a self-test)
+```
+
+Run it on files from the game's `CookedPCConsole` folder: the tool needs the game's `Core.upk` next to
+the first package to read its classes, and warns when it meets a class it does not know. A digest
+(`upk delta digest`) stands in for the original when you only kept per-object hashes of it.
+
+Put each delta in your mod folder under `deltas/`, with the game path of the file plus `.tdelta`:
+
+```text
+my-mod/
+├── manifest.toml
+└── deltas/
+    └── ChaosGame/
+        ├── CookedPCConsole/
+        │   ├── assembly.dat.tdelta
+        │   └── BODY_TYPE_UI_SF.upk.tdelta
+        └── Localization/INT/Lang_INT.dat.tdelta
+```
+
+Deltas are signed like any other file in the package. Recompiled script packages are not treated as
+code by the signing policy.
 
 ## How the launcher applies them
 
-The game file is rebuilt as the original file plus every enabled mod's delta, in install order. This
-happens after every install, removal, enable and disable, and at launch. When nothing changed since
-the last rebuild it costs one hash check.
+The game file is rebuilt as the original plus every enabled mod's delta, in install order. This
+happens after every install, removal, enable and disable, and at launch. The mod list shows
+**Patching game files** with a percentage while it works. When nothing changed since the last rebuild
+it costs one hash check per file.
 
-The original is backed up the first time a delta touches a file and restored once no delta is left.
-If one mod replaces the file whole, that copy is used as the base and deltas from other mods are
-applied on top.
+The original is backed up the first time a delta touches a file (in the instance's
+`.tempest/v2/backup/` folder) and restored once no delta is left. If one mod replaces the file whole,
+that copy is used as the base and deltas from other mods are applied on top.
+
+The launcher also writes the hash of every rebuilt script package into the game when it starts it,
+so the game accepts modified script packages (Windows only for now).
 
 ## Conflicts
 
@@ -32,26 +104,16 @@ Conflicts are checked per object, not per file. When two mods change the same ob
 launcher shows the usual prompt: replace the other mod, or stack them. Stacked mods apply in install
 order, so the last one installed wins on the objects they share and both keep everything else.
 
-If a mod changes an object that another mod changed first, the change is still applied and the CLI
-prints a `[deltas] note:` line so you know the two mods overlap.
+Each changed object in a delta remembers what the original looked like. If a mod changes an object
+that another mod changed first, the change is still applied and the CLI prints a `[deltas] note:`
+line so you know the two mods overlap.
 
-## Making deltas
+## Troubleshooting
 
-[Tempest Studio](/studio/introduction) writes deltas for you. It records each file the first time
-you save it in place, and **Export mod…** and **Mod folder** then write deltas against that record
-instead of copying the whole file. If the Studio never saw the original (for example, you edited a
-file that was already modified), it falls back to a whole-file copy.
-
-From the command line, the `upk` tool that ships with the launcher and the Studio does the same:
-
-```text
-upk delta create <original> <edited> -o <out.tdelta>   make a delta (original may be a digest)
-upk delta apply <file> <delta>... -o <out>            apply deltas in order
-upk delta info <delta>                                list what a delta changes
-upk delta digest <file> -o <digest.json>              record a file's per-object hashes
-upk delta verify <original> <edited>                  create + apply + compare (a self-test)
-```
-
-Put the result in your mod folder under `deltas/` with the game path of the file plus `.tdelta`,
-for example `deltas/ChaosGame/CookedPCConsole/assembly.dat.tdelta`. Deltas are signed like any
-other file in the package, and recompiled script packages are not treated as code.
+- **The game shows the original after installing**: check that the mod is enabled and launch the
+  game from the launcher, which rebuilds modded files before starting it. A failed rebuild is
+  reported with the file and the error.
+- **A delta touches objects you did not change**: the original the delta was compared with was not
+  the game's. Restore the game folder (**Verify** the instance in the launcher) and build again.
+- **`[deltas] note:` lines at launch**: two enabled mods change the same objects. The last one
+  installed wins on those objects.

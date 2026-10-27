@@ -1,11 +1,18 @@
 ---
 title: Publishing mods
-description: Pack, sign and upload a Tempest mod to mods.lowrezstudio.com with the Mod Cooker or the tempest command line.
+description: Pack, sign and upload a Tempest mod to mods.lowrezstudio.com with Tempest Studio, the launcher's Mod Cooker or the tempest command line.
 ---
 
 # Publishing mods
 
-## With the Mod Cooker
+## With Tempest Studio
+
+If you made your changes in [Tempest Studio](/studio/introduction), build the mod there: the
+[mod cooker](/studio/mod-cooker) ships each changed game file as a [delta](/mods/deltas), signs the
+package with your key, installs it to try it, and publishes it once you add an API key (steps 3 and 4
+below still apply).
+
+## With the launcher's Mod Cooker
 
 The launcher's **Mod Cooker** is the easiest way to get a signed package. Turn on **Mod developer**
 in the settings, open **Cook Mod** in the sidebar, drop your files (or an old v1 package) in, and

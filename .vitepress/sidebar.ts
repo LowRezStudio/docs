@@ -34,7 +34,18 @@ const modsSidebar: DefaultTheme.SidebarItem[] = [
 			},
 			{
 				text: "Tempest Studio",
-				link: "/studio/introduction",
+				collapsed: false,
+				items: [
+					{ text: "Introduction", link: "/studio/introduction" },
+					{ text: "Your first mod", link: "/studio/first-mod" },
+					{ text: "The interface", link: "/studio/interface" },
+					{ text: "Projects and saving", link: "/studio/projects" },
+					{ text: "Packages", link: "/studio/packages" },
+					{ text: "Assembly", link: "/studio/assembly" },
+					{ text: "Building mods", link: "/studio/mod-cooker" },
+					{ text: "Keyboard shortcuts", link: "/studio/shortcuts" },
+					{ text: "Automation", link: "/studio/automation" },
+				],
 			},
 			{
 				text: "Lua scripting",
