@@ -45,6 +45,8 @@ hasn't vetted.
 - [Publishing mods](/mods/publishing): pack, sign and upload your own `.tempest` package.
 - [Trust and moderation](/mods/trust) explains the signer labels, the review queue and how to
   report a mod.
+- [Mod deltas](/mods/deltas): how several mods can edit the same game file.
+- [Tempest Studio](/studio/introduction), the editor for packages and the content database.
 - [Command line](/tempest/cli) lists the `tempest mod` commands for managing mods from a terminal.
 
 To make your own mods, start with [Lua scripting](/lua/introduction), which hooks the live game

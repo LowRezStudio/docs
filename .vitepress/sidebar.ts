@@ -29,6 +29,14 @@ const modsSidebar: DefaultTheme.SidebarItem[] = [
 				link: "/mods/publishing",
 			},
 			{
+				text: "Mod deltas",
+				link: "/mods/deltas",
+			},
+			{
+				text: "Tempest Studio",
+				link: "/studio/introduction",
+			},
+			{
 				text: "Lua scripting",
 				collapsed: true,
 				items: [
@@ -160,6 +168,7 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 	"/mods/": modsSidebar,
 	"/lua/": modsSidebar,
 	"/udk/": modsSidebar,
+	"/studio/": modsSidebar,
 };
 
 export default sidebar;

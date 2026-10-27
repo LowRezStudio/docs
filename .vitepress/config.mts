@@ -53,7 +53,7 @@ export default defineConfig({
 		logo: "/tempest-logo.png",
 		nav: [
 			{ text: "Launcher", link: "/tempest/introduction" },
-			{ text: "Mods", link: "/mods/introduction", activeMatch: "^/(mods|lua|udk)/" },
+			{ text: "Mods", link: "/mods/introduction", activeMatch: "^/(mods|lua|udk|studio)/" },
 			{ text: "Blog", link: "/blog/" },
 			{ text: "LowRezStudio", link: "https://lowrezstudio.com" },
 		],
