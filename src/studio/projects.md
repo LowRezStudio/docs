@@ -29,12 +29,21 @@ Create one with **New mod project** (welcome screen or the project menu). In a p
   Studio remembers the originals first.
 - **The project lists only its own files.** The mod cooker shows the game files you edited while
   the project was open, plus the ones you added to it, never unrelated edits made elsewhere.
-- **Ctrl+S** saves the project immediately. Closing the project or opening another one finishes a
-  pending save first.
+- **Ctrl+S** saves the project immediately.
 
 To continue later, open the `.twrk` from the welcome screen, the project menu's recent list, **Open
 project…** (Ctrl+Alt+O) or your file manager. The game folder opens, the edits are applied again and
-you land where you were. **Close the project** returns to plain editing; the project stays saved.
+you land where you were.
+
+**Close the project** (project menu) returns to plain editing. It asks first:
+
+- When everything is saved, **Close the project** confirms. Your edits are unloaded from the Studio,
+  so the game folder's files show as they are on disk, and nothing of the project can be saved into
+  the game by mistake. They come back when you open the project again.
+- When a save is still pending or failed, choose **Save and close**, or **Discard and close** to drop
+  the changes made since the last save.
+
+Opening or creating another project closes the current one the same way.
 
 ::: tip
 Moving the project folder is fine. The project file refers to the game folder by its path, so if the

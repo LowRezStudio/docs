@@ -31,6 +31,10 @@ The welcome screen offers:
 - **Or just look around**: open a game folder or a single `.upk` file to browse and preview assets
   without making a mod.
 
+Below them are your recent projects and game folders. The × next to an entry takes it off the list,
+and **Clear** empties a list; the files themselves are not touched. A project that was moved or
+deleted is taken off the list when you try to open it.
+
 ## How the Studio thinks about your changes
 
 The Studio never changes the game's files behind your back. When you edit something, the change

@@ -86,7 +86,7 @@ replacing a version you already built.
 
 ## 6. Come back later
 
-Close the Studio whenever you like. To continue, open the project from the welcome screen's recent
+Close the Studio or the project whenever you like: your edits stay in the project. To continue, open the project from the welcome screen's recent
 list or with **Open project…** (Ctrl+Alt+O): the game folder, your edits, your open tabs and the mod
 details come back as you left them.
 
