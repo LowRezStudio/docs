@@ -50,6 +50,10 @@ Deltas combine with other mods that edit the same file, so keep them unless you 
 **Ship the whole file** replaces the game's file entirely; it conflicts with any other mod that
 changes that file.
 
+Large objects you changed the same way in several files, such as a mesh cooked into more than one
+package, are stored once in the mod and shared by every delta that needs them. The build log says
+how much that saved. See [Shared objects](/mods/deltas#shared-objects).
+
 A delta is made by comparing your version with the original. The cooker takes the original from, in
 order: the record the Studio made before the file was first saved in place, the launcher's backup of
 the file (made when a mod first touched it), or the game folder's own file. That last one is the
@@ -95,7 +99,16 @@ The first time, enter your name or email and click **Create key**. The key is st
 launcher's data and used for every mod you build; the same key signs mods built in the launcher's
 own cooker. Keep it private. See [Trust and moderation](/mods/trust) for how signers are trusted.
 
-**Build** writes the folder, packs it and signs it. In a project the result goes to
+**Compression** chooses between the smallest mod and a faster build:
+
+| Choice                      | What it does                                                                         | Cassie Bow (5 packages) |
+| --------------------------- | ------------------------------------------------------------------------------------ | ----------------------- |
+| **Smallest file** (default) | LZMA: the smallest download, slower to build. Best for publishing.                   | 61 MB in 22 s           |
+| **Faster build**            | zstd: builds several times faster, the mod is about 30 % bigger. Good while testing. | 79 MB in 9 s            |
+
+Both install the same way and give the same result in game.
+
+**Build** writes the folder, packs it and signs it. Every core works on it, and files that did not change since the last build in this session are reused, so building again after a small change only redoes what changed. In a project the result goes to
 `builds/<id>-<version>.tempest`, and the cooker asks before replacing a version you already built.
 Without a project it asks where to save it. The build log under the button shows every step.
 

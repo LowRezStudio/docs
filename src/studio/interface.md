@@ -62,6 +62,22 @@ middle-click) a package, an object, a reference, a search result or a usage: it 
 Ctrl+T duplicates the tab, Ctrl+W closes it, Ctrl+Tab and Ctrl+Shift+Tab cycle through them. A dot
 on a tab means its file has edits.
 
+## Right-click menus
+
+Right-click (or press the keyboard's menu key, or Shift+F10) for the actions of what is under the
+pointer:
+
+| Where                           | What the menu offers                                                                                                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| A package                       | Open, open in a new tab, export a copy or discard its edits, copy its path, show it in the file manager.                                                                       |
+| An object of the export tree    | Open in a new tab, export, replace, extract the raw data, rename, duplicate, copy to another package, delete, copy its path.                                                   |
+| A tab                           | Close, close the other tabs, close the tabs to the right, duplicate.                                                                                                           |
+| An assembly row                 | Edit the cell, copy the value, copy the rows (or as TSV), paste, duplicate, new row, open in a new tab, delete. Right-clicking one of several marked rows acts on all of them. |
+| An assembly table               | Open, open in a new tab, copy its name, show the file.                                                                                                                         |
+| A file in the mod cooker        | The same actions as its **…** button.                                                                                                                                          |
+| A search result                 | Open, open in a new tab, copy the object path, show the package.                                                                                                               |
+| A recent project or game folder | Open (or in a new window), show it in the file manager, copy its path, remove it from the list.                                                                                |
+
 ## Command palette
 
 Everything the Studio can do is a command, and the palette finds them by name:
