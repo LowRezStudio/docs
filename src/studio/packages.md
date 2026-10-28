@@ -1,6 +1,6 @@
 ---
 title: Packages
-description: Browsing Paladins UPK packages in Tempest Studio and editing their textures, materials, meshes, sounds, Wwise audio, particles, UI movies, properties and scripts.
+description: Browsing Paladins UPK packages in Tempest Studio and editing their textures, materials, meshes, animations, sounds, Wwise audio, particles, UI movies, properties and scripts.
 ---
 
 # Packages
@@ -27,7 +27,7 @@ The header shows the object's path, class, size and flags. Its toolbar:
 
 | Button        | What it does                                                                                                   |
 | ------------- | -------------------------------------------------------------------------------------------------------------- |
-| **Export**    | Writes the asset to a file: PNG/DDS for textures, glTF/FBX/OBJ for meshes, Ogg/WAV for sounds, GFX for movies. |
+| **Export**    | Writes the asset to a file: PNG/DDS for textures, glTF/FBX/OBJ for meshes, glTF/FBX for animations, Ogg/WAV for sounds, GFX for movies. |
 | **Replace…**  | Replaces the asset from a file (see below), or its raw serialized data on the **Raw payload** tab.             |
 | **Raw**       | Extracts the object's raw serialized data, for tools that work on bytes.                                       |
 | **Rename**    | Renames the object; references to it follow.                                                                   |
@@ -72,6 +72,34 @@ wireframe, the skeleton and the grid, change the background, and **Fit** to fram
   or OBJ. Exported skeletons point their bones along the limbs, so they look right in Blender.
 - **Replace…** takes glTF, GLB, FBX or OBJ for static and skeletal meshes. Keep the skeleton of the
   original for skeletal meshes.
+
+## Animations
+
+Select an animation sequence (`AnimSequence`, inside an `AnimSet`), or the AnimSet to pick among its
+sequences, and it plays on its character:
+the AnimSet's preview mesh by default, or any mesh with the same bones from the picker above the
+viewer.
+
+- **Play/pause**, drag the slider to scrub frame by frame, change the **speed**, turn **loop** off,
+  and show the **skeleton**.
+- The strip under the slider shows the animation's **notifies** (sounds, effects and other events
+  the game fires at a moment of the animation). Drag one to move it. Right-click one to copy it at
+  the playhead, move it there, open its object or remove it.
+- **Edit the sequence** has three tools:
+  - **Trim** keeps a range of frames. Use the arrow buttons to take the start or end from the playhead.
+  - **Retime** changes the length. The same motion plays faster or slower, and the notifies follow.
+  - **Rate scale** sets how fast the game plays the animation (1 means as authored).
+- **Export** writes the mesh, its skeleton and the animation as glTF (`.glb`) or FBX, ready for
+  Blender. Tick **Every sequence of the AnimSet** to put all of the set's animations in one file,
+  each named after its sequence (an AnimSet itself exports all of them by default).
+- **Replace…** loads the motion from a glTF/GLB or FBX file. If the file has several animations, pick
+  one. Bones are matched by name, so animate the exported skeleton. Notifies are moved to fit the
+  new length. Tick **Every sequence of the AnimSet** (always on when you replace an AnimSet) to
+  load every animation of the file into the sequence with the same name: the dialog lists which
+  animation goes where, and animations with no sequence of their name are skipped. In Blender, set the scene to 30 fps and the frame range to the action before
+  exporting.
+
+Every change can be undone and is saved with the package.
 
 ## Sounds
 
