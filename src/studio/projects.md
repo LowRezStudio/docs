@@ -57,7 +57,9 @@ is **Save**:
 
 - **Save** (Ctrl+S) writes the current file into the game folder, compressed like the original. The
   first time a file is saved in place, the Studio records what the original looked like, so the mod
-  cooker can still make a delta later.
+  cooker can still make a delta later. Because it changes your game install, Save (and Save all)
+  first warns you and offers to save a workspace file instead; tick **Don't ask me again** if you
+  really mean to work in place.
 - **Export a copy…** (Ctrl+Shift+S) writes the file somewhere else. The edits stay unsaved in the
   Studio, and the copy is remembered as a modified version of its game file, so it shows up in the
   mod cooker.

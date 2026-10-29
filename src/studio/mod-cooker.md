@@ -73,21 +73,31 @@ other means, restore it (**Verify** the instance in the launcher) before buildin
 
 ## Details
 
-| Field           | Notes                                                                                                                  |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Name**        | What players see.                                                                                                      |
-| **Version**     | [Semantic versioning](https://semver.org): `1.0.0`, `1.2.0-beta.1`. Every upload needs a higher version than the last. |
-| **Author**      | Your name.                                                                                                             |
-| **Icon**        | A PNG shown in the launcher and on the website.                                                                        |
-| **Description** | What the mod does and how to use it.                                                                                   |
+| Field       | Notes                                                                                                                                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Name**    | What players see.                                                                                                                                                                                             |
+| **Mod id**  | The permanent id on the repository and in other mods' dependencies: 2 to 64 lowercase letters, digits, dots, dashes or underscores. Made from the name unless you type one. Never change it after publishing. |
+| **Version** | [Semantic versioning](https://semver.org): `1.0.0`, `1.2.0-beta.1`. Something like `v1.2` is flagged with a one-click fix (**Use 1.2.0**). Every upload needs a higher version than the last.                 |
+| **Authors** | Everyone who made the mod, each with an optional link.                                                                                                                                                        |
 
-**More options**:
+## Listing
 
-- **Mod id**: the permanent, lowercase id of the mod (letters, digits, dots, dashes, underscores). It
-  is made from the name unless you type one. Never change it after publishing.
-- **Authors and links**: other contributors.
-- **Needs other mods**: dependencies, one per line, for example `some-mod>=1.0.0`. When the mod has
-  Lua scripts, `tempest-scripting>=1.0.0` (the Lua runtime) is added for you.
+What the mod repository shows. Only needed to publish.
+
+- **Summary**: one line, up to 140 characters, shown in the list of mods.
+- **Tags**: comma-separated, for example `skin, maeve`.
+- **Source code**: an optional link to where the mod's source lives.
+- **Needs other mods**: dependencies, one per line: a mod id, then optionally a version requirement
+  (`some-mod>=1.0.0`, `^2`, `~1.2`, `>=1.0 <2.0`). `tempest` is the launcher (`tempest>=1.4.3`).
+  Lines that are not valid are pointed out before you build. When the mod has Lua scripts,
+  `tempest-scripting>=1.0.0` (the Lua runtime) is added for you.
+
+## Icon and readme
+
+- **Icon**: a square PNG, up to 1 MB, shown in the launcher and on the website. Anything else (a
+  renamed JPEG, a larger file) is refused with the reason.
+- **Readme**: Markdown, shown on the mod's page and in the launcher: what it does, what it needs,
+  known issues.
 
 The details are kept in the project (or per game folder without a project).
 
@@ -96,10 +106,9 @@ The details are kept in the project (or per game folder without a project).
 The Build card lists what is still missing in plain words (a name, a valid version, at least one
 file), then the **Build** button.
 
-**Signing**: mods with Lua scripts or DLLs must be signed, and the launcher refuses unsigned ones.
-The first time, enter your name or email and click **Create key**. The key is stored with the
-launcher's data and used for every mod you build; the same key signs mods built in the launcher's
-own cooker. Keep it private. See [Trust and moderation](/mods/trust) for how signers are trusted.
+**Signing**: mods with Lua scripts or DLLs must be signed, and the launcher refuses unsigned ones;
+the Build card says so when such a mod has no key yet. Create the key under
+[Signing and publishing](#signing-and-publishing).
 
 **Compression** chooses between the smallest mod and a faster build:
 
@@ -112,7 +121,8 @@ Both install the same way and give the same result in game.
 
 **Build** writes the folder, packs it and signs it. Every core works on it, and files that did not change since the last build in this session are reused, so building again after a small change only redoes what changed. In a project the result goes to
 `builds/<id>-<version>.tempest`, and the cooker asks before replacing a version you already built.
-Without a project it asks where to save it. The build log under the button shows every step.
+Without a project it asks where to save it. **Save a copy…** writes the built package somewhere
+else. The build log under the button shows every step.
 
 ## Install and test
 
@@ -126,12 +136,30 @@ where you can disable or remove it.
 
 ## Publish
 
-**Publish to mods.lowrezstudio.com** (under the Build card) uploads the built package. Fill in:
+**Publish…** (next to the built package) uploads it to the mod repository, like the launcher's
+cooker:
 
-- the patch it works from (for example `8.1`) and, optionally, the last patch it works on;
-- a one-line summary (needed for a new mod), tags and a changelog;
-- your API key (`tm_live_…`), once per machine. Create it on the website under **Settings → API
-  keys**.
+- the **summary** (needed for a new mod), up to 140 characters;
+- the **game patches** it works with: a list (`8.1, 8.2`), or a range (from `8.1`, to nothing for
+  "and later");
+- **what changed** in this version (optional for the first one).
 
-Your signing key must be registered and verified on the website first. See
-[Publishing mods](/mods/publishing).
+Tags and the source link come from the listing. Only signed mods can be published. Without an API
+key, or with one the repository refuses, the dialog asks for one and publishes right after. The
+result is shown in the dialog: **published** (with a link to the mod's page), **queued for review**
+(a new mod is reviewed before it is listed; your dashboard on the website shows the outcome), or
+**not accepted** with the reasons; warnings are listed either way.
+
+## Signing and publishing
+
+The bottom of the Mod view manages what publishing needs. Both are stored on this computer and
+shared with the launcher, so setting them up in one sets up the other.
+
+- **Signing key**: shows your key (name and fingerprint), or **Create my key** with the name shown
+  next to your signature. **Verify on the website** signs the text the website gives you under
+  **Settings → Signing keys**; paste the signature back there to prove the key is yours. Keep a copy
+  of the key: a new key is a new identity. See [Trust and moderation](/mods/trust).
+- **Mod repository**: your API key (masked) with **Replace** and **Forget**, or a field to **Log
+  in** with one. **Get an API key** opens the website's settings.
+
+See [Publishing mods](/mods/publishing).
