@@ -8,9 +8,8 @@ description: Browsing Paladins UPK packages in Tempest Studio and editing their 
 The **Packages** view (Ctrl+1) has three panes:
 
 1. **Packages**: every package of the game folder. Filter by name, and narrow to **Content**,
-   **Maps** or **Script** packages. A dot means the package has edits; **edited** marks a game file
-   saved in place earlier, **copy** one with an exported copy, **ext** a package opened from outside
-   the game folder.
+   **Maps** or **Script** packages. A dot means the package has edits, **copy** marks one with an exported
+   copy, **ext** a package opened from outside the game folder.
 2. **Exports**: the objects of the selected package as a tree (groups, then objects). Filter by
    path or by class. The ⓘ button shows the package's summary, imports and name table.
 3. **The inspector**: the selected object.
@@ -115,8 +114,9 @@ Selecting an `AkEvent` or `AkBank` object shows what it plays: each media file c
 exported (Ogg, WAV, wem), replaced (Ogg, WAV, wem) and edited with the same editor.
 
 The **Wwise audio** button in the activity bar browses every `.pck` of the game folder; selecting an
-event filters the media it plays. Replaced `.pck` files are written right away, in place or into a
-folder of your choice (the **Write replaced packages** switch).
+event filters the media it plays. Replacing or editing a media file is an edit of its `.pck` like
+any other: it stays unsaved (and in your project) until you save, and goes into the mod as the
+whole `.pck` (Wwise packages have no delta). **Discard** brings back the game's audio.
 
 ## Particles
 
@@ -193,7 +193,9 @@ Windows; on Wine the launcher prints a notice.
   open package, optionally in object names too, shows a preview table, then replaces all.
 - **Batch import** (Tools): imports a folder of files named `<package>.<object>.<ext>`, for example
   `BODY_TYPE_UI_SF.skinicon_kasumi.collection_kasumi_default.png`. Each file is matched to its object
-  and imported by type. When the files touch several packages you choose which ones to write.
+  and imported by type. When the files touch several packages you choose which ones to change. The
+  imports are edits like **Replace…**: unsaved (and kept in your project) until you save, undone in
+  one step per package, and part of the mod like any other edit.
 
 ## Other tools
 

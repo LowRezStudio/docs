@@ -22,14 +22,14 @@ whose edits were undone, so they no longer differ from the original, are left ou
 
 The **…** menu on each line:
 
-| Action                                                   | What it does                                                              |
-| -------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Show the changes**                                     | Lists the objects or rows the mod changes, adds or removes.               |
-| **Leave it out of the mod** / **Put it back in the mod** | Keeps the file out of the mod without losing your edits.                  |
-| **Ship the whole file** / **Ship only my changes**       | Switches between a whole-file copy and a delta (below).                   |
-| **Discard my edits to this file…**                       | Throws the edits away and reloads the game's file, after asking.          |
-| **Remove from the project**                              | Projects only: the file is no longer part of the mod. Nothing is deleted. |
-| **Forget the copy …**                                    | Removes an exported copy from the list. The file stays where it is.       |
+| Action                                                   | What it does                                                                                                      |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Show the changes**                                     | Lists the objects or rows the mod changes, adds or removes.                                                       |
+| **Leave it out of the mod** / **Put it back in the mod** | Keeps the file out of the mod without losing your edits.                                                          |
+| **Ship the whole file** / **Ship only my changes**       | Switches between a whole-file copy and a delta (below).                                                           |
+| **Discard my edits to this file…**                       | Throws the edits away and reloads the game's file, after asking.                                                  |
+| **Remove from the project** / **Remove from the list**   | The file is no longer part of the mod. Nothing is deleted; a file saved in place comes back if you save it again. |
+| **Forget the copy …**                                    | Removes an exported copy from the list. The file stays where it is.                                               |
 
 ### Where the changes come from
 
@@ -39,6 +39,8 @@ A game file can have changes from several places:
 - **Saved in place**: the game folder's file, saved by the Studio since it recorded the original.
 - **An exported copy**: a file written with **Export a copy…**, or a modified `.upk` or `.dat` you
   added with **Add files…**. Added files are matched to the game file of the same name.
+
+Wwise `.pck` files (edited in the Wwise views) always ship whole.
 
 When there are several, **Take the changes from** picks one. The default is the unsaved edits, then
 the newest copy, then the in-place save.
