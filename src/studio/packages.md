@@ -25,16 +25,16 @@ script package takes under a second.
 
 The header shows the object's path, class, size and flags. Its toolbar:
 
-| Button        | What it does                                                                                                   |
-| ------------- | -------------------------------------------------------------------------------------------------------------- |
+| Button        | What it does                                                                                                                            |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | **Export**    | Writes the asset to a file: PNG/DDS for textures, glTF/FBX/OBJ for meshes, glTF/FBX for animations, Ogg/WAV for sounds, GFX for movies. |
-| **Replace…**  | Replaces the asset from a file (see below), or its raw serialized data on the **Raw payload** tab.             |
-| **Raw**       | Extracts the object's raw serialized data, for tools that work on bytes.                                       |
-| **Rename**    | Renames the object; references to it follow.                                                                   |
-| **Duplicate** | Copies the object next to it as `…_copy` (Ctrl+D). Sub-objects are not copied.                                 |
-| **Copy to…**  | Copies the object, and optionally its sub-objects, into another package.                                       |
-| **Delete…**   | Turns the object and its sub-objects into empty placeholders and clears references to them.                    |
-| **file**      | Shows the package file in your file manager.                                                                   |
+| **Replace…**  | Replaces the asset from a file (see below), or its raw serialized data on the **Raw payload** tab.                                      |
+| **Raw**       | Extracts the object's raw serialized data, for tools that work on bytes.                                                                |
+| **Rename**    | Renames the object; references to it follow.                                                                                            |
+| **Duplicate** | Copies the object next to it as `…_copy` (Ctrl+D). Sub-objects are not copied.                                                          |
+| **Copy to…**  | Copies the object, and optionally its sub-objects, into another package.                                                                |
+| **Delete…**   | Turns the object and its sub-objects into empty placeholders and clears references to them.                                             |
+| **file**      | Shows the package file in your file manager.                                                                                            |
 
 The tabs:
 
@@ -86,9 +86,9 @@ viewer.
   the game fires at a moment of the animation). Drag one to move it. Right-click one to copy it at
   the playhead, move it there, open its object or remove it.
 - **Edit the sequence** has three tools:
-  - **Trim** keeps a range of frames. Use the arrow buttons to take the start or end from the playhead.
-  - **Retime** changes the length. The same motion plays faster or slower, and the notifies follow.
-  - **Rate scale** sets how fast the game plays the animation (1 means as authored).
+    - **Trim** keeps a range of frames. Use the arrow buttons to take the start or end from the playhead.
+    - **Retime** changes the length. The same motion plays faster or slower, and the notifies follow.
+    - **Rate scale** sets how fast the game plays the animation (1 means as authored).
 - **Export** writes the mesh, its skeleton and the animation as glTF (`.glb`) or FBX, ready for
   Blender. Tick **Every sequence of the AnimSet** to put all of the set's animations in one file,
   each named after its sequence (an AnimSet itself exports all of them by default).
@@ -131,16 +131,43 @@ you edit; **Apply** writes the table into the module.
 
 ## UI movies
 
-Scaleform movies (`SwfMovie`, the game's menus and HUD) have six tabs:
+Scaleform movies (`SwfMovie`, the game's menus and HUD) open in a movie editor laid out like
+FFDec: the movie's resources on the left, the stage in the middle with the timeline under it, and
+the properties of what is selected on the right.
 
-- **Player** plays the movie, with its shared libraries, fonts and images taken from the game folder.
-- **Texts**: the initial text of every text field, editable.
-- **Scripts**: the ActionScript; the strings it uses are editable, the bytecode is shown as a listing.
-- **Images**: the textures the movie uses, linked to them; references can be renamed.
-- **Linkage**: what the movie exports and imports.
-- **Tags**: every tag of the file.
+- **The tree** lists the movie, its root frames, every character by kind (shapes, sprites, texts,
+  fonts, images, sounds…, named by their linkage name when they have one) and the tag views. Type in
+  the filter to find an id or a name.
+- **Movie** plays the whole movie, with its shared libraries, fonts and images taken from the game
+  folder.
+- **The stage** shows a frame or a character. Click an object to select it (Alt+click cycles through
+  the ones underneath), drag to move it, arrows nudge it (Shift: 10 px). Press **Q** for the
+  transform tool: corners and edges scale (Shift keeps proportions, Alt scales from the centre), the
+  knob rotates. Double-click or Enter goes inside a clip, Backspace goes back up.
+- **The timeline** lists the objects of the current frame, with a frame strip, labels and frame
+  scripts when there are several frames. The eye hides a layer from the stage (only in the editor,
+  the movie is not changed), which helps with menus full of hidden states.
+- **Properties** edit the selected object (name, position, scale, rotation, skew, alpha) or the
+  open character:
+    - shapes: fill and line colours, line widths, or **Replace with SVG**;
+    - text fields: every property (font, size, colour, alignment, margins, wrapping…) and the initial
+      text;
+    - static texts: the characters and colour of each line;
+    - fonts: add characters from a TrueType/OpenType file, or export the font as TrueType;
+    - sounds and binary data: export them;
+    - sprites and frames: export as SVG, as PNG at any scale, or every frame as numbered PNGs.
+- **Scripts** lists every ActionScript 2 script (classes, frame scripts, clip events, buttons) as
+  decompiled ActionScript or as P-code. Edit either: **Check** compiles without writing, **Stage**
+  keeps the change with the other pending edits. Parts the decompiler cannot turn into ActionScript
+  stay as P-code blocks inside the source.
+- **Images** shows the pictures the movie uses. Replace one with a PNG or DDS (it keeps the size the
+  movie draws it at), export it, or open its texture. **Add image** puts a new picture in the movie
+  and on the current frame.
+- **Texts**, **Linkage** and **Tags** list the initial texts, what the movie exports and imports, and
+  every tag of the file.
 
-**Apply** writes the movie back. To change an image, replace the texture it points to, not the movie.
+Edits stay pending until **Apply** writes them into the package as one step that can be undone.
+Adding or replacing an image is written at once.
 
 ## Scripts
 
