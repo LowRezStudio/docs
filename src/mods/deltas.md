@@ -12,6 +12,10 @@ A mod can change a game file in two ways:
 - **Delta**: `deltas/<game path>.tdelta` holds only what the mod added, changed or removed. Several
   mods can delta the same file.
 
+The game path may be written in any case (`chaosgame/cookedpcconsole/maeve_assets_sf.upk`): the
+launcher matches it to the game folder's own spelling, so it replaces the right file on Linux too,
+where file names are case-sensitive.
+
 Prefer deltas. A skin mod that changes three textures in a package and a balance mod that edits one
 device row in `assembly.dat` can both be installed next to any other mod touching those files.
 Deltas are also small: a texture swap in a 30 MB package ships as the texture alone.

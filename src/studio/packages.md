@@ -59,8 +59,16 @@ so the texture cache files (`.tfc`) never need editing.
 
 Materials and material instances preview on a lit sphere, cube or plane with their base colour,
 normal and emissive maps. The side panel lists the parent chain, every texture (click to open it) and
-the parameters: scalars and vectors are editable. Editing an instance adds an override to it; editing
-a material changes its default.
+the parameters: textures, scalars and vectors are editable. Editing an instance adds an override to
+it; editing a material changes its default.
+
+- **Change…** under a texture points the parameter at any texture of the game folder (type part of
+  its name).
+- **From a file…** imports a PNG or DDS as a new texture next to the material, made like the current
+  one (same format and settings), and uses it.
+
+A material or instance is often shared by many meshes: editing it changes all of them. To change one
+mesh only, give it its own copy first (see Meshes).
 
 ## Meshes
 
@@ -71,6 +79,11 @@ wireframe, the skeleton and the grid, change the background, and **Fit** to fram
   or OBJ. Exported skeletons point their bones along the limbs, so they look right in Blender.
 - **Replace…** takes glTF, GLB, FBX or OBJ for static and skeletal meshes. Keep the skeleton of the
   original for skeletal meshes.
+- **Materials** (under the viewer) lists the mesh's material slots. Click a material to open it and
+  edit its textures and colours. **Change…** makes a slot use any material or instance of the game
+  folder. **Make it this mesh's own** copies a shared instance next to the mesh and uses the copy,
+  so your edits change this mesh only. Map props have no material of their own: the level gives
+  them theirs.
 
 ## Animations
 
@@ -184,6 +197,23 @@ The game checks the hash of its script packages. The launcher writes the hash of
 package a mod replaces into the game when it starts it, so recompiled packages load. This works on
 Windows; on Wine the launcher prints a notice.
 :::
+
+## New packages and new objects
+
+- **New package…** (the **+** of the package list) makes an empty package in the game folder,
+  with the same versions and compression as a package you choose. It shows a **new** badge, stays
+  unsaved like any edit (and is kept in your project), and goes into the mod as a whole file.
+- **Add to the package…** (the **+** of the export tree, or right-click a group or object) adds:
+    - **From a file**: a new texture (PNG/DDS), mesh (glTF/FBX/OBJ), sound (Ogg/WAV) or movie
+      (GFX/SWF). Pick an existing object of the same kind to make it like: the new object takes its
+      settings, and for a mesh its skeleton, materials and collision. What that object uses (its
+      materials, textures, skeleton) stays in its own package and is referenced from there.
+    - **Copy from another package**: any object, with its own sub-objects; optionally everything
+      it uses too.
+    - **Group**: a folder for your objects.
+
+Everything added can be undone, and is saved and built like any other edit. The game loads a new
+package when another package or the game data refers to its objects.
 
 ## Searching and bulk edits
 

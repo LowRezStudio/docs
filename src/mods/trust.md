@@ -13,7 +13,12 @@ against the publisher's registered key. Each mod gets one of three labels based 
 - **Tempest team** mods are signed with a team key and approved automatically.
 - **Trusted signer** mods are signed with a key on the launcher's trusted key list.
 - **Unknown signer** mods use a key the team hasn't vetted. A moderator still reviewed the code
-  before listing the mod, and the launcher asks you before installing it.
+  before listing the mod, and the launcher asks you before installing it: the review lowers the
+  risk, but it can miss things, so install it only if you trust the author.
+
+A package with code installed from a file (not downloaded from the repository) may never have been
+reviewed. If its key isn't trusted either, the launcher warns you more strongly before installing
+it.
 
 ## Review
 
