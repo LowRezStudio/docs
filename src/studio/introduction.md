@@ -17,6 +17,10 @@ Download the latest **Tempest Studio** build from the
 Windows, the `.dmg` on macOS, an AppImage, `.deb` or `.rpm` on Linux. The Studio is a separate app
 from the launcher, but it uses the same mod format and the same signing key.
 
+The Studio keeps itself up to date: when a new version is out, a strip at the top of the window
+offers to download it and restart (on Windows and Linux; on macOS it links to the download). You
+can check by hand, or turn the check off, in **Settings**.
+
 You also need a Paladins install. Any instance the launcher downloaded works: the Studio opens its
 `ChaosGame/CookedPCConsole` folder, which holds every package of the game.
 

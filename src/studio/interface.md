@@ -51,7 +51,7 @@ The activity bar on the left switches between the three views:
 Below them are **Search every package** (Ctrl+F), **Wwise audio**, and the **Tools** menu (for packages: find and replace, batch import, verify, rewrite, export class
 sources, prepare a mod folder; for the assembly: new content, Champion Vendor, export a mod,
 reload). At the
-bottom are the MCP server and the keyboard shortcut list (F1).
+bottom are the MCP server, the keyboard shortcut list (F1) and **Settings** (Ctrl+,).
 
 ## Tabs
 
@@ -109,3 +109,16 @@ project. A `.upk` or `.twrk` file opened from your file manager goes to the wind
 Anything that throws work away (discarding edits, deleting objects or rows, replacing an existing
 build) asks first in a dialog. Results and errors appear as notifications in the corner; errors stay
 longer, and every notification can be closed.
+
+## Settings
+
+**Settings** (the gear at the bottom of the activity bar, or Ctrl+,) holds:
+
+- **Updates**: your version, **Check now**, and whether to check when the Studio starts. When a new
+  version is out it shows what changed, **Download**, then **Restart to update**.
+- **Appearance**: dark or light theme, and the zoom of the whole window.
+- **Warnings**: turn the warning before saving into the game folder back on (or off).
+- **Signing and publishing**: your signing key and mod repository API key, the same as in the
+  [mod cooker](/studio/mod-cooker#signing-and-publishing).
+- **Automation**: the [MCP server](/studio/automation).
+- **Recent lists**: clear the recent projects or game folders.
