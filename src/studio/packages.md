@@ -39,8 +39,13 @@ The tabs:
 
 - **Preview**: what the object looks like or sounds like (below).
 - **Properties**: every property, editable in place. References are links (Ctrl+click opens a new
-  tab). Arrays have add, duplicate and remove buttons; top-level properties have a reset to the
-  default.
+  tab). An object only stores the properties that differ from its class default:
+    - **Add a property…** (under the list) adds one it doesn't store yet, from the list of what its
+      class declares. It starts at its default, so nothing changes until you edit it. Structs have a
+      **+** to add a field the same way.
+    - The reset button on a property (or a struct's field) removes it: it goes back to its default.
+    - Arrays have add, duplicate and remove buttons; adding to an empty array creates an element at
+      its default.
 - **Native**: what the engine stores outside the properties (the native payload type and size).
 - **References**: what this object uses and what uses it.
 - **Dump**: the object as text, for reading or copying.
@@ -204,8 +209,9 @@ Windows; on Wine the launcher prints a notice.
   with the same versions and compression as a package you choose. It shows a **new** badge, stays
   unsaved like any edit (and is kept in your project), and goes into the mod as a whole file.
 - **Add to the package…** (the **+** of the export tree, or right-click a group or object) adds:
-    - **From a file**: a new texture (PNG/DDS), mesh (glTF/FBX/OBJ), sound (Ogg/WAV) or movie
-      (GFX/SWF). Pick an existing object of the same kind to make it like: the new object takes its
+    - **From a file**: a new texture (PNG/DDS), mesh (glTF/FBX/OBJ), sound (Ogg/WAV), movie
+      (GFX/SWF), or any object from its raw data (`.bin`, as **Raw** extracts it: take it from this
+      package, since references inside it point into the package it came from). Pick an existing object of the same kind to make it like: the new object takes its
       settings, and for a mesh its skeleton, materials and collision. What that object uses (its
       materials, textures, skeleton) stays in its own package and is referenced from there.
     - **Copy from another package**: any object, with its own sub-objects; optionally everything
