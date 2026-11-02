@@ -62,6 +62,8 @@ other mods that edit the same files.
 - [Packages](/studio/packages): browsing packages and editing textures, materials, meshes, sounds,
   Wwise audio, particles, UI movies and scripts.
 - [Assembly](/studio/assembly): champions, devices, cards, items, skins and their texts.
+- [Maps](/studio/maps): maps in 3D, moving what they place, heavy walls, export, Kismet and
+  Matinee.
 - [Building mods](/studio/mod-cooker): the mod cooker, signing, installing and publishing.
 - [Keyboard shortcuts](/studio/shortcuts).
 - [Automation](/studio/automation): let an AI assistant drive the Studio through MCP.

@@ -9,7 +9,7 @@ description: The Tempest Studio window - header, views, tabs, panes, the command
 ┌ header: project menu · save state · Back/Forward · palette · Undo · edited files · Discard · Save/Build ┐
 │ activity │ tabs                                                                                       │
 │   bar    ├────────────────────────────────────────────────────────────────────────────────────────────┤
-│          │ the current view: Packages, Assembly or Build the mod                                      │
+│          │ the current view: Packages, Assembly, Maps or Build the mod                                │
 ├──────────┴────────────────────────────────────────────────────────────────────────────────────────────┤
 │ status bar: the open file, its size and state                                                         │
 └───────────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -40,23 +40,25 @@ From left to right:
 
 ## Views
 
-The activity bar on the left switches between the three views:
+The activity bar on the left switches between the views:
 
 | View              | Shortcut | What it is for                                                                       |
 | ----------------- | -------- | ------------------------------------------------------------------------------------ |
 | **Packages**      | Ctrl+1   | Browse the game's packages and edit their objects. See [Packages](/studio/packages). |
 | **Assembly**      | Ctrl+2   | Edit `assembly.dat` and the language files. See [Assembly](/studio/assembly).        |
+| **Maps**          | Ctrl+4   | A map in 3D, its actors and its Kismet. See [Maps](/studio/maps).                    |
 | **Build the mod** | Ctrl+3   | The mod cooker. See [Building mods](/studio/mod-cooker).                             |
 
 Below them are **Search every package** (Ctrl+F), **Wwise audio**, and the **Tools** menu (for packages: find and replace, batch import, verify, rewrite, export class
-sources, prepare a mod folder; for the assembly: new content, Champion Vendor, export a mod,
+sources, prepare a mod folder; for the assembly: new content, Champion Vendor, skin collections, export a mod,
 reload). At the
 bottom are the MCP server, the keyboard shortcut list (F1) and **Settings** (Ctrl+,).
 
 ## Tabs
 
-Every tab remembers one place: an object of a package or a table (and row) of the assembly. Moving
-around changes the current tab. To keep a place and open another next to it, **Ctrl+click** (or
+Every tab remembers one place: an object of a package, a table (and row) of the assembly, a map
+(with its selected actor or Kismet sequence) or the mod cooker. Moving around, switching views
+included, changes the current tab, so a tab left on the mod cooker comes back to it. To keep a place and open another next to it, **Ctrl+click** (or
 middle-click) a package, an object, a reference, a search result or a usage: it opens in a new tab.
 
 Ctrl+T duplicates the tab, Ctrl+W closes it, Ctrl+Tab and Ctrl+Shift+Tab cycle through them. A dot

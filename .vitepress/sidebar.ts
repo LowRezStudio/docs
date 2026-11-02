@@ -42,6 +42,7 @@ const modsSidebar: DefaultTheme.SidebarItem[] = [
 					{ text: "Projects and saving", link: "/studio/projects" },
 					{ text: "Packages", link: "/studio/packages" },
 					{ text: "Assembly", link: "/studio/assembly" },
+					{ text: "Maps", link: "/studio/maps" },
 					{ text: "Building mods", link: "/studio/mod-cooker" },
 					{ text: "Keyboard shortcuts", link: "/studio/shortcuts" },
 					{ text: "Automation", link: "/studio/automation" },

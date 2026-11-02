@@ -67,6 +67,7 @@ name and description messages in every language:
 - **Device or card/talent**: the device rows and its item, attached to the champion (`REF_BOT_ID`)
   and slot you choose.
 - **Item**, with its skin row.
+- **Skin**: a copy of a skin collection (see below) with every part, named after yours.
 - **Champion**: the bot, one device per ability slot, the Character Class and Weapon items, a default
   skin, and an entry in the Champion Vendor so the champion is listed.
 
@@ -76,6 +77,25 @@ The client builds the champion list (lobby and champion select, offline too) fro
 of loot table 475, the Champion Vendor, not from the bots. A champion without an entry never appears.
 **Champion Vendor…** shows how many entries are active against the 60 buttons of the in-match
 selector, lists the champions missing from it, and **Add** creates their entry.
+
+### Skins
+
+The client lists each champion's skins from loot table 1076, "Inventory Vendor - Collections". Each
+entry is a **collection**: a container item on the champion (named like the skin, "Obsidian Evie")
+and a loot table of parts: the body skin, the head, the weapon, sometimes a voice pack, and an
+entitlement item. A skin that no collection holds is never offered; default skins come from the
+champion's Default tables instead.
+
+**New content → Skin** copies a collection: pick the champion and the collection to start from, type
+the new name ("Frost Evie"), and the parts are named after it ("Frost Pigtails", "Frost Ice Staff":
+the template's theme word is swapped for yours; edit any of them). It creates the container item,
+a copy of every part with its skin row, a new parts table and the vendor entry, all with fresh ids.
+The copies show the template's meshes until you point their skin rows (`DATA_SET_SKINS`, the mesh
+and effect swaps) at your own assets.
+
+**Skins…** (above the grid) lists the collections per champion with their parts (**Entry** and
+**Parts** open them in the grid, **New from this** starts a copy), and the skins no collection holds,
+with **Make a collection** to list one.
 
 ## Saving and building
 

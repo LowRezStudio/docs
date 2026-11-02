@@ -31,6 +31,7 @@ Studio, and the command palette (Ctrl+K) shows each command's shortcut.
 | Shortcut                 | Action                                                        |
 | ------------------------ | ------------------------------------------------------------- |
 | Ctrl+1, Ctrl+2, Ctrl+3   | Packages, Assembly, Build the mod                             |
+| Ctrl+4                   | Maps                                                          |
 | Ctrl+T                   | Duplicate the tab                                             |
 | Ctrl+W                   | Close the tab                                                 |
 | Ctrl+Tab, Ctrl+Shift+Tab | Next, previous tab                                            |
