@@ -141,6 +141,10 @@ export const sidebar: DefaultTheme.SidebarMulti = {
 			link: "/tempest/cli",
 		},
 		{
+			text: "FAQ",
+			link: "/tempest/faq",
+		},
+		{
 			text: "Tempest Legacy",
 			link: "/tempest-legacy/introduction",
 		},
