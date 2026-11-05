@@ -103,23 +103,9 @@ repository, and the tooling used during instance setup. If the command is missin
 
 ### How does Tempest deal with cheats?
 
-**Skipping the anti-cheat does not make cheating easier, and Tempest blocks cheats from loading
-through the launcher.**
+**Tempest blocks cheats from loading through the launcher.**
 
-EAC, the game's official anti-cheat, is no longer active anywhere: its heartbeat is gone, and it
-no longer even loads. There is nothing for Tempest to disable. It skips launching EAC because
-starting it would only waste time.
-
-To keep cheats out, the launcher is stricter about code than a normal mod loader. Code mods must be
-signed, and unsigned DLLs are never injected. Before every launch the launcher rechecks installed
-files against their signed checksums, and disables any mod that was edited after install or whose key
-was revoked.
-
-Lua and DLL mods also wait for a moderator to read them before they appear in **Discover**.
-
-None of this detects an aimbot or wallhack that someone runs outside the launcher. Tempest has no
-feature for loading arbitrary DLLs from another player or server, but a cheater can still bring their
-own tool.
+Our admin team reviews every mod uploaded to the mod site and decides what the launcher is allowed to load. Code mods (Lua and DLL) are only approved after a moderator has checked them, and the launcher won’t load any code that hasn’t been signed and approved. If a mod is changed after install, or its approval is revoked, Tempest disables it automatically.
 
 ## Mods
 
