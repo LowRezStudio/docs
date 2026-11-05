@@ -5,6 +5,58 @@ description: Pack, sign and upload a Tempest mod to mods.lowrezstudio.com with T
 
 # Publishing mods
 
+## Before publishing
+
+These rules apply to every mod published on
+[mods.lowrezstudio.com](https://mods.lowrezstudio.com), including its page and everything uploaded
+with it: models, skins, textures, maps, UI, screenshots, previews, title, description and tags. We do
+not tolerate cheating or nudity.
+
+### No cheating, hacking or exploits
+
+A mod must:
+
+- fix a bug, or add custom content such as a texture, skin, map, voice line, sound or another custom
+  element;
+- not give a direct gameplay advantage;
+- not provide a way to obtain locked content such as skins, borders, titles or other cosmetics;
+- not grant or modify in-game currency.
+
+A mod page must not advertise or link to cheats, hacks, exploits, hacking software, piracy or
+copyright infringement, link to suspicious files or sites, use link shorteners, or show or teach a
+glitch that gives a gameplay advantage.
+
+### No nudity or sexual content
+
+This covers the mod itself and its screenshots, previews, title, description and tags. Mods that
+change how characters look are judged on how the character ends up looking in game as well as on the
+files they contain.
+
+- **No pornography.** No nudity, sexual acts, explicit descriptions, or touching or stimulating
+  genitals, even through clothing. Objects that resemble genitals or are used for sexual purposes,
+  such as adult toys, whips or paddles, are also not allowed.
+- **Clothing.** Swimwear and underwear are generally allowed. Sexual lace lingerie, garter belts,
+  sexual full-body suits and masks are not. Clothing must cover female nipples, at least 50% of each
+  breast and butt cheek, and all genitals. Subtle bumps or wedges are fine; literal outlines are not.
+- **Positions and angles.** No upskirt shots (drawn or in-game), no "from below while standing" or
+  "from behind while lying down or bending over" angles, no spreading or raising the legs above the
+  waist, and no sexual restraint such as leashes, collars or being tied up.
+- **Body proportions and focus.** Body changes are allowed but must stay realistic. Do not exaggerate
+  proportions, expose or focus on specific body parts (especially genitals), or use the title or
+  description to draw attention to them.
+- **Page text and links.** Sexually inappropriate or disrespectful text on the mod page is not
+  allowed. Do not link to explicit content; if a link is not needed to use the mod, leave it out.
+
+There is no mature-content exception: if it would not be safe to show in public, it does not belong
+on the repository. Every submission is judged case by case, and a mod that breaks these rules is
+rejected or removed.
+
+### Ownership
+
+Do not upload someone else's work as your own. If you believe a mod uses your content without
+permission, report it to the moderation team with proof of ownership. We review the report and remove
+content that infringes copyright.
+
 ## With Tempest Studio
 
 If you made your changes in [Tempest Studio](/studio/introduction), build the mod there: the

@@ -11,7 +11,8 @@ and host or join private servers, keeping the game playable even without officia
 
 ## Start here
 
-- New to Tempest? The current launcher guides live alongside this page as they are written.
+- New to Tempest? The current launcher guides live alongside this page as they are written. Common
+  questions are answered in the [FAQ](/tempest/faq).
 - Looking for the previous launcher? Its documentation has been moved to
   [Tempest Legacy](/tempest-legacy/introduction), including the
   [console commands](/tempest-legacy/commands) reference and
