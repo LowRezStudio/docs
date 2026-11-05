@@ -5,16 +5,16 @@ description: Answers to common Tempest launcher questions. Install and repair pa
 
 # FAQ
 
-Answers to the questions that come up most often. This page describes the current launcher; the
-older one is archived under [Tempest Legacy](/tempest-legacy/introduction).
+This page covers the current launcher. The older one is archived under
+[Tempest Legacy](/tempest-legacy/introduction).
 
 ## Getting started
 
 ### What is Tempest?
 
 Tempest is the community Paladins launcher. It downloads and launches any Paladins patch from 2016
-to 2026, keeps each patch as its own instance,
-installs mods from the mod repository, and hosts or joins 0.57 private servers. It also includes a
+to 2026, keeps each patch as its own instance, installs mods from the mod repository, and hosts or
+joins 0.57 private servers. It also includes a
 download manager, process logs, and the `tempest` command line tool. It is a community project, not
 affiliated with Hi-Rez Studios.
 
@@ -101,55 +101,29 @@ Yes. The launcher installs a `tempest` command for managing mods, searching and 
 repository, and the tooling used during instance setup. If the command is missing, install it from
 **Settings → Terminal command**. See [Command line](/tempest/cli) for the full reference.
 
-## Multiplayer
-
-### Which patch do I need for multiplayer?
-
-0.57. The server browser and hosting are experimental and currently only support 0.57; other patches
-are for singleplayer, mods and revisiting old versions.
-
-### How do I join a server?
-
-Open **Servers** and pick a server from **Internet** for public games or **LAN** for local ones. If
-the server is not listed, choose **Join server** and enter its address and port; the default port is 50051. If it has a password, Tempest asks for it. Team and champion selection happen in the launcher
-lobby before the match starts.
-
-### How do I host a server?
-
-Download a 0.57 instance, then open **Servers → Host server**. Choose the instance, server name,
-gamemode (Siege, Payload, Team Deathmatch or Onslaught) and optional password, and decide whether the
-server is public. Under **Advanced** you can set player and spectator limits, minimum players, tags,
-the join port, the game server port and UPnP. Start the server and share the address with your
-players; public servers appear in the server browser.
-
-### Do I need a VPN?
-
-No. Joining a server needs no VPN. When you host, Tempest can use UPnP to open the required router
-ports; if your network still blocks incoming connections, forward the ports manually or use a VPN.
-RAdmin was only needed by the old Tempest Legacy playtest setup.
-
 ### How does Tempest deal with cheats?
 
-The game's official anti-cheat is already completely disabled for these builds: EAC's heartbeat has
-been disabled, and it no longer loads at all. Tempest does not turn it off; it simply launches the
-game without it. That is a consequence of preserving old Paladins versions, not a shortcut for
-cheaters: the launcher is deliberately stricter than a normal mod loader.
+The game's official anti-cheat, EAC, is already disabled in these builds: its heartbeat is off and
+it no longer loads at all. Tempest does not turn it off; it launches the game as the build stands.
+Losing EAC comes with preserving old Paladins versions, so the launcher is deliberately stricter
+about code than a normal mod loader.
 
-- **Only checked code runs.** Code mods must be signed. Unsigned DLLs are never injected, and before
-  every launch the launcher rechecks installed files against their signed checksums. If a mod was
-  edited after install, or its key was revoked, it is disabled instead of run.
-- **Code is reviewed before it is listed.** Lua and DLL mods wait for a moderator to read them before
-  they appear in **Discover**. Asset-only mods skip that review. Badges mark mods **Official**,
-  **Verified author**, **Reviewed**, **Signed**, **Unsigned** or **Key revoked**.
-- **Mods stay local.** Installing a mod changes only your own instance. Tempest does not download
-  code from a server you join, push your mods to other players, or load your client mods into the
-  host's server. The match itself runs on the host's server, so a client-side mod changes your game,
-  not the server's copy of the match.
+Code mods must be signed, and unsigned DLLs are never injected. Before every launch the launcher
+rechecks installed files against their signed checksums, and disables any mod that was edited after
+install or whose key was revoked.
 
-This does not detect an aimbot or wallhack that someone runs outside the launcher. But it does not
-make cheating easier: unsigned code is refused, tampered or revoked mods are blocked, and there is no
-feature for loading arbitrary DLLs from another player or server. A cheater has to bring their own
-tool from outside Tempest.
+Lua and DLL mods also wait for a moderator to read them before they appear in **Discover**.
+Asset-only mods skip that review. Badges mark mods **Official**, **Verified author**, **Reviewed**,
+**Signed**, **Unsigned** or **Key revoked**.
+
+Installing a mod changes only your own instance. Tempest does not download code from a server you
+join, push your mods to other players, or load your client mods into the host's server. The match
+runs on the host's server, so a client-side mod changes your game and leaves the server's copy of the
+match alone.
+
+None of this detects an aimbot or wallhack that someone runs outside the launcher, but Tempest
+doesn't make cheating any easier. It has no feature for loading arbitrary DLLs from another player
+or server, so a cheater has to bring their own tool.
 
 ## Mods
 
@@ -210,23 +184,38 @@ Yes, but only inside that instance. The launcher backs up each game file before 
 rebuilds patched files when the enabled mods change, and **Verify** can restore a clean copy. Other
 instances are untouched.
 
+### Can I advertise my mod on Reddit?
+
+Yes. On Reddit you can make one post a day.
+The limit applies to Reddit posts, not to uploads on the mod repository. Reddit posts follow the same
+[publishing rules](/mods/publishing#before-publishing) as mods on the repository.
+
 ## Troubleshooting
 
 ### Where are the logs?
 
-Open **Logs** in the sidebar. The tabs split the output by source: **Launch**, **Lobby**, **Rigby**
-(downloads), **Rigby Queue**, **Mods** and **Setup**. The search box filters the visible lines, and
-**Copy All** copies what is currently shown so you can paste it into Discord or a GitHub issue.
+It depends on which part is failing:
+
+- **Launcher, downloads, setup or mod install:** open **Logs** in the sidebar. The tabs split the
+  output by source: **Launch**, **Lobby**, **Rigby** (downloads), **Rigby Queue**, **Mods** and
+  **Setup**. The search box filters the visible lines, and **Copy All** copies what is currently
+  shown.
+- **Game launch or crash:** open `Documents\My Games\Paladins\ChaosGame\Logs`. `Launch.log` is the
+  current session, or the latest one if the game is closed. A second game window can write
+  `Launch_2.log`; `Launch-backup*.log` files are older sessions. Archived instances use their own
+  home folder, so if that folder is empty, look for `ChaosGame\Logs` under the instance's home folder
+  instead of `Paladins`.
+- **MCTS:** `<Paladins install>\Binaries\Logs`.
+- **Lua mods:** `%TEMP%\tempest-scripting.log`, plus the console window next to the game. On Linux
+  and macOS that file is inside the game's Wine prefix.
 
 When asking for help, include the launcher version from **Settings → About**, the patch you were
-using, what you did just before the problem, and the relevant log lines. For a Lua mod, also check
-`%TEMP%\tempest-scripting.log` and the console window next to the game; on Linux and macOS that file
-is inside the game's Wine prefix.
+using, what you did just before the problem, and the matching log.
 
 ### The game won't start or keeps crashing.
 
 Check the **Logs** tab first, then **Verify** the instance. If you added mods recently, disable them
-and try again; the antivirus dialog can also launch without DLLs. On 10th–12th-generation Intel CPUs,
+and try again; the antivirus dialog can also launch without DLLs. On 10th to 12th generation Intel CPUs,
 keep **OpenSSL ICAPIcap fix** enabled under **Settings → Launching**. If it still fails, ask in
 Discord with the log.
 
