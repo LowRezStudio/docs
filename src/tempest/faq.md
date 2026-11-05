@@ -103,27 +103,23 @@ repository, and the tooling used during instance setup. If the command is missin
 
 ### How does Tempest deal with cheats?
 
-The game's official anti-cheat, EAC, is already disabled in these builds: its heartbeat is off and
-it no longer loads at all. Tempest does not turn it off; it launches the game as the build stands.
-Losing EAC comes with preserving old Paladins versions, so the launcher is deliberately stricter
-about code than a normal mod loader.
+**Skipping the anti-cheat does not make cheating easier, and Tempest blocks cheats from loading
+through the launcher.**
 
-Code mods must be signed, and unsigned DLLs are never injected. Before every launch the launcher
-rechecks installed files against their signed checksums, and disables any mod that was edited after
-install or whose key was revoked.
+EAC, the game's official anti-cheat, is no longer active anywhere: its heartbeat is gone, and it
+no longer even loads. There is nothing for Tempest to disable. It skips launching EAC because
+starting it would only waste time.
+
+To keep cheats out, the launcher is stricter about code than a normal mod loader. Code mods must be
+signed, and unsigned DLLs are never injected. Before every launch the launcher rechecks installed
+files against their signed checksums, and disables any mod that was edited after install or whose key
+was revoked.
 
 Lua and DLL mods also wait for a moderator to read them before they appear in **Discover**.
-Asset-only mods skip that review. Badges mark mods **Official**, **Verified author**, **Reviewed**,
-**Signed**, **Unsigned** or **Key revoked**.
 
-Installing a mod changes only your own instance. Tempest does not download code from a server you
-join, push your mods to other players, or load your client mods into the host's server. The match
-runs on the host's server, so a client-side mod changes your game and leaves the server's copy of the
-match alone.
-
-None of this detects an aimbot or wallhack that someone runs outside the launcher, but Tempest
-doesn't make cheating any easier. It has no feature for loading arbitrary DLLs from another player
-or server, so a cheater has to bring their own tool.
+None of this detects an aimbot or wallhack that someone runs outside the launcher. Tempest has no
+feature for loading arbitrary DLLs from another player or server, but a cheater can still bring their
+own tool.
 
 ## Mods
 
