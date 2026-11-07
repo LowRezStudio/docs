@@ -64,3 +64,20 @@ Studio, and the command palette (Ctrl+K) shows each command's shortcut.
 | Ctrl+C, Ctrl+V                        | Copy the marked rows, paste them as new rows          |
 | Ctrl+Shift+Enter                      | New row                                               |
 | Ctrl+D                                | Duplicate the selected row                            |
+
+## Maps
+
+| Shortcut                   | Action                                                |
+| -------------------------- | ----------------------------------------------------- |
+| W, E, R, Q                 | Move, rotate, scale, select only                      |
+| F                          | Frame the selection                                   |
+| Escape                     | Deselect                                              |
+| Shift+A                    | Add an actor                                          |
+| Ctrl+D                     | Duplicate the selected actor                          |
+| Delete                     | Delete the selected actor (Kismet: the selected node) |
+| Right drag + W A S D, Q E  | Fly (physical keys: Z Q S D on AZERTY)                |
+| Arrows, Page Up, Page Down | Fly without the mouse                                 |
+| A (Kismet)                 | Add a node                                            |
+| K (Matinee)                | Add a key at the playhead on the selected track       |
+| Space (Matinee)            | Play or pause                                         |
+| Home, End (Matinee)        | Go to the start or the end                            |
