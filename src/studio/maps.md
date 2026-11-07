@@ -84,7 +84,8 @@ pick (the selected actor's by default). Three tabs:
 - **Copy**: every kind of actor the game's maps place (player starts, jump pads, capture points,
   volumes, lights, sounds…). The new actor is a copy of one of them, with its settings. Examples
   from this map come first; a copy from another map brings its meshes, materials and textures
-  along, and its links to that map's actors and Kismet are dropped.
+  along, and its links to that map's actors and Kismet are dropped. Its baked lighting comes
+  along too, stored inside the level so the game can still load it, until you bake it again.
 - **New**: any actor class the game allows in a level (about 300), with the class's default
   settings. Set what it needs (mesh, target, team…) in the inspector. A new volume is a 256-unit
   cube until you [shape it](#collision-and-volume-shapes).
@@ -140,13 +141,17 @@ Maps keep their lighting baked into light map textures. **Light** in the toolbar
 
 The baker takes the map's static lights (point, spot, directional and sky) and casts shadows
 against every level of the map, and stores the result the way the game's own lighting is stored:
-new light map textures in the level, the meshes pointed at them. The dialog shows the selected
-mesh's light map, with an exposure slider. A bake is one edit per level: Ctrl+Z takes it back.
+new light map textures in the level, the meshes pointed at them, every level of detail of a mesh
+with its own light map. Light map textures nothing uses any more (the ones a bake replaced, those a
+copied actor brought along) are removed. The dialog shows the selected mesh's light map, with an
+exposure slider. A bake is one edit per level: Ctrl+Z takes it back.
 
-It bakes direct light only, so shadowed areas come out darker than the shipped lighting, which
-also bounces light around. **Indirect rays** adds a rough one-bounce approximation, which tends to
-come out too bright in open areas. Light for moving objects (characters) and meshes without light
-map coordinates are not baked.
+Without **Indirect rays**, only direct light is baked, and areas in shade come out at about 0.6 of
+the shipped lighting, which also bounces light around. 32 to 64 rays add a one-bounce
+approximation that brings shaded areas close on average (individual meshes still differ, and sunlit
+ones can come out a little too bright or too dark). A bake with indirect rays takes several times
+longer. Light for moving objects (characters) and meshes without light map coordinates are not
+baked.
 
 ## Nav mesh
 
