@@ -1,3 +1,4 @@
+import DownloadButton from "./components/DownloadButton.vue";
 import MapIds from "./components/MapIds.vue";
 import MultiplayerArgs from "./components/MultiplayerArgs.vue";
 import MultiplayerArgsForm from "./components/MultiplayerArgsForm.vue";
@@ -12,5 +13,6 @@ export default {
 		app.component("MultiplayerArgs", MultiplayerArgs);
 		app.component("MultiplayerArgsForm", MultiplayerArgsForm);
 		app.component("MapIds", MapIds);
+		app.component("DownloadButton", DownloadButton);
 	},
 } satisfies Theme;

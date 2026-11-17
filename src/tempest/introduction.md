@@ -9,6 +9,14 @@ Tempest is the community Paladins launcher built by [LowRezStudio](https://lowre
 It lets you download and play any Paladins release, install gameplay and script mods
 and host or join private servers, keeping the game playable even without official support.
 
+<DownloadButton
+  href="https://github.com/LowRezStudio/Tempest/releases/latest"
+  text="Download Tempest"
+  note="Windows, macOS and Linux builds, updated with every release"
+/>
+
+![The Tempest launcher home screen: a patch card with Play, Find mods and Open instance buttons, above News, Changelog and Community panels](/tempest/screenshot-home.webp)
+
 ## Start here
 
 - New to Tempest? The current launcher guides live alongside this page as they are written. Common
