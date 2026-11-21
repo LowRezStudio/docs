@@ -27,10 +27,11 @@ Deltas are also small: a texture swap in a 30 MB package ships as the texture al
 | UPK packages (`.upk`), content and script packages alike | The object's path, such as `skinicon_kasumi.collection_kasumi_default` |
 | `assembly.dat`                                           | The id column of each table, such as `ITEM_ID`                         |
 | `Lang_<LANG>.dat` language files                         | The message id                                                         |
+| Wwise sound packages (`.pck`)                            | The sound bank, the sound's id, or the part of a bank it changes       |
 
 Objects and rows are never matched by position, so a delta still applies after another mod added or
-removed objects in the same file. Anything else (Wwise `.pck` files, configuration files, movies
-outside packages) ships whole under `files/`.
+removed objects in the same file. Anything else (configuration files, movies outside packages) ships
+whole under `files/`.
 
 A package delta keeps every reference by path. An object that points at another object, in the same
 package or elsewhere, still points at it after the delta is applied, wherever that object ended up in
@@ -45,10 +46,12 @@ A delta carries as little as the change needs:
   default takes under a kilobyte, where the whole object took 20 KB. When the delta is applied the
   properties are merged into the object as it is then, so two mods that change different
   properties of the same object both keep their changes.
-- **Changed meshes and textures** are compressed against the original object. A texture with a
-  small area repainted costs 3 KB instead of 22 KB, and a replaced mesh about a third of its size.
-  This needs the game's original object, which the launcher keeps; if the game file is a different
-  version, that object is left unchanged and the launcher says so.
+- **Changed meshes, textures and UI movies** are compressed against the original object. A texture
+  with a small area repainted costs 3 KB instead of 22 KB, a replaced mesh about a third of its
+  size, and a menu movie with one label changed 1.4 KB instead of 5.4 MB: a movie is stored as one
+  large property, and changed properties are compressed against the original too. This needs the
+  game's original object, which the launcher keeps; if the game file is a different version, that
+  object is left unchanged and the launcher says so.
 - **Everything else** is compressed with LZMA, the strongest general-purpose compressor.
 
 | Change                                | Before (in the mod zip) | Now     |
@@ -57,9 +60,12 @@ A delta carries as little as the change needs:
 | A texture with a small area repainted | 22 KB                   | 3.2 KB  |
 | A texture replaced whole              | 17 KB                   | 13.5 KB |
 | Maeve's body mesh replaced by another | 1.1 MB                  | 0.42 MB |
+| One label of the 7 MB main menu movie | 5.4 MB                  | 1.4 KB  |
+| Clean HUD's `LobbyUI_SF` (75 movies)  | 6.7 MB                  | 0.92 MB |
 
 Mods made this way need an up-to-date launcher; older ones refuse them with a message to update
-Tempest.
+Tempest. Deltas with compressed movie or property changes are format version 3 and need launcher
+1.5.4 or newer.
 
 ## Shared objects
 
@@ -142,6 +148,40 @@ my-mod/
 
 Deltas are signed like any other file in the package. Recompiled script packages are not treated as
 code by the signing policy.
+
+## Upgrading an existing mod
+
+A mod made before deltas existed, or with an older builder, can be rewritten so every game file it
+changes is a delta of today's format. Whole files become deltas and old deltas are made again;
+everything else (DLLs, Lua scripts, the readme, the icon, new files) is carried over unchanged.
+
+```text
+tempest mod upgrade my-mod.tempest --game "C:\Games\Tempest\8.1"
+```
+
+It takes a `.tempest` or `.zip` package, a mod folder, or a bare `.upk`, `.pck` or `.dat` of the
+first mod format, and writes `my-mod-upgraded.tempest` next to it (`--output` to choose). Pass the
+game folder the mod was made for: the deltas are made against its files (the launcher's backup of a
+file when another mod changed it). In Tempest Studio Native the same is **Upgrade a mod to deltas…**
+in the **Package** menu, the command palette and the Mod view's **…** menu.
+
+Every new delta is checked before it replaces anything: it is applied to the game's file and the
+result is compared, object by object, with the mod's own file. When that fails, or when the delta
+would not be smaller, the mod's original file is kept, and the report says why. A file that is the
+same as the game's is left out.
+
+| Mod                                            | Before | Upgraded |
+| ---------------------------------------------- | ------ | -------- |
+| Clean HUD (deltas and a script package)        | 7.5 MB | 0.94 MB  |
+| Golden Seris weapon edit (two whole packages)  | 38 MB  | 2.2 MB   |
+| A menu song replaced, as a first-format `.pck` | 117 MB | 2.4 MB   |
+
+The upgraded Clean HUD installs to exactly the same game files as the original, byte for byte.
+
+The upgraded package is no longer signed by its author: its contents changed, so the old signature
+does not cover them. Sign it with `--key <file>` or `tempest mod sign`. A package with DLLs or Lua
+scripts needs a valid signature to install. Ask the author before publishing an upgraded copy of
+someone else's mod.
 
 ## How the launcher applies them
 

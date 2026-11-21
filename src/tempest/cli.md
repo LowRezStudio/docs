@@ -28,6 +28,7 @@ tempest mod enable/disable ...          toggle a mod
 tempest mod search <words>              search the repository
 tempest mod login / publish ...         publish to the repository
 tempest mod gen-key / sign / sign-text  package signing and key verification
+tempest mod upgrade <mod> --game <dir>   rewrite a mod with every game file as a delta
 tempest marshal ...                     token/assembly tooling used by instance setup
 ```
 
@@ -49,4 +50,11 @@ for the full publishing flow):
 tempest mod pack ./my-mod my-mod.tempest
 tempest mod sign my-mod.tempest
 tempest mod publish my-mod.tempest --from 0.56 --summary "What it does"
+```
+
+Make an older mod smaller, with every game file it changes as a delta of today's format (see
+[upgrading an existing mod](/mods/deltas#upgrading-an-existing-mod)):
+
+```text
+tempest mod upgrade old-mod.tempest --game "C:\Games\Tempest\8.1" --key my.key
 ```
