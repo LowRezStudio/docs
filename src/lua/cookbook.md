@@ -231,3 +231,19 @@ if not viewport.ViewportConsole then
   console.TypeKey = "Tab"
 end
 ```
+
+## Look up an item and send it to a web service
+
+[`assembly` and `lang`](./api/game-data) read the game's data files; [`http`](./api/json-and-http)
+sends requests without blocking the game. Requires Tempest Scripting 1.1.0.
+
+```lua
+tempest.command("share_item", function(pc, rest)
+	local item = assembly.find("ITEMS", "ITEM_ID", tonumber(rest))
+	if not item then return pc:ClientMessage("no item " .. rest) end
+	local payload = { id = item.ITEM_ID, name = lang.message(item.NAME_MSG_ID) }
+	http.post("https://example.com/api/items", payload, function(res, err)
+		pc:ClientMessage(res and ("sent: " .. res.status) or ("failed: " .. err))
+	end)
+end, "share_item <item id>")
+```

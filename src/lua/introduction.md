@@ -60,7 +60,9 @@ and `tempest.status().arch`, which tells a script where it runs.
 - The API reference: [`tempest`](/lua/api/tempest),
   [objects and containers](/lua/api/objects),
   [console and input](/lua/api/console-and-input),
-  [`memory`](/lua/api/memory), [`ui`](/lua/api/ui).
+  [`memory`](/lua/api/memory), [`ui`](/lua/api/ui),
+  [`json` and `http`](/lua/api/json-and-http),
+  [game data (`assembly`, `lang`)](/lua/api/game-data).
 - [Cookbook](/lua/cookbook) has copy-paste recipes.
 - [Limitations and troubleshooting](/lua/limitations) lists what does not work and
   how to read the log.

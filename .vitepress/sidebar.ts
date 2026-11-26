@@ -96,6 +96,14 @@ const modsSidebar: DefaultTheme.SidebarItem[] = [
 								text: "ui (Dear ImGui)",
 								link: "/lua/api/ui",
 							},
+							{
+								text: "json & http",
+								link: "/lua/api/json-and-http",
+							},
+							{
+								text: "Game data (assembly, lang)",
+								link: "/lua/api/game-data",
+							},
 						],
 					},
 				],
