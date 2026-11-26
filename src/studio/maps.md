@@ -146,11 +146,19 @@ with its own light map. Light map textures nothing uses any more (the ones a bak
 copied actor brought along) are removed. The dialog shows the selected mesh's light map, with an
 exposure slider. A bake is one edit per level: Ctrl+Z takes it back.
 
-Without **Indirect rays**, only direct light is baked, and areas in shade come out at about 0.6 of
-the shipped lighting, which also bounces light around. 32 to 64 rays add a one-bounce
-approximation that brings shaded areas close on average (individual meshes still differ, and sunlit
-ones can come out a little too bright or too dark). A bake with indirect rays takes several times
-longer. Light for moving objects (characters) and meshes without light map coordinates are not
+**Quality** chooses how light is computed:
+
+- **Standard**: direct light with ray-traced shadows. Without **Indirect rays**, areas in shade
+  come out at about 0.6 of the shipped lighting, which also bounces light around; 32 to 64 rays add
+  a one-bounce approximation off grey surfaces that brings shaded areas close on average.
+- **Ray traced (GI)**: the same direct light, plus light that bounces several times (**Bounces**,
+  3 by default) and takes the colour of each surface it bounces off, from the material's diffuse
+  texture: a red wall tints the floor next to it. It is the closest to the game's own lighting.
+  **Trace on the GPU** uses the graphics card (any recent one; no ray tracing hardware needed),
+  about twice as fast as the processor; without one the processor traces.
+
+Bakes with bounced light take longer: a level of a few hundred meshes takes from seconds to a couple
+of minutes. Light for moving objects (characters) and meshes without light map coordinates are not
 baked.
 
 ## Nav mesh
@@ -162,11 +170,21 @@ lists its size and switches what a click picks: actors, faces or a vertex.
 Select faces and **delete** them, **cut** a whole connected region, or drag a **vertex**. Every edit
 keeps the mesh valid and is one undo step; Save writes it with the level.
 
-::: warning Not regenerated
-The Studio cannot build a nav mesh from the level's geometry yet, and the cluster graph bots use
-for long trips is not updated after an edit. Small edits (closing off an area, removing a ledge)
-are fine; large ones can make bots take odd routes. The nav mesh only matters where bots play
-(the server).
+**Generate from the level** builds a new nav mesh from what champions collide with (blocking
+meshes, volumes and BSP) in the map and its streamed levels, and replaces the old one in one undo
+step. Two switches decide what happens to the jump links bots use to drop off ledges or jump gaps:
+
+- **Keep jump links** moves the map's existing links onto the new mesh. A link whose two ends now
+  land on the same floor is no longer needed (the new mesh walks across), and one with no floor
+  under an end is lost; the notification counts both.
+- **Find drop-downs** adds new links from ledges onto floors below, laid out like the game's own,
+  where nothing is in the way.
+
+::: warning Bots after an edit
+The cluster graph bots use for long trips is rebuilt when you generate, but not after a manual
+edit. Small edits (closing off an area, removing a ledge) are fine; large ones can make bots take
+odd routes. The nav mesh only matters where bots play (the server), and generated meshes have not
+been tried in game yet.
 :::
 
 ## Heavy walls
