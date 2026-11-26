@@ -5,54 +5,52 @@ description: The Tempest Studio window - header, views, tabs, panes, the command
 
 # The interface
 
-```text
-┌ header: project menu · save state · Back/Forward · palette · Undo · edited files · Discard · Save/Build ┐
-│ activity │ tabs                                                                                       │
-│   bar    ├────────────────────────────────────────────────────────────────────────────────────────────┤
-│          │ the current view: Packages, Assembly, Maps or Build the mod                                │
-├──────────┴────────────────────────────────────────────────────────────────────────────────────────────┤
-│ status bar: the open file, its size and state                                                         │
-└───────────────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+![Tempest Studio with a mod open: the header on top, the activity bar on the left, the game files, the objects of a package, and a selected texture with its preview and properties](/studio/interface.webp)
+
+The header runs along the top, the activity bar down the left side, and the current view fills the
+rest. The status bar at the bottom shows the open file, its object count and how long it took to
+read.
 
 ## Header
 
 From left to right:
 
-- **Project menu**: in a mod project it shows the project name (with a hammer icon), otherwise the
-  game folder. It holds **New mod project**, **Open project…**, the recent projects, **Open game
-  folder…**, **Open package file…**, **New window**, and in a project **Show the project folder**
-  and **Close the project**.
-- **Save state** (projects only): **Saved**, **Saving…**, **Edited** (a save is coming in a moment)
-  or **Not saved** in red when the project could not be written. Hover it for details; Ctrl+S
-  retries.
-- **Back / Forward**: retrace where you went, across packages and assembly rows alike. Alt+← and
-  Alt+→ or the mouse side buttons do the same.
-- **The search field** opens the command palette (see below).
-- **Undo** reverts the last change of the file you are looking at; hover it to see what it undoes.
-- **Edited files**: the number of files with edits. Click it for the list; each entry opens its file.
-  In a project it reads _edited_ (kept in the project); without a project it reads _unsaved_.
-- **Discard** throws away the edits to the current file, after asking.
-- **Build mod** (in a project) opens the mod cooker. Without a project the button is **Save**, which
-  writes the current file into the game folder. The arrow next to it has every save and discard
-  action, each with a line explaining what it does.
-- The sun/moon button switches between the dark and light theme.
+- **Back / Forward**: retrace where you went, across packages, game data rows and maps alike.
+  Alt+← and Alt+→ or the mouse side buttons do the same.
+- **Game folder** (the game's version, here _8.1_): open another game folder or a recent one.
+- **Your mod**: its name and save state (**saving…**, **saved**, or **not saved** in red when the
+  mod could not be written). Its menu has **Save now**, **Build the mod…**, **Show the mod's
+  folder**, **Open mod-files/**, and **Discard all changes…**. Before you name a mod, your changes
+  go into an unnamed draft, and the menu offers **Name this mod…** or **Open a mod…**. See
+  [Projects and saving](/studio/projects).
+- **Create** (Ctrl+N): make something new, a skin, an ability, a texture or a sound, with a
+  step-by-step wizard.
+- **The search field** (Ctrl+K) finds champions, game data tables, game files, UI movies, objects
+  and commands (see [Command palette](#command-palette)).
+- **Undo / Redo** (Ctrl+Z, Ctrl+Shift+Z) take back the last change of what you are looking at, or
+  put it back.
+- **Changes (n)**: the files with changes. Click it for the list; open a file from it, or throw its
+  changes away.
+- **Build mod** (Ctrl+6) opens the mod cooker: what your changes become, with build, install and
+  publish.
 
 ## Views
 
 The activity bar on the left switches between the views:
 
-| View              | Shortcut | What it is for                                                                       |
-| ----------------- | -------- | ------------------------------------------------------------------------------------ |
-| **Packages**      | Ctrl+1   | Browse the game's packages and edit their objects. See [Packages](/studio/packages). |
-| **Assembly**      | Ctrl+2   | Edit `assembly.dat` and the language files. See [Assembly](/studio/assembly).        |
-| **Maps**          | Ctrl+4   | A map in 3D, its actors and its Kismet. See [Maps](/studio/maps).                    |
-| **Build the mod** | Ctrl+3   | The mod cooker. See [Building mods](/studio/mod-cooker).                             |
+| View       | Shortcut | What it is for                                                                                                     |
+| ---------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Start**  | Alt+1    | What do you want to change: champions' looks, stats, sounds, maps, menus, or something new.                        |
+| **Champs** | Ctrl+1   | Each champion's skins, abilities, cards, talents and game files.                                                   |
+| **Files**  | Ctrl+2   | Every package: textures, meshes, materials, sounds, UI and scripts. See [Packages](/studio/packages).              |
+| **Data**   | Ctrl+3   | The content tables (items, abilities, cards, skins, loot…) and the game's texts. See [Assembly](/studio/assembly). |
+| **Sounds** | Ctrl+4   | Every sound bank, or a champion's or item's sounds: listen, edit, export and replace.                              |
+| **Maps**   | Ctrl+5   | A map in 3D with its scripts (Kismet) and cutscenes (Matinee). See [Maps](/studio/maps).                           |
+| **Mod**    | Ctrl+6   | The mod cooker. See [Building mods](/studio/mod-cooker).                                                           |
 
-Below them are **Search every package** (Ctrl+F), **Wwise audio**, and the **Tools** menu (for packages: find and replace, batch import, verify, rewrite, export class
-sources, prepare a mod folder; for the assembly: new content, Champion Vendor, skin collections, export a mod,
-reload). At the
-bottom are the MCP server, the keyboard shortcut list (F1) and **Settings** (Ctrl+,).
+At the bottom are the keyboard shortcut list (**Keys**, F1) and **Settings** (Ctrl+,). Tools that
+work on the open package or the game data (find and replace, batch import, check a package, new
+content, the champion vendor, skin collections…) are commands: find them in the command palette.
 
 ## Tabs
 
@@ -84,13 +82,17 @@ pointer:
 
 Everything the Studio can do is a command, and the palette finds them by name:
 
-- **Ctrl+K** (or Ctrl+Shift+P): run a command. Type `>` in the palette for the same.
-- **Ctrl+P**: go to a package or an assembly table.
-- **Ctrl+Shift+O**: go to an object of the open package, or filter the rows of the open table. Type
-  `@` in the palette for the same.
+- **Ctrl+K**: search champions, game data tables, game files, UI movies, objects and commands at
+  once.
+- **Ctrl+Shift+P**: run a command, filtered by name.
+- **Ctrl+P**: go to a package or a game data table.
+- **Ctrl+Shift+O**: go to an object of the open package, or in the game data the rows containing a
+  text.
+- **Ctrl+Shift+F**: search every package of the folder for objects by name. **Ctrl+F** filters what
+  is on screen (the package's objects, the table's rows, the map's actors, the sound events).
 
-Ctrl+Enter opens the result in a new tab. Commands show their shortcut, so the palette is also the
-easiest way to learn them.
+On macOS, use Cmd instead of Ctrl. Commands show their shortcut, so the palette is also the easiest
+way to learn them.
 
 ## Panes
 
