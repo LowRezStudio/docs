@@ -20,9 +20,11 @@ A project is a folder with three things in it:
 
 Create one with **New mod project** (welcome screen or the project menu). In a project:
 
-- **Edits save themselves.** About a second and a half after a change, the project file is written.
-  The header shows **Edited** while a save is pending, **Saving…**, then **Saved**. If saving fails
-  (the folder was moved, the disk is full) it shows **Not saved** in red; Ctrl+S retries.
+- **Edits save themselves.** About a second and a half after a change, the project file is written;
+  while you keep working it is written at most every 20 seconds, so a long series of edits is never
+  held up by saving. Quitting, closing the project and Ctrl+S always save at once. The header shows
+  **saving…** while a save is pending, then **saved**. If saving fails (the folder was moved, the
+  disk is full) it shows **not saved** in red; Ctrl+S retries.
 - **The game folder is never written.** Your edits stay in the project, so the game files remain the
   originals your mod is compared with. When you want to test without building a mod, **Write the
   edits into the game folder** (in the Save menu) overwrites the game's files after asking; the
@@ -96,6 +98,8 @@ Opening a workspace file reopens its game folder, applies the changes in memory 
 
 ## Crash recovery
 
-While anything is unsaved, the Studio writes a recovery copy every two minutes. If it closes
-unexpectedly, the next time you open that game folder a banner offers **Restore it**; **Dismiss**
-deletes the copy. The copy is removed once everything is saved.
+Outside a project, while anything is unsaved, the Studio writes a recovery copy a couple of seconds
+after you stop editing (at most every 20 seconds). Quitting keeps your unsaved edits the same way.
+The next time you open that game folder, a banner offers **Put them back** as your unnamed mod;
+**Throw them away** deletes the copy. The copy is removed once everything is saved. A mod project
+needs no recovery copy: its own file is kept up to date.

@@ -30,7 +30,7 @@ Tempest Mods/kasumi-icon/
 ```
 
 The header now shows the project name with its save state. You never need to save by hand: the
-project saves itself a moment after every change and shows **Saved** when it is done.
+project saves itself a moment after you change something and shows **saved** when it is done.
 
 ## 2. Find what to change
 

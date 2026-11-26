@@ -12,14 +12,18 @@ Windows, macOS and Linux.
 
 ## Install
 
-Download the latest **Tempest Studio** build from the
-[Tempest releases](https://github.com/LowRezStudio/Tempest/releases): the `.exe` installer on
-Windows, the `.dmg` on macOS, an AppImage, `.deb` or `.rpm` on Linux. The Studio is a separate app
-from the launcher, but it uses the same mod format and the same signing key.
+Download the latest **Tempest Studio Native** build from the
+[Tempest releases](https://github.com/LowRezStudio/Tempest/releases): the
+`Tempest-Studio-Native-<version>-<os>-<arch>` zip for Windows, macOS or Linux, or the `.dmg` on
+macOS. Unzip it anywhere and run `tempest-studio` (the app on macOS); it needs no installer. The
+Studio is a separate app from the launcher, but it uses the same mod format and the same signing
+key. It is still an alpha: the Windows and Linux builds have had the least testing.
 
-The Studio keeps itself up to date: when a new version is out, a strip at the top of the window
-offers to download it and restart (on Windows and Linux; on macOS it links to the download). You
-can check by hand, or turn the check off, in **Settings**.
+The Studio keeps itself up to date: when a new version is out, a strip at the top of every window
+offers **Restart to update**. Your work is kept (a project saves itself, other unsaved edits are
+offered back at the next start), the new version replaces the old one in place and starts. When the
+Studio sits in a folder it cannot write to, the strip links to the download instead. You can check
+by hand, or turn the check off, in **Settings**.
 
 You also need a Paladins install. Any instance the launcher downloaded works: the Studio opens its
 `ChaosGame/CookedPCConsole` folder, which holds every package of the game.
